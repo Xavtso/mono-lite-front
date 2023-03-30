@@ -1,0 +1,21 @@
+{
+  "name": "mono-lite-front",
+  "version": "1.0.0",
+  "description": "frontend part",
+  "main": "index.js",
+  "scripts": {
+    "start":"concurrently \"npm install\" \"npm run test\" \"npm run build\"",
+    "build": "cd client && npm run build",
+    "test": "echo \"Error: no test specified\" "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Xavtso/mono-lite-front.git"
+  },
+  "author": "Vitaliy Havrona",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Xavtso/mono-lite-front/issues"
+  },
+  "homepage": "https://github.com/Xavtso/mono-lite-front#readme"
+}
