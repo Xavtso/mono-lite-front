@@ -1,0 +1,6 @@
+.head-container{
+    display: flex;
+    width: 100rem;
+    height: 100rem;
+    align-items: flex-start;
+}

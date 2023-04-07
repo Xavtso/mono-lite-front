@@ -1,6 +1,8 @@
 import { useRef, useEffect } from "react";
 import Header from "../components/home-page/Header";
 import Sections from "../components/home-page/Sections";
+import "../styles/index.css";
+
 
 const Home = function () {
     

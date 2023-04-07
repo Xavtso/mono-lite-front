@@ -21,7 +21,7 @@ const SignUp = function (props) {
     const password = e.target.elements[3].value;
 
     axios
-      .post(`http://localhost:${process.env.NODE_ENV}.env/users`, {
+      .post(`https://mono-lite-backend.azurewebsites.net/auth/signUp`, {
         first_name:translit.toLatin(firstName),
         second_name: translit.toLatin(secondName),
         email: email,
@@ -49,6 +49,9 @@ const SignUp = function (props) {
           minLength={2}
           maxLength={24}
           required
+          autoComplete
+          autoCorrect
+          autoFocus
           title="Plese enter your Name"
         ></input>
         <label>Surname</label>
@@ -67,6 +70,7 @@ const SignUp = function (props) {
           name="email"
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
           required
+          autoComplete
           title="Please enter a valid email address"
           />
         <label>Password</label>
