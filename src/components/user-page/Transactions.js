@@ -1,50 +1,74 @@
-import axios from 'axios';
-import '../../styles/user-page/Transactions.css'
-import { useEffect, useState } from 'react';
-
+import axios from "axios";
+import "../../styles/user-page/Transactions.css";
+import { useEffect, useState } from "react";
 
 const Transactions = function () {
-  const [transactions, setTransactions] = useState("");
+  const [transactions, setTransactions] = useState([]);
+
+  const formatDate = function (date) {
+    const now = new Date();
+    const diff = now - date;
+
+    if (diff < 60000) {
+      // менше 1 хвилини
+      return "щойно";
+    } else if (diff < 1800000) {
+      // менше 30 хвилин
+      const minutesAgo = Math.floor(diff / 60000);
+      return `${minutesAgo} хв. тому`;
+    } else if (diff < 3600000) {
+      // менше 1 години
+      const minutesAgo = Math.floor(diff / 60000);
+      return `${minutesAgo} хв. тому`;
+    } else if (now.toDateString() === date.toDateString()) {
+      // в той же день
+      return "сьогодні";
+    } else if (diff < 86400000) {
+      // менше 1 доби
+      return "учора";
+    } else {
+      // більше 1 доби
+      const day = date.getDate();
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear();
+      return `${day}/${month}/${year}`;
+    }
+  };
+
+
   const uploadTransactions = function () {
     axios
       .get("https://mono-lite-backend.azurewebsites.net/transactions")
       .then((response) => {
         console.log(response.data);
-        setTransactions(response.data);
+        setTransactions(response.data.reverse());
       })
       .catch((error) => console.log(error));
-
-    // transactions.forEach((transaction) => {
-    //   <div class="movements__row">
-    //     <div class="movements__type movements__type--deposit">
-    //       {transaction.transaction_type}
-    //     </div>
-    //     <div class="movements__date">3 days ago</div>
-    //     <div class="movements__value">{transaction.transaction_amount}</div>
-    //   </div>;
-    // });
   };
 
   useEffect(() => {
-    uploadTransactions(); // Викликати функцію test при вході на сторінку
-  }, []); // Пустий масив залежностей, щоб ефект виконався тільки один раз
+    uploadTransactions();
+  }, []);
 
   return (
-    <div class="movements">
-      <div class="movements__row">
-        <div class="movements__type movements__type--deposit">2 deposit</div>
-        <div class="movements__date">3 days ago</div>
-        <div class="movements__value">4 000€</div>
-      </div>
-      <div class="movements__row">
-        <div class="movements__type movements__type--withdrawal">
-          1 withdrawal
+    <div className="movements">
+      {transactions.map((transaction, index) => (
+        <div key={index} className="movements__row">
+          <div
+            className={`movements__type movements__type--${transaction.transaction_type}`}
+          >
+            {transaction.transaction_type}
+          </div>
+          <div className="movements__date">
+            {formatDate(new Date(transaction.createdAt))}
+          </div>
+          <div className={`movements__value mov--${transaction.transaction_type}`} >
+            {transaction.transaction_amount} ₴
+          </div>
         </div>
-        <div class="movements__date">24/01/2037</div>
-        <div class="movements__value">-378€</div>
-      </div>
+      ))}
     </div>
   );
-}
+};
 
-export default Transactions
+export default Transactions;

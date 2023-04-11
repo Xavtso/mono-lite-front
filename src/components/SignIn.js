@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import UserPage from "../pages/UserPage";
+
 
 const SignIn = function (props) {
   const storage = localStorage;
@@ -42,8 +42,8 @@ const SignIn = function (props) {
           name="email"
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
           required
-          autoComplete
-          autoCorrect
+          autoComplete = 'on'
+          autoCorrect = 'on'
           title="Please enter a valid email address"
           />
         <label>Password</label>

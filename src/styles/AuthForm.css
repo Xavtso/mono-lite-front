@@ -5,7 +5,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 60rem;
+  max-width: 65rem;
   background-color: mintcream;
   padding: 5rem 6rem;
   box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
@@ -87,7 +87,7 @@
     font-weight: 600;
     margin-top:2rem;
     padding-top:3rem;
-    margin-left: 20rem;
+    margin-left: 15rem;
 }
 
 .switchLink span{

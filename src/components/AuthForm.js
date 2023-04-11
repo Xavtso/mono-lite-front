@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SignUp from "./SignUp";
 import SignIn from "./SignIn";
-import '../styles/AuthForm.css'
+import "../styles/AuthForm.css";
 
 const AuthForm = function (props) {
   const [signForm, setSignForm] = useState("signup");
@@ -11,14 +11,24 @@ const AuthForm = function (props) {
   };
 
   const handleClose = () => {
-    console.log(props.onHide);
     props.onHide();
-  }
+  };
+  const keyHandleClose = function (e) {
+    if (e.keyCode === 27) {
+      props.onHide();
+    }
+  };
 
   return (
-    <div className="modal">
-      <button className="btn--close-modal" onClick={handleClose}>&times;</button>
-      {signForm === "signup" ? <SignUp switchForm = {toggleForm} /> : <SignIn switchForm = {toggleForm} />}
+    <div className="modal" onKeyDown={keyHandleClose}>
+      <button className="btn--close-modal" onClick={handleClose}>
+        &times;
+      </button>
+      {signForm === "signup" ? (
+        <SignUp switchForm={toggleForm} />
+      ) : (
+        <SignIn switchForm={toggleForm} />
+      )}
     </div>
   );
 };

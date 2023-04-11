@@ -28,6 +28,7 @@ const SignUp = function (props) {
         password: password,
       })
       .then(function (response) {
+        window.location.replace('/account')
         console.log(response);
       })
       .catch(function (error) {
@@ -49,8 +50,8 @@ const SignUp = function (props) {
           minLength={2}
           maxLength={24}
           required
-          autoComplete
-          autoCorrect
+          autoComplete ='on'
+          autoCorrect = 'on'
           autoFocus
           title="Plese enter your Name"
         ></input>
@@ -70,7 +71,7 @@ const SignUp = function (props) {
           name="email"
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
           required
-          autoComplete
+          autoComplete = "on"
           title="Please enter a valid email address"
           />
         <label>Password</label>

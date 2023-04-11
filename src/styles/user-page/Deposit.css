@@ -1,0 +1,59 @@
+.form {
+  display: grid;
+  grid-template-columns: 2.5fr 2.5fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 0.4rem 1rem;
+  
+}
+.operation {
+  border-radius: 1rem;
+  padding: 2rem 3rem;
+  color: aliceblue;
+  background-color: rgb(65, 65, 65);
+}
+
+.operation--deposit{
+     border: 1px solid rgb(84, 84, 84);
+  box-shadow: 1px 2px 2px 2px lightgreen, 0px 3px 6px 2px #222;
+}
+.operation--expense{
+     border: 1px solid rgb(84, 84, 84);
+  box-shadow: 1px 2px 2px 2px rgb(221, 52, 52), 0px 3px 6px 2px #222;
+}
+
+label{
+    width: 100%;
+    text-align: center;
+    padding: 6px 1px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.title{
+    font-size: 16px;
+    font-weight: 600;
+}
+input{
+    border-radius: 20px;
+    box-shadow: 1px 1px 0.5px 0.5px #222 inset;
+    background-color: rgb(130, 130, 130);
+    padding: 1rem;
+}
+button{
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 16px;
+}
+
+.btn-deposit{
+    background-color: lightgreen;
+}
+.btn-deposit:hover{
+    background-color: rgb(103, 224, 103);
+}
+.btn-expense{
+    background-color: rgb(255, 65, 65);
+}
+.btn-expense:hover{
+    background-color: rgb(255, 0, 0);
+}

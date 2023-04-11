@@ -1,0 +1,32 @@
+.balance{
+    display: block;
+    /* border: 2px solid #222; */
+    padding: 1.5rem;
+    width: 40rem;
+    max-width:45rem ;
+    height: fit-content;
+    margin-left: -5rem;
+}
+
+.self-balance{
+    padding: 3px;
+    font-size: 28px;
+    font-weight: 900;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+
+#currency{
+    font-weight: 100;
+    text-shadow: none;
+}
+
+.loan-balance{
+    font-size: 18px;
+    padding: 3px;
+    font-weight: 600;
+    /* text-shadow: 2px 2px 1px antiquewhite; */
+    margin-top: -10px;
+}
