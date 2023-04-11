@@ -28,7 +28,8 @@ const SignUp = function (props) {
         password: password,
       })
       .then(function (response) {
-        window.location.href = "/account";
+        window.location.href =
+          "https://proud-river-08d562003.2.azurestaticapps.net/account";
         console.log(response);
       })
       .catch(function (error) {
