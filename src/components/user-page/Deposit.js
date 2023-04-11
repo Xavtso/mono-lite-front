@@ -5,7 +5,7 @@ import axios from "axios";
 import React, { useState } from "react";
 
 const Deposit = function () {
-  const [transactionAmount, setTransactionAmount] = useState(0);
+  const [transactionAmount, setTransactionAmount] = useState('');
 
   const handleDeposit = async (event) => {
     event.preventDefault();

@@ -28,7 +28,7 @@ const SignUp = function (props) {
         password: password,
       })
       .then(function (response) {
-        window.location.replace('/account')
+        window.location.href = "/account";
         console.log(response);
       })
       .catch(function (error) {

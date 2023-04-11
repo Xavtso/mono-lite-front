@@ -59,11 +59,14 @@ const Transactions = function () {
           >
             {transaction.transaction_type}
           </div>
+          <div className="receiver-name">
+            {transaction.receiver_full_name}
+          </div>
           <div className="movements__date">
             {formatDate(new Date(transaction.createdAt))}
           </div>
           <div className={`movements__value mov--${transaction.transaction_type}`} >
-            {transaction.transaction_amount} ₴
+            {transaction.transaction_type === 'EXPENSE' ? '-' : '' }{transaction.transaction_amount} ₴
           </div>
         </div>
       ))}

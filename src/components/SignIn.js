@@ -14,19 +14,20 @@ const SignIn = function (props) {
     const password = e.target.elements[1].value;
 
     axios
-      .post(`https://mono-lite-backend.azurewebsites.net/auth/login`, {
-        email: email,
-        password: password,
-      })
-      .then(function (response) {
-        // Redirect user to another page
-        window.location.replace("/account");
-      })
-      .catch(function (error) {
-        console.log(error);
-        setMessage(error.response.data.message);
-      });
-  };
+  .post(`https://mono-lite-backend.azurewebsites.net/auth/login`, {
+    email: email,
+    password: password,
+  })
+  .then(function (response) {
+    // Redirect user to another page
+    window.location.href = "/account";
+  })
+  .catch(function (error) {
+    console.log(error);
+    setMessage(error.response.data.message);
+  });
+};
+
   
   return (
     <>

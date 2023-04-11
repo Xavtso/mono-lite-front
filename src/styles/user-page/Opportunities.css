@@ -32,3 +32,9 @@
   transition: all 1s;
 }
 
+@media (max-width:1200px){
+  .slot{
+    /* background-color: aliceblue; */
+    content:'';
+  }
+}
