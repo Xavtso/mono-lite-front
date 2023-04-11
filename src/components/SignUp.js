@@ -3,6 +3,7 @@ import { UkraineLatinTranslit } from "ukraine-latin";
 
 import "../styles/AuthForm.css";
 import { useState } from "react";
+import { useNavigate} from "react-router-dom"; // Import the required hooks
 
 
 
@@ -11,7 +12,7 @@ const SignUp = function (props) {
 
   const [message, setMessage] = useState('');
 
-
+  const navigate = useNavigate();
   const onSubmitHandler = function (e) {
     e.preventDefault();
 
@@ -28,8 +29,8 @@ const SignUp = function (props) {
         password: password,
       })
       .then(function (response) {
-        window.location.href =
-          "/account";
+         navigate("/account");
+
         console.log(response);
       })
       .catch(function (error) {

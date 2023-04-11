@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom"; // Import the required hooks
+import { useNavigate} from "react-router-dom"; // Import the required hooks
 
 const SignIn = function (props) {
   const storage = localStorage;
@@ -8,7 +8,7 @@ const SignIn = function (props) {
   const [message, setMessage] = useState("");
 
   const navigate = useNavigate(); // Replace useHistory with useNavigate
-  const location = useLocation(); // Use useLocation to access the current location object
+  // Use useLocation to access the current location object
 
   const onSubmitHandler = function (e) {
     e.preventDefault();
