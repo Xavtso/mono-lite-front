@@ -38,6 +38,7 @@ input{
     box-shadow: 1px 1px 0.5px 0.5px #222 inset;
     background-color: rgb(130, 130, 130);
     padding: 1rem;
+    outline: none;
 }
 button{
     cursor: pointer;

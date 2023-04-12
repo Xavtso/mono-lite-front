@@ -1,0 +1,53 @@
+.op-modal{
+    position: absolute;
+    width: 50rem;
+    height: 70rem;
+    color: aliceblue;
+    padding: 0;
+    margin-top: 2rem;
+    border-radius: 35px;
+    border: 3px solid rgb(65,65,65);
+}
+
+.screen{
+    background-color: rgb(65,65,65);
+    position: relative;
+    top: 16rem;
+    border-radius: 75px 75px 35px 35px;
+    width: 100%;
+    height: 47rem;
+    
+}
+
+.modal-loan{
+    background: linear-gradient(to left bottom, #0000FF, #0000CC, #000099, #000066, #010152) ;
+
+}
+.modal-deposit-bank{
+    background: linear-gradient(to right bottom, #3d8b3d, #367836, #2f6e2f, #296229, #235823);
+
+}
+.modal-transfer{
+      background: linear-gradient(to right bottom, #ffff66, #fcd12a, #e0b115, #c49a10, #a1820c)
+}
+.modal-cashback{
+    background: linear-gradient(to right bottom, #0077cc, #0066b3, #005499, #004480, #003366)
+}
+.modal-piggybank{
+    background: linear-gradient(to right bottom, #ff99cc, #ff6699, #ff3377, #ff0066, #cc0055);
+
+}
+.modal-closeaccount{
+   background: linear-gradient(to right bottom, #ff6565, hsl(0, 71%, 60%), #f12c2c, #ff3333, #f90606);
+
+}
+
+.amount{
+    color: #eee;
+    width: 100%;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 900;
+    transform: translateY(100px);
+    text-shadow: 0px 10px 15px  #eee;
+}
