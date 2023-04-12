@@ -5,7 +5,7 @@ import axios from "axios";
 
 const Expense = function () {
     const [transactionAmount, setTransactionAmount] = useState('');
-
+    const [message,setMessage] = useState('')
     const handleDeposit = async (event) => {
       event.preventDefault();
 
@@ -19,7 +19,7 @@ const Expense = function () {
         console.log(response.data);
         // Додаткові дії після успішного виконання запиту
       } catch (error) {
-        console.error(error);
+        setMessage(error.response.data.message);
       }
     };
 
@@ -28,7 +28,7 @@ const Expense = function () {
     };
     return (
       <div class="operation operation--expense">
-            <span className="title"> <FontAwesomeIcon icon={faMoneyCheck} style={{ color: "lightpink" }} />{ " "}Expense</span>
+        <span className="title"> <FontAwesomeIcon icon={faMoneyCheck} style={{ color: "lightpink" }} />{" "}Expense { message}</span>
         <form className="form form--expense" onSubmit={handleDeposit}>
           <label>Amount</label>
           <input type="number" min={0} onChange={handleTransactionAmountChange}/>

@@ -6,7 +6,7 @@ import React, { useState } from "react";
 
 const Deposit = function () {
   const [transactionAmount, setTransactionAmount] = useState('');
-
+  const [message,setMessage] = useState('')
   const handleDeposit = async (event) => {
     event.preventDefault();
 
@@ -20,7 +20,7 @@ const Deposit = function () {
       console.log(response.data);
       // Додаткові дії після успішного виконання запиту
     } catch (error) {
-      console.error(error);
+      setMessage(error.response.data.message);
     }
   };
 
@@ -34,6 +34,8 @@ const Deposit = function () {
         <FontAwesomeIcon icon={faMoneyBills} style={{ color: "lightgreen" }} />
         {"  "}
         Deposit
+        {' '}
+        {message}
       </span>
       <form className="form form--deposit" onSubmit={handleDeposit}>
         <label>Amount</label>

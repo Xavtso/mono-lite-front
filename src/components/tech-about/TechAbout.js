@@ -73,7 +73,7 @@ const TechAbout = function () {
   return (
       <div className="main">
           <button className='back' onClick={navigateTo}>Go Back</button>
-      <h1 className="title">Main info you should to know</h1>
+      <h1 className="tech-title">Main info you should to know</h1>
       <div className="rules">
         <div className="rule loans-rule">
           <h2>Loans</h2>
