@@ -39,7 +39,7 @@ const Expense = function () {
       </span>
       <form className="form form--expense" onSubmit={handleDeposit}>
         <label>Amount</label>
-        <input type="number" min={0} onChange={handleTransactionAmountChange} />
+        <input type="number" min={0.00} onChange={handleTransactionAmountChange} />
         <button type="submit" className="btn-expense">
           <FontAwesomeIcon icon={faUpload} style={{ color: "lightpink" }} />
         </button>

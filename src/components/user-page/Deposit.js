@@ -9,23 +9,29 @@ const Deposit = function () {
   const [message,setMessage] = useState('')
   const handleDeposit = async (event) => {
     event.preventDefault();
-
-    try {
-      // Відправляємо POST запит на вказаний сервер з використанням введеної суми
-      const response = await axios.post(
-        "https://mono-lite-backend.azurewebsites.net/transactions/simulate/deposit",
-        { transaction_amount: transactionAmount },
-      );
-
-      console.log(response.data);
-      // Додаткові дії після успішного виконання запиту
-    } catch (error) {
-      setMessage(error.response.data.message);
-    }
+    
+    if (transactionAmount === 0) {
+        setMessage("Та нашо тобі той ноль?");
+        return
+      }
+      try {
+        // Відправляємо POST запит на вказаний сервер з використанням введеної суми
+        const response = await axios.post(
+          "https://mono-lite-backend.azurewebsites.net/transactions/simulate/deposit",
+          { transaction_amount: transactionAmount },
+          );
+          
+          console.log(response.data);
+          // Додаткові дії після успішного виконання запиту
+        } catch (error) {
+          setMessage(error.response.data.message);
+        }
+      
   };
 
   const handleTransactionAmountChange = (event) => {
-    setTransactionAmount(event.target.value);
+    const amount = event.target.value
+      setTransactionAmount(amount);
   };
 
   return (
@@ -39,7 +45,7 @@ const Deposit = function () {
         <label>Amount</label>
         <input
           type="number"
-          min={0}
+          min={0.00}
           value={transactionAmount}
           onChange={handleTransactionAmountChange}
         />
