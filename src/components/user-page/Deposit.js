@@ -33,9 +33,7 @@ const Deposit = function () {
       <span className="title">
         <FontAwesomeIcon icon={faMoneyBills} style={{ color: "lightgreen" }} />
         {"  "}
-        Deposit
-        {' '}
-        {message}
+        Deposit {message ? <span className="dep-alert">{message}</span> : null}
       </span>
       <form className="form form--deposit" onSubmit={handleDeposit}>
         <label>Amount</label>

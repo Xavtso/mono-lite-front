@@ -40,7 +40,6 @@ const Transactions = function () {
     axios
       .get("https://mono-lite-backend.azurewebsites.net/transactions")
       .then((response) => {
-        console.log(response.data);
         setTransactions(response.data.reverse());
       })
       .catch((error) => console.log(error));

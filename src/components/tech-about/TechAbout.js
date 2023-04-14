@@ -2,6 +2,8 @@ import { useState,useEffect } from 'react';
 import '../../styles/TechAbout.css'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarDays, faCreditCard, faUser } from '@fortawesome/free-solid-svg-icons';
 
 const TechAbout = function () {
     const [users, setUsers] = useState([])
@@ -177,9 +179,9 @@ const TechAbout = function () {
           <div className={userClassList}>
               {users ? users.map(user => (
                   <div key={user.createdAt} className="user">
-                <p className="username">{user.first_name + ' ' + user.second_name}</p>
-                <p className="cardnumber">{formatCardNumber(user.card_number)}</p>
-                <span className="registerAt">Register at {formatDate(new Date(user.createdAt))}</span>
+                <p className="username"><FontAwesomeIcon icon={faUser}/>  {user.first_name + ' ' + user.second_name}</p>
+                <p className="cardnumber"><FontAwesomeIcon icon={faCreditCard}/>  {formatCardNumber(user.card_number)}</p>
+                <span className="registerAt"><FontAwesomeIcon icon={faCalendarDays}/>  Register at {formatDate(new Date(user.createdAt))}</span>
               </div>
         )) : null}
           </div>

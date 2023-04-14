@@ -53,8 +53,22 @@ button{
     background-color: rgb(103, 224, 103);
 }
 .btn-expense{
-    background-color: rgb(255, 65, 65);
+    background-color: #ff4141;
 }
 .btn-expense:hover{
     background-color: rgb(255, 0, 0);
+}
+
+.dep-alert{
+    color: #ff4141 ;
+    font-size: 12px;
+    margin-left: 2rem;
+    transform: translateX(10rem);
+}
+
+.exp-alert{
+    color: #ff4141;
+    margin-left: 2rem;
+    font-size: 12px;
+
 }
