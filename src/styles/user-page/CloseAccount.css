@@ -1,0 +1,50 @@
+.modal__close-form {
+  margin: 5rem 3rem;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  align-items: center;
+  gap: 2.5rem;
+  
+}
+
+.modal__-close-form label {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.modal__close-form input {
+  font-size: 1.7rem;
+  padding: 1rem 1.5rem;
+  
+  border-radius: 1.5rem;
+  outline: none;
+  background-color: var(--color-tertiary-opacity);
+  box-shadow: inset 1px 1px 1px 1px;
+
+
+}
+
+.modal__form button {
+  grid-column: 1 / span 2;
+  justify-self: center;
+  margin-top: 1rem;
+  box-shadow:  1px 1px 4px 1px #222;
+}
+
+.btn--close-modal {
+  font-family: inherit;
+  color: inherit;
+  position: absolute;
+  top: 0.5rem;
+  right: 2rem;
+  font-size: 4rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.control-delete{
+    border-radius:25px;
+    padding: 0.6rem 2rem;
+    background-color:var(--color-tertiary-opacity);
+}

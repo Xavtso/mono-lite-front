@@ -1,9 +1,14 @@
 import axios from "axios";
 import "../../styles/user-page/Transactions.css";
 import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRotate } from "@fortawesome/free-solid-svg-icons";
 
 const Transactions = function () {
   const [transactions, setTransactions] = useState([]);
+  const [content, setContent] = useState([]);
+  const [filteredContent, setFilteredContent] = useState([]);
+
 
   const formatDate = function (date) {
     const now = new Date();
@@ -28,13 +33,12 @@ const Transactions = function () {
       return "учора";
     } else {
       // більше 1 доби
-       const day = String(date.getDate()).padStart(2, "0");
-       const month = String(date.getMonth() + 1).padStart(2, "0");
+      const day = String(date.getDate()).padStart(2, "0");
+      const month = String(date.getMonth() + 1).padStart(2, "0");
       const year = date.getFullYear();
       return `${day}.${month}.${year}`;
     }
   };
-
 
   const uploadTransactions = function () {
     axios
@@ -43,32 +47,62 @@ const Transactions = function () {
         setTransactions(response.data.reverse());
       })
       .catch((error) => console.log(error));
+      
+    
   };
+
 
   useEffect(() => {
     uploadTransactions();
-  }, []);
+  },[transactions]);
+
+  useEffect(() => {
+setContent(
+  transactions.map((transaction, index) => (
+    <div key={index} className="movements__row">
+      <div
+        className={`movements__type movements__type--${transaction.transaction_type}`}
+      >
+        {transaction.transaction_type}
+      </div>
+      <div className="receiver-name">{transaction.receiver_full_name}</div>
+      <div className="movements__date">
+        {formatDate(new Date(transaction.createdAt))}
+      </div>
+      {/* <div className="movements__description">
+              {transaction.transaction_description}
+            </div> */}
+      <div className={`movements__value mov--${transaction.transaction_type}`}>
+        {transaction.transaction_type === "EXPENSE" ? "-" : ""}
+        {transaction.transaction_amount} ₴
+      </div>
+    </div>
+  )),
+  );
+  setFilteredContent(content)
+},[transactions,content])
+
+
+const filterContent = function (e) {
+  let option = e.target.id;
+  setFilteredContent(
+    content.filter(
+      (mov) => mov.props.children[0].props.children === `${option}`,
+    ),
+  );
+} 
 
   return (
     <div className="movements">
-      {transactions.map((transaction, index) => (
-        <div key={index} className="movements__row">
-          <div
-            className={`movements__type movements__type--${transaction.transaction_type}`}
-          >
-            {transaction.transaction_type}
-          </div>
-          <div className="receiver-name">
-            {transaction.receiver_full_name}
-          </div>
-          <div className="movements__date">
-            {formatDate(new Date(transaction.createdAt))}
-          </div>
-          <div className={`movements__value mov--${transaction.transaction_type}`} >
-            {transaction.transaction_type === 'EXPENSE' ? '-' : '' }{transaction.transaction_amount} ₴
-          </div>
-        </div>
-      ))}
+      <div className="movements__head">
+        <b>Filter by :</b>
+        <span id="TRANSFER" style={{ color: "#ffb003" }}   onClick={filterContent} >Transfers</span>
+        <span id="DEPOSIT" style={{ color: "lightgreen"}} onClick={filterContent} >Deposits</span>
+        <span id="EXPENSE" style={{ color: "#e52a5a" }}   onClick={filterContent} >Expenses</span>
+        <span id="CASHBACK" style={{ color: "#0077cc" }}   onClick={filterContent} >Cashbacks</span>
+        <span id="Reset" style={{ color: "#eee" }}   onClick={uploadTransactions} ><FontAwesomeIcon icon={faRotate} size="lg"/></span>
+      </div>
+      {filteredContent}
     </div>
   );
 };

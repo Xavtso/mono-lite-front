@@ -9,6 +9,11 @@ const Expense = function () {
   const handleDeposit = async (event) => {
     event.preventDefault();
 
+    if (+transactionAmount === 0) {
+      setMessage("Та нашо тобі той ноль?");
+      return;
+    }
+
     try {
       // Відправляємо POST запит на вказаний сервер з використанням введеної суми
       const response = await axios.post(

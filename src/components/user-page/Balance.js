@@ -4,29 +4,35 @@ import axios from "axios";
 
 const Balance = function (props) {
   const [balance, setBalance] = useState(props.cardInfo.card_balance);
-
+  
+  const fetchBalance = async () => {
+    try {
+      const response = await axios.get(
+        "https://mono-lite-backend.azurewebsites.net/cards",
+      ); 
+      const data = response.data; 
+      setBalance(data.card_balance); 
+    } catch (error) {
+      console.error(error); // 
+    }
+  };
   useEffect(() => {
-    // Викликаємо логіку оновлення балансу на сервері
-    // Приклад з використанням Axios:
-    const fetchBalance = async () => {
-      try {
-        const response = await axios.get(
-          "https://mono-lite-backend.azurewebsites.net/cards",
-        ); // Виклик GET-запиту за допомогою Axios
-        const data = response.data; // Отримуємо дані з відповіді сервера
-        setBalance(data.card_balance); // Оновлюємо стан балансу з отриманими даними
-      } catch (error) {
-        console.error(error); // Обробка помилок
-      }
-    };
-    fetchBalance();
-  }, []); // Порожній масив залежностей, щоб ефект виконався тільки під час монтажу компоненту
+    //КОСТИЛЬ ?
+    // Виконання періодичного запиту на сервер кожні 5 секунд
+     const intervalId = setInterval(() => {
+       fetchBalance();
+     }, 2500);
 
+     // Прибирання інтервалу при розмонтажі компоненту
+     return () => {
+       clearInterval(intervalId);
+     };
+   }, []);
   return (
     <div className="balance">
       <div className="self-balance">
         <span className="balance__label">Current balance: </span>
-        <span className="balance__value">
+        <span className="balance__value" >
           {balance} <span id="currency">₴</span>
         </span>
       </div>
