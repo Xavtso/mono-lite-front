@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './pages/Home';
 import UserPage from './pages/UserPage';
 import TechAbout from './components/tech-about/TechAbout';
-import { ChakraProvider } from "@chakra-ui/react";
 
 function App() {
   return (

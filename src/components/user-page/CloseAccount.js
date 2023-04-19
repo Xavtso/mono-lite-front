@@ -1,6 +1,6 @@
 import '../../styles/user-page/CloseAccount.css'
 // import { Input,InputLeftAddon,FormControl,InputGroup,InputRightElement,Button } from '@chakra-ui/react';
-import { useState } from 'react';
+
 
 const CloseAccount = function () {
   // const [show, setShow] = useState(false);
