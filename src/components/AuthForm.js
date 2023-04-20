@@ -21,7 +21,7 @@ const AuthForm = function (props) {
 
   return (
     <div className="modal" onKeyDown={keyHandleClose}>
-      <button className="btn--close-modal" onClick={handleClose}>
+      <button className="btn--close-modal" onClick={handleClose} onKeyDown={keyHandleClose}>
         &times;
       </button>
       {signForm === "signup" ? (

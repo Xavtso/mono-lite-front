@@ -68,6 +68,9 @@
 .movements__type--TRANSFER {
   background-image: linear-gradient(to top left, #ffb003, #ffcb03);
 }
+.movements__type--CASH-BACK {
+  background: linear-gradient(to right bottom, #0077cc, #0066b3, #005499, #004480, #003366)
+}
 
 .movements__value {
   font-size: 1.7rem;

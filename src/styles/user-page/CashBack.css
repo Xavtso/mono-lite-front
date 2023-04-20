@@ -1,0 +1,27 @@
+.amount-cashback{
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    transform: translateY(8rem);
+}
+
+.cashBack--form{
+    margin-top: 8rem;
+}
+.cashBack--form input{
+    background-color: #7fa8c6;
+}
+
+.btn--cashback{
+    color: aliceblue;
+    background-color: #0077cc;
+}
+.btn--cashback:hover{
+    background-color: #035e9f;
+}
+
+.btn--disabled{
+    cursor: not-allowed;
+    background-color: rgb(50, 50, 50);
+}

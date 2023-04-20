@@ -109,7 +109,7 @@ const Header = forwardRef((props, ref) => {
         <button className="btn--text btn--scroll-to" onClick={navToAbout}>Learn more . . .</button>
         <img src={hero} className="header__img" alt="Minimalist bank items" />
       </div>
-<div skip={modal} className={`${overlay}`}></div>
+<div skip={modal} onClick={closeModal}className={`${overlay}`}></div>
     </header>
   );
 });

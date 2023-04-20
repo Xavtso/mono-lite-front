@@ -21,25 +21,33 @@ import { useNavigate } from "react-router-dom";
 
 const Opportunities = function () {
   const [activeModal, setActiveModal] = useState(null);
+  const [overlay, setOverlay] = useState("");
 
   const handleSlotClick = (modalName) => {
     setActiveModal(modalName);
+    setOverlay('overlay');
   };
+
+  const closeModal = function () {
+    setActiveModal(null)
+    setOverlay('')
+  }
+
 
   const renderModal = () => {
     switch (activeModal) {
       case "Loan":
-        return <Loan />;
+        return <Loan onClose={closeModal} />;
       case "Deposit_bank":
-        return <DepositBank />;
+        return <DepositBank onClose={closeModal} />;
       case "Transfer":
-        return <Transfer />;
+        return <Transfer onClose={closeModal} />;
       case "CashBack":
-        return <CashBack />;
+        return <CashBack onClose={closeModal} />;
       case "PiggyBank":
-        return <Piggybank />;
+        return <Piggybank onClose={closeModal} />;
       case "CloseAccount":
-        return <CloseAccount />;
+        return <CloseAccount onClose={closeModal} />;
       default:
         return null;
     }
@@ -104,6 +112,7 @@ const Opportunities = function () {
         Info
       </div>
       {renderModal()}
+      <div onClick={closeModal} className={`${overlay}`}></div>
     </div>
   );
 };

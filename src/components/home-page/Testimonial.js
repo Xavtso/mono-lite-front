@@ -64,6 +64,14 @@ const Testimonial = () => {
     }
   };
 
+  const handleKeySlide = function (e) {
+    if (e.keyCode === 39) {
+      nextSlide();
+    } else if (e.keyCode === 37) {
+      prevSlide();
+    }
+  }
+
   const dotContainer = createDots();
 
   return (
@@ -75,29 +83,24 @@ const Testimonial = () => {
         </h3>
       </div>
 
-      <div className="slider" onKeyDown={(e) => { 
-        if (e.keyCode === 39) {
-          nextSlide();
-        } else if (e.keyCode === 37) {
-          prevSlide();
-        };
+      <div className="slider">
+        {slides.map((slide, i) => (
+          <Slide key={i} slide={slide} currentSlide={currentSlide} />
+        ))}
 
-      }}>
-        
-          {slides.map((slide, i) => (
-            <Slide key={i} slide={slide} currentSlide={currentSlide} />
-          ))}
-        
-        <div
-          className="dots"
-          
+        <div className="dots">{dotContainer}</div>
+        <button
+          className="slider__btn slider__btn--left"
+          onClick={prevSlide}
+          onKeyDown={handleKeySlide}
         >
-          {dotContainer}
-        </div>
-        <button className="slider__btn slider__btn--left"  onClick={prevSlide}>
           &larr;
         </button>
-        <button className="slider__btn slider__btn--right" onClick={nextSlide}>
+        <button
+          className="slider__btn slider__btn--right"
+          onClick={nextSlide}
+          onKeyDown={handleKeySlide}
+        >
           &rarr;
         </button>
       </div>

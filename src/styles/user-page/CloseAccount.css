@@ -18,7 +18,7 @@
   
   border-radius: 1.5rem;
   outline: none;
-  background-color: var(--color-tertiary-opacity);
+  background-color: #f99898;
   box-shadow: inset 1px 1px 1px 1px;
 
 
@@ -44,7 +44,14 @@
 }
 
 .control-delete{
+  position: relative;
+  left: 27rem;
+  color: aliceblue;
     border-radius:25px;
     padding: 0.6rem 2rem;
-    background-color:var(--color-tertiary-opacity);
+    background-color:#ad5151;
+}
+
+.control-delete:hover{
+  background:var(--color-tertiary) ;
 }

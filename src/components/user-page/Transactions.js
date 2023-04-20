@@ -7,7 +7,8 @@ import { faRotate } from "@fortawesome/free-solid-svg-icons";
 const Transactions = function () {
   const [transactions, setTransactions] = useState([]);
   const [content, setContent] = useState([]);
-  const [filteredContent, setFilteredContent] = useState([]);
+  const [filteredContent, setFilteredContent] = useState(null);
+  const [filter, setFilter] = useState(false);
 
 
   const formatDate = function (date) {
@@ -16,21 +17,21 @@ const Transactions = function () {
 
     if (diff < 60000) {
       // менше 1 хвилини
-      return "щойно";
+      return "now";
     } else if (diff < 1800000) {
       // менше 30 хвилин
       const minutesAgo = Math.floor(diff / 60000);
-      return `${minutesAgo} хв. тому`;
+      return `${minutesAgo} m. ago`;
     } else if (diff < 3600000) {
       // менше 1 години
       const minutesAgo = Math.floor(diff / 60000);
-      return `${minutesAgo} хв. тому`;
+      return `${minutesAgo} m. ago`;
     } else if (now.toDateString() === date.toDateString()) {
       // в той же день
-      return "сьогодні";
+      return "today";
     } else if (diff < 86400000) {
       // менше 1 доби
-      return "учора";
+      return "yesterday";
     } else {
       // більше 1 доби
       const day = String(date.getDate()).padStart(2, "0");
@@ -48,17 +49,25 @@ const Transactions = function () {
       })
       .catch((error) => console.log(error));
       
-    
   };
 
 
   useEffect(() => {
-    uploadTransactions();
+    const intervalId = setInterval(() => {
+      uploadTransactions();
+    }, 1000);
+
+    // Прибирання інтервалу при розмонтажі компоненту
+    return () => {
+      clearInterval(intervalId);
+    };
   },[transactions]);
 
   useEffect(() => {
-setContent(
-  transactions.map((transaction, index) => (
+    const intervalId = setInterval(() => {
+      // console.log('hi');
+      setContent(
+        transactions.map((transaction, index) => (
     <div key={index} className="movements__row">
       <div
         className={`movements__type movements__type--${transaction.transaction_type}`}
@@ -77,14 +86,20 @@ setContent(
         {transaction.transaction_amount} ₴
       </div>
     </div>
-  )),
-  );
-  setFilteredContent(content)
+)),
+);
+}, 1000);
+
+// Прибирання інтервалу при розмонтажі компоненту
+return () => {
+  clearInterval(intervalId);
+}
 },[transactions,content])
 
 
 const filterContent = function (e) {
   let option = e.target.id;
+  setFilter(true)
   setFilteredContent(
     content.filter(
       (mov) => mov.props.children[0].props.children === `${option}`,
@@ -100,9 +115,9 @@ const filterContent = function (e) {
         <span id="DEPOSIT" style={{ color: "lightgreen"}} onClick={filterContent} >Deposits</span>
         <span id="EXPENSE" style={{ color: "#e52a5a" }}   onClick={filterContent} >Expenses</span>
         <span id="CASHBACK" style={{ color: "#0077cc" }}   onClick={filterContent} >Cashbacks</span>
-        <span id="Reset" style={{ color: "#eee" }}   onClick={uploadTransactions} ><FontAwesomeIcon icon={faRotate} size="lg"/></span>
+        <span id="Reset" style={{ color: "#eee" }}   onClick={() => {setFilter(false)}} ><FontAwesomeIcon icon={faRotate} size="lg"/></span>
       </div>
-      {filteredContent}
+      {filter ? filteredContent : content}
     </div>
   );
 };
