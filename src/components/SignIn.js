@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate} from "react-router-dom"; // Import the required hooks
+import { useNavigate } from "react-router-dom"; // Import the required hooks
+import Loader from "./Loader";
 
 const SignIn = function (props) {
   const storage = localStorage;
   storage.setItem("test", 123);
   const [message, setMessage] = useState("");
-
+  const [showLoader, setShowLoader] = useState(false);
   const navigate = useNavigate(); // Replace useHistory with useNavigate
   // Use useLocation to access the current location object
 
@@ -14,6 +15,7 @@ const SignIn = function (props) {
     e.preventDefault();
     const email = e.target.elements[0].value;
     const password = e.target.elements[1].value;
+    setShowLoader(true);
 
     axios
       .post(`https://mono-lite-backend.azurewebsites.net/auth/login`, {
@@ -21,17 +23,20 @@ const SignIn = function (props) {
         password: password,
       })
       .then(function (response) {
+        setShowLoader(false);
         // Redirect user to another page using navigate
         navigate("/account");
       })
       .catch(function (error) {
         console.log(error);
+        setShowLoader(false)
         setMessage(error.response.data.message);
       });
   };
 
   return (
     <>
+      {showLoader && <Loader/>}{" "}
       <h2 className="modal_header">
         Welcome back !!! <br /> to continue please{" "}
         <span className="highlight">Log In</span>

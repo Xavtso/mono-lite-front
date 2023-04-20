@@ -4,14 +4,15 @@ import { UkraineLatinTranslit } from "ukraine-latin";
 import "../styles/AuthForm.css";
 import { useState } from "react";
 import { useNavigate} from "react-router-dom"; // Import the required hooks
-
+import Loader from "./Loader";
 
 
 const SignUp = function (props) {
   const translit = new UkraineLatinTranslit();
 
   const [message, setMessage] = useState('');
-
+  const [showLoader, setShowLoader] = useState(false);
+  
   const navigate = useNavigate();
   const onSubmitHandler = function (e) {
     e.preventDefault();
@@ -20,6 +21,8 @@ const SignUp = function (props) {
     const secondName = e.target.elements[1].value;
     const email = e.target.elements[2].value;
     const password = e.target.elements[3].value;
+
+    setShowLoader(true);
 
     axios
       .post(`https://mono-lite-backend.azurewebsites.net/auth/signUp`, {
@@ -30,16 +33,18 @@ const SignUp = function (props) {
       })
       .then(function (response) {
          navigate("/account");
-
-        console.log(response);
-      })
-      .catch(function (error) {
+          setShowLoader(false)
+          console.log(response);
+        })
+        .catch(function (error) {
+        setShowLoader(false)
         setMessage(error.response.data.message);
       });
   };
 
   return (
     <>
+      {showLoader && <Loader />}{" "}
       <h2 className="modal_header">
         Open your bank account <br /> in just{" "}
         <span className="highlight">5 minutes</span>
