@@ -4,8 +4,8 @@ import hero from "../../images/hero.png";
 import "../../styles/home-page/Header.css";
 import "../../styles/home-page/Navbar.css";
 import "../../styles/home-page/Button.css";
-
 import AuthForm from "../AuthForm";
+import { useNavigate } from "react-router-dom";
 
 const Header = forwardRef((props, ref) => {
   const handleHover = function (e) {
@@ -20,6 +20,11 @@ const Header = forwardRef((props, ref) => {
       logo.style.opacity = this;
     }
   };
+
+  const navigateTo = useNavigate();
+  const navToAbout = function(){
+    navigateTo('/about')
+  }
     
   
   const [modal, setModal] = useState(false);
@@ -101,7 +106,7 @@ const Header = forwardRef((props, ref) => {
           <span className="highlight">minimalist</span>
         </h1>
         <h4>A simpler banking experience for a simpler life.</h4>
-        <button className="btn--text btn--scroll-to">Learn more . . .</button>
+        <button className="btn--text btn--scroll-to" onClick={navToAbout}>Learn more . . .</button>
         <img src={hero} className="header__img" alt="Minimalist bank items" />
       </div>
 <div skip={modal} className={`${overlay}`}></div>
