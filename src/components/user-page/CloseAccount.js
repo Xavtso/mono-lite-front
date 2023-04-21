@@ -1,43 +1,80 @@
-import '../../styles/user-page/CloseAccount.css'
-// import { Input,InputLeftAddon,FormControl,InputGroup,InputRightElement,Button } from '@chakra-ui/react';
-
+import axios from "axios";
+import "../../styles/user-page/CloseAccount.css";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import DeleteAgreeModal from "./DeleteAgreeModal";
 
 const CloseAccount = function (props) {
+  const [showModal, setShowModal] = useState(false);
+  const [inputEmail, setInputEmail] = useState("");
+  const [inputPassword, setInputPassword] = useState("");
 
-    const handleClose = function () {
-      props.onClose();
-    };
-  // const [show, setShow] = useState(false);
-  // const handleClick = (e) => {
-    //   e.preventDefault();
-    //   setShow(!show)
-    // };
-    /* <button h="1.75rem" size="sm" onClick={handleClick}>
-      {show ? "Hide" : "Show"}
-    </button> */
-    
+  const handleModal = () => {
+    setShowModal(!showModal);
+  };
 
-    return (
-      <div className="op-modal modal-closeaccount">
-        <button className="btn--close-modal" onClick={handleClose}>
-          &times;
-        </button>
-        <div className="amount">Are You Sure?</div>
-        <div className="screen screen-closeaccount">
-          <div className="modal-name">Close Account</div>
-          <form className="modal__close-form">
-            <label>Email:</label>
-            <input type="email" />
-            <label>Password:</label>
-            <input type="password" />
+  const handleClose = function () {
+    props.onClose();
+    setInputEmail('')
+    setInputPassword('')
+  };
+  const navigateTo = useNavigate();
 
-            <button type="submit" className="control-delete">
-              Delete
-            </button>
-          </form>
-        </div>
+  const deleteUser = function () {
+    axios
+      .post("https://mono-lite-backend.azurewebsites.net/users/delete", {
+        email: inputEmail,
+        password: inputPassword,
+      })
+      .then((response) => response && navigateTo("/"))
+      .catch((error) => console.log(error));
+    console.log("successed");
+  };
+
+  const handleEmailChange = (event) => {
+    setInputEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setInputPassword(event.target.value);
+  };
+
+  return (
+    <div className="op-modal modal-closeaccount">
+      <button className="btn--close-modal" onClick={handleClose}>
+        &times;
+      </button>
+      <div className="amount">Are You Sure?</div>
+      <div className="screen screen-closeaccount">
+        {showModal ? (
+          <DeleteAgreeModal closeModal={handleModal} handleForm={deleteUser} />
+        ) : (
+          <>
+            {" "}
+            <div className="modal-name">Close Account</div>
+            <form className="modal__close-form">
+              <label>Email:</label>
+              <input
+                type="email"
+                value={inputEmail}
+                onChange={handleEmailChange}
+              />
+              <label>Password:</label>
+              <input
+                type="password"
+                value={inputPassword}
+                onChange={handlePasswordChange}
+              />
+
+              <button onClick={handleModal} className="control-delete">
+                Delete
+              </button>
+            </form>
+          </>
+        )}
       </div>
-    );
-}
+    </div>
+  );
+};
 
 export default CloseAccount;

@@ -15,7 +15,6 @@ const CashBack = function (props) {
     axios
       .get("https://mono-lite-backend.azurewebsites.net/cashback/balance")
       .then((response) => {
-        console.log(response.data);
         setBalance(response.data.toFixed(2));
       })
       .catch((error) => console.log(error));
@@ -42,6 +41,7 @@ const CashBack = function (props) {
       .post("https://mono-lite-backend.azurewebsites.net/cashback", {
         amount: +inputValue,
       })
+      .then((response) => response ? props.onClose() : '')
       .catch((error) => {
         console.log(error);
       });

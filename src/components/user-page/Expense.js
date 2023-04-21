@@ -6,7 +6,8 @@ import axios from "axios";
 const Expense = function () {
   const [transactionAmount, setTransactionAmount] = useState("");
   const [message, setMessage] = useState("");
-  const handleDeposit = async (event) => {
+
+  const handleExepense = async (event) => {
     event.preventDefault();
 
     if (+transactionAmount === 0) {
@@ -27,6 +28,8 @@ const Expense = function () {
       console.log(error.response.response);
       setMessage(error.response.data.message);
     }
+
+    setTransactionAmount('');
   };
 
   const handleTransactionAmountChange = (event) => {
@@ -42,7 +45,7 @@ const Expense = function () {
         />{" "}
         Expense {message ? <span className="exp-alert">{message}</span> : null}
       </span>
-      <form className="form form--expense" onSubmit={handleDeposit}>
+      <form className="form form--expense" onSubmit={handleExepense}>
         <label>Amount</label>
         <input type="number" min={0.00} onChange={handleTransactionAmountChange} />
         <button type="submit" className="btn-expense">

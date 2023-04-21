@@ -1,0 +1,29 @@
+.warning{
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.warning p{
+    color: aliceblue;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top:5rem ;
+}
+
+.warning span {
+    transform: translateY(8rem);
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--color-tertiary);
+}
+
+.btn-agree{
+    background-color: var(--color-tertiary);
+}
+.btn-agree:hover{
+    background-color: var(--color-tertiary-darker);
+}

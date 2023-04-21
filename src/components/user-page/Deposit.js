@@ -21,7 +21,6 @@ const Deposit = function () {
           { transaction_amount: transactionAmount },
           );
           
-          // Додаткові дії після успішного виконання запиту
         } catch (error) {
           setMessage(error.response.data.message);
         }
