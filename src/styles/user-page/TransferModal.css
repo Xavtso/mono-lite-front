@@ -1,0 +1,88 @@
+.screen-transfer-modal {
+  background-color: rgb(65, 65, 65);
+  position: relative;
+  top: -13rem;
+  border-radius: 30px;
+  width: 100%;
+  padding: 2rem;
+  height: 70rem;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+}
+
+.target-user {
+  position: relative;
+  top: 12rem;
+  font-size: 22px;
+  font-weight: 600;
+  width: 100%;
+  text-align: center;
+}
+
+.transfer-modal-form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 35rem;
+  top: 12rem;
+}
+
+.transfer-label {
+  font-size: 18px;
+  font-weight: 600;
+  transform: translateX(-0.8rem);
+  -webkit-transform: translateX(-0.8rem);
+  -moz-transform: translateX(-0.8rem);
+  -ms-transform: translateX(-0.8rem);
+  -o-transform: translateX(-0.8rem);
+}
+.transfer-input {
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+  border-radius: 0px;
+  /* border-bottom: 1px solid aliceblue; */
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  text-align: center;
+  width: 10rem;
+  color: aliceblue;
+  font-size: 32px;
+}
+
+.transfer-input-description {
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+  border-radius: 0px;
+  border-bottom: 1px solid #989898;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  text-align: center;
+  margin-top: 2rem;
+  width: 35rem;
+  color: aliceblue;
+  font-size: 16px;
+}
+
+.transfer-btn {
+  position: relative;
+  width: 18rem;
+  top: 5rem;
+  background: linear-gradient(
+    to right bottom,
+    #ffff66,
+    #fcd12a,
+    #e0b115,
+    #cfa310,
+    #c68308
+  );
+}

@@ -15,13 +15,14 @@
 .modal__close-form input {
   font-size: 1.7rem;
   padding: 1rem 1.5rem;
-  
   border-radius: 1.5rem;
   outline: none;
   background-color: #f99898;
   box-shadow: inset 1px 1px 1px 1px;
-
-
+  -webkit-border-radius: 1.5rem;
+  -moz-border-radius: 1.5rem;
+  -ms-border-radius: 1.5rem;
+  -o-border-radius: 1.5rem;
 }
 
 .modal__form button {

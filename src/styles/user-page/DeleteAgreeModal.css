@@ -19,6 +19,10 @@
     font-size: 22px;
     font-weight: 900;
     color: var(--color-tertiary);
+    -webkit-transform: translateY(8rem);
+    -moz-transform: translateY(8rem);
+    -ms-transform: translateY(8rem);
+    -o-transform: translateY(8rem);
 }
 
 .btn-agree{

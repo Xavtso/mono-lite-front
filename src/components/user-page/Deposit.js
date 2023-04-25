@@ -25,6 +25,7 @@ const Deposit = function () {
           setMessage(error.response.data.message);
         }
       
+    setTransactionAmount('')
   };
 
   const handleTransactionAmountChange = (event) => {

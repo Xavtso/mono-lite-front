@@ -4,6 +4,10 @@
     font-weight: 600;
     font-size: 18px;
     transform: translateY(8rem);
+    -webkit-transform: translateY(8rem);
+    -moz-transform: translateY(8rem);
+    -ms-transform: translateY(8rem);
+    -o-transform: translateY(8rem);
 }
 
 .cashBack--form{

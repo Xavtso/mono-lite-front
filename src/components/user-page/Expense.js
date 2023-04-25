@@ -15,6 +15,7 @@ const Expense = function () {
       return;
     }
 
+    console.log(transactionAmount);
     try {
       // Відправляємо POST запит на вказаний сервер з використанням введеної суми
       const response = await axios.post(
@@ -25,7 +26,7 @@ const Expense = function () {
       setMessage(response.data.message);
       // Додаткові дії після успішного виконання запиту
     } catch (error) {
-      console.log(error.response.response);
+      console.log(error);
       setMessage(error.response.data.message);
     }
 
@@ -47,7 +48,7 @@ const Expense = function () {
       </span>
       <form className="form form--expense" onSubmit={handleExepense}>
         <label>Amount</label>
-        <input type="number" min={0.00} onChange={handleTransactionAmountChange} />
+        <input type="number" min={0.00} onChange={handleTransactionAmountChange} value={transactionAmount}/>
         <button type="submit" className="btn-expense">
           <FontAwesomeIcon icon={faUpload} style={{ color: "lightpink" }} />
         </button>

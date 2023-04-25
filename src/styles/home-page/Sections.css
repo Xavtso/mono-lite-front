@@ -1,13 +1,20 @@
 .section {
   padding: 15rem 3rem;
   border-top: 1px solid #ddd;
-
   transition: transform 1s, opacity 1s;
+  -webkit-transition: transform 1s, opacity 1s;
+  -moz-transition: transform 1s, opacity 1s;
+  -ms-transition: transform 1s, opacity 1s;
+  -o-transition: transform 1s, opacity 1s;
 }
 
 .section--hidden {
   opacity: 0;
   transform: translateY(8rem);
+  -webkit-transform: translateY(8rem);
+  -moz-transform: translateY(8rem);
+  -ms-transform: translateY(8rem);
+  -o-transform: translateY(8rem);
 }
 
 .section__title {

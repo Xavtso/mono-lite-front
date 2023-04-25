@@ -10,6 +10,10 @@
   padding: 2rem 3rem;
   color: aliceblue;
   background-color: rgb(65, 65, 65);
+  -webkit-border-radius:1rem;
+  -moz-border-radius:1rem;
+  -ms-border-radius:1rem;
+  -o-border-radius:1rem;
 }
 
 .operation--deposit{
@@ -64,6 +68,10 @@ button{
     font-size: 12px;
     margin-left: 2rem;
     transform: translateX(10rem);
+    -webkit-transform: translateX(10rem);
+    -moz-transform: translateX(10rem);
+    -ms-transform: translateX(10rem);
+    -o-transform: translateX(10rem);
 }
 
 .exp-alert{

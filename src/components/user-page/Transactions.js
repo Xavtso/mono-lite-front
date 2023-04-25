@@ -66,7 +66,7 @@ const Transactions = function () {
   useEffect(() => {
     const intervalId = setInterval(() => {
       // console.log('hi');
-      setContent(
+      setContent(transactions === '' ? 'Here can be your transactions' :
         transactions.map((transaction, index) => (
     <div key={index} className="movements__row">
       <div
@@ -114,7 +114,7 @@ const filterContent = function (e) {
         <span id="TRANSFER" style={{ color: "#ffb003" }}   onClick={filterContent} >Transfers</span>
         <span id="DEPOSIT" style={{ color: "lightgreen"}} onClick={filterContent} >Deposits</span>
         <span id="EXPENSE" style={{ color: "#e52a5a" }}   onClick={filterContent} >Expenses</span>
-        <span id="CASHBACK" style={{ color: "#0077cc" }}   onClick={filterContent} >Cashbacks</span>
+        <span id="CASH-BACK" style={{ color: "#0077cc" }}   onClick={filterContent} >Cashbacks</span>
         <span id="Reset" style={{ color: "#eee" }}   onClick={() => {setFilter(false)}} ><FontAwesomeIcon icon={faRotate} size="lg"/></span>
       </div>
       {filter ? filteredContent : content}
