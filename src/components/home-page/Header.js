@@ -1,5 +1,5 @@
 import React, { forwardRef, useState } from "react";
-import logo from "../../images/logo.png";
+import logo from "../../images/mono-logo.png";
 import hero from "../../images/hero.png";
 import "../../styles/home-page/Header.css";
 import "../../styles/home-page/Navbar.css";

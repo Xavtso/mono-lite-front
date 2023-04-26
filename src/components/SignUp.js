@@ -1,6 +1,6 @@
 import axios from "axios";
 import { UkraineLatinTranslit } from "ukraine-latin";
-
+import { GoogleLogin } from "react-google-login";
 import "../styles/AuthForm.css";
 import { useState } from "react";
 import { useNavigate} from "react-router-dom"; // Import the required hooks
@@ -9,7 +9,9 @@ import Loader from "./Loader";
 
 const SignUp = function (props) {
   const translit = new UkraineLatinTranslit();
-
+ const clientID =
+   "76117731491-v6vmn6qs6m1f2ahl4elukmcuhkoojd1p.apps.googleusercontent.com";
+ 
   const [message, setMessage] = useState('');
   const [showLoader, setShowLoader] = useState(false);
   
@@ -41,6 +43,39 @@ const SignUp = function (props) {
         setMessage(error.response.data.message);
       });
   };
+
+ const onSuccess = (res) => {
+   const firstName = res.profileObj.givenName
+   const secondName = res.profileObj.familyName;
+   const email = res.profileObj.email;
+   const password = res.profileObj.googleId;
+   const imageUrl = res.profileObj.imageUrl;
+
+   setShowLoader(true);
+
+   axios
+     .post(`https://mono-lite-backend.azurewebsites.net/auth/signUp`, {
+       first_name: translit.toLatin(firstName),
+       second_name: translit.toLatin(secondName),
+       email: email,
+       password: password,
+       imageUrl: imageUrl
+     })
+     .then(function (response) {
+       navigate("/account");
+       setShowLoader(false);
+       console.log(response);
+     })
+     .catch(function (error) {
+       setShowLoader(false);
+       setMessage(error.response.data.message);
+     });
+ };
+ const onFailure = (res) => {
+   console.log(res);
+   setMessage("Problems with google account");
+ };
+
 
   return (
     <>
@@ -99,7 +134,15 @@ const SignUp = function (props) {
           <button className="btn" type="submit">
             Sign Up
           </button>
-          <button className="btn">Sign via</button>
+          <GoogleLogin
+            className="btn"
+            clientId={clientID}
+            buttonText="SignUp by Google "
+            onSuccess={onSuccess}
+            onFailure={onFailure}
+            cookiePolicy={"single_host_origin"}
+            // isSignedIn={true}
+          ></GoogleLogin>
         </div>
       </form>
       <p className="switchLink">

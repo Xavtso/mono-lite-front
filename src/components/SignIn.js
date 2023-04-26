@@ -2,10 +2,15 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import the required hooks
 import Loader from "./Loader";
+import {GoogleLogin} from "react-google-login";
+
 
 const SignIn = function (props) {
-  const storage = localStorage;
-  storage.setItem("test", 123);
+  // const clientID = PROCESS.env.clientId;
+  const clientID = '76117731491-v6vmn6qs6m1f2ahl4elukmcuhkoojd1p.apps.googleusercontent.com';
+  // console.log(clientId);
+  // const storage = localStorage;
+  // storage.setItem("test", 123);
   const [message, setMessage] = useState("");
   const [showLoader, setShowLoader] = useState(false);
   const navigate = useNavigate(); // Replace useHistory with useNavigate
@@ -24,6 +29,7 @@ const SignIn = function (props) {
       })
       .then(function (response) {
         setShowLoader(false);
+        console.log(response);
         // Redirect user to another page using navigate
         navigate("/account");
       })
@@ -33,6 +39,33 @@ const SignIn = function (props) {
         setMessage(error.response.data.message);
       });
   };
+
+  const onSuccess = (res) => {
+    const email = res.profileObj.email;
+    const password = res.profileObj.googleId;
+    setShowLoader(true);
+
+    axios
+      .post(`https://mono-lite-backend.azurewebsites.net/auth/login`, {
+        email: email,
+        password: password,
+      })
+      .then(function (response) {
+        setShowLoader(false);
+        console.log(response);
+        // Redirect user to another page using navigate
+        navigate("/account");
+      })
+      .catch(function (error) {
+        console.log(error);
+        setShowLoader(false);
+        setMessage(error.response.data.message);
+      });
+  }
+  const onFailure = (res) => {
+    console.log(res);
+    setMessage('Problems with google account');
+  }
 
   return (
     <>
@@ -70,7 +103,15 @@ const SignIn = function (props) {
           <button className="btn" type="submit">
             Sign In
           </button>
-          <button className="btn">Sign via</button>
+          <GoogleLogin
+            className="btn"
+            clientId={clientID}
+            buttonText="SignIn by Google"
+            onSuccess={onSuccess}
+            onFailure={onFailure}
+            cookiePolicy={'single_host_origin'}
+            // isSignedIn = {true}
+          ></GoogleLogin>
         </div>
       </form>
       <p className="switchLink">

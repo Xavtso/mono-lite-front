@@ -17,12 +17,16 @@ const TransferModal = function (props) {
     setInputAmountValue(e.target.value);
   };
 
-  const makeTransaction = function () {
+  const makeTransaction = function (e) {
+    e.preventDefault();
     axios.post("https://mono-lite-backend.azurewebsites.net/transactions/new", {
       transaction_amount: inputAmountValue,
       transaction_description: inputDescriptionValue,
       receiver_card_number: user.card_number,
-    }).catch((error) => console.log(error));
+    }).then((response) =>
+      response && console.log('good')
+    )
+      .catch((error) => console.log(error));
   }
 
   return (
@@ -32,7 +36,7 @@ const TransferModal = function (props) {
       </button>
       <div className="target-user">
         <p>Receiver :</p>
-        {user.first_name +' ' +  user.second_name}
+        {user.first_name + ' ' +  user.second_name}
       </div>
 
       <form className="transfer-modal-form">
