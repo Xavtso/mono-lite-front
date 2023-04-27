@@ -22,7 +22,7 @@ const CloseAccount = function (props) {
 
   const deleteUser = function () {
     axios
-      .post("https://mono-lite-backend.azurewebsites.net/users/delete", {
+      .post("https://mono-lite-back.azurewebsites.net/users/delete", {
         email: inputEmail,
         password: inputPassword,
       })

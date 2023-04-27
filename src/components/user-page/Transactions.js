@@ -43,7 +43,7 @@ const Transactions = function () {
 
   const uploadTransactions = function () {
     axios
-      .get("https://mono-lite-backend.azurewebsites.net/transactions")
+      .get("https://mono-lite-back.azurewebsites.net/transactions")
       .then((response) => {
         setTransactions(response.data.reverse());
       })

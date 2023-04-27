@@ -8,7 +8,7 @@ const Balance = function (props) {
   const fetchBalance = async () => {
     try {
       const response = await axios.get(
-        "https://mono-lite-backend.azurewebsites.net/cards",
+        "https://mono-lite-back.azurewebsites.net/cards",
       ); 
       const data = response.data; 
       setBalance(data.card_balance); 

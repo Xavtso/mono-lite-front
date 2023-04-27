@@ -12,11 +12,11 @@ const TechAbout = function () {
     
     const getUsers = function () {
         axios
-            .get("https://mono-lite-backend.azurewebsites.net/users")
-            .then((response) => {
-                setUsers(response.data.reverse());
-            })
-            .catch((error) => console.log(error));
+          .get("https://mono-lite-back.azurewebsites.net/users")
+          .then((response) => {
+            setUsers(response.data.reverse());
+          })
+          .catch((error) => console.log(error));
     };
 
     useEffect(() => {

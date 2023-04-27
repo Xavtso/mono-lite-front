@@ -26,7 +26,7 @@ const SignUp = function (props) {
     setShowLoader(true);
 
     axios
-      .post(`https://mono-lite-backend.azurewebsites.net/auth/signUp`, {
+      .post(`https://mono-lite-back.azurewebsites.net/auth/signUp`, {
         first_name: translit.toLatin(firstName),
         second_name: translit.toLatin(secondName),
         email: email,
@@ -43,49 +43,6 @@ const SignUp = function (props) {
       });
   };
 
-  /*aud
-: 
-"76117731491-v6vmn6qs6m1f2ahl4elukmcuhkoojd1p.apps.googleusercontent.com"
-azp
-: 
-"76117731491-v6vmn6qs6m1f2ahl4elukmcuhkoojd1p.apps.googleusercontent.com"
-email
-: 
-"vitaliyhavrona@gmail.com"
-email_verified
-: 
-true
-exp
-: 
-1682560315
-family_name
-: 
-"Хаврона"
-given_name
-: 
-"Віталій"
-iat
-: 
-1682556715
-iss
-: 
-"https://accounts.google.com"
-jti
-: 
-"81efa5f320bc26f2df60eb0a9584c04e3b1600dd"
-name
-: 
-"Віталій Хаврона"
-nbf
-: 
-1682556415
-picture
-: 
-"https://lh3.googleusercontent.com/a/AGNmyxan92ak8DOQMLePm_p8tBwZWHOugvNHnFgv8Yi3Bg=s96-c"
-sub
-: 
-"10742215234287296 */
-
    const onSuccess = (response) => {
   const user = jwtDecode(response.credential);
      const firstName = user.givenName
@@ -97,12 +54,12 @@ sub
      setShowLoader(true);
 
      axios
-       .post(`https://mono-lite-backend.azurewebsites.net/auth/signUp`, {
+       .post(`https://mono-lite-back.azurewebsites.net/auth/signUp`, {
          first_name: translit.toLatin(firstName),
          second_name: translit.toLatin(secondName),
          email: email,
          password: password,
-         imageUrl: imageUrl
+         imageUrl: imageUrl,
        })
        .then(function (response) {
          navigate("/account");

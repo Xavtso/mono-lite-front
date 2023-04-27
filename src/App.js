@@ -5,8 +5,6 @@ import TechAbout from './components/tech-about/TechAbout';
 import About from "./components/home-page/about/About";
 
 function App() {
-console.log(process.env.CLIENT_ID);
-  
   return (
     <div className="body">
       <Router>

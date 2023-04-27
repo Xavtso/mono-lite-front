@@ -23,7 +23,7 @@ const SignIn = function (props) {
     setShowLoader(true);
 
     axios
-      .post(`https://mono-lite-backend.azurewebsites.net/auth/login`, {
+      .post(`https://mono-lite-back.azurewebsites.net/auth/login`, {
         email: email,
         password: password,
       })
@@ -35,7 +35,7 @@ const SignIn = function (props) {
       })
       .catch(function (error) {
         console.log(error);
-        setShowLoader(false)
+        setShowLoader(false);
         setMessage(error.response.data.message);
       });
   };
@@ -51,7 +51,7 @@ const SignIn = function (props) {
     setShowLoader(true);
 
     axios
-      .post(`https://mono-lite-backend.azurewebsites.net/auth/login`, {
+      .post(`https://mono-lite-back.azurewebsites.net/auth/login`, {
         email: email,
         password: password,
       })

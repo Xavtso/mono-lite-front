@@ -13,7 +13,7 @@ const CashBack = function (props) {
 
   const getBalance = function () {
     axios
-      .get("https://mono-lite-backend.azurewebsites.net/cashback/balance")
+      .get("https://mono-lite-back.azurewebsites.net/cashback/balance")
       .then((response) => {
         setBalance(response.data.toFixed(2));
       })

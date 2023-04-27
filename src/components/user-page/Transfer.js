@@ -22,7 +22,7 @@ const [users, setUsers] = useState([]);
 
 const getUsers = function () {
   axios
-    .get("https://mono-lite-backend.azurewebsites.net/users")
+    .get("https://mono-lite-back.azurewebsites.net/users")
     .then((response) => {
       const sorted = response.data.sort((a, b) => {
         let nameA = a.first_name.toUpperCase();
