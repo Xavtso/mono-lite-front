@@ -2,12 +2,12 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import the required hooks
 import Loader from "./Loader";
-import {GoogleLogin} from "react-google-login";
+import { GoogleLogin } from "@react-oauth/google";
+import jwtDecode from "jwt-decode";
 
 
 const SignIn = function (props) {
   // const clientID = PROCESS.env.clientId;
-  const clientID = '76117731491-v6vmn6qs6m1f2ahl4elukmcuhkoojd1p.apps.googleusercontent.com';
   // console.log(clientId);
   // const storage = localStorage;
   // storage.setItem("test", 123);
@@ -40,9 +40,14 @@ const SignIn = function (props) {
       });
   };
 
-  const onSuccess = (res) => {
-    const email = res.profileObj.email;
-    const password = res.profileObj.googleId;
+
+  // const onSuccess = (res) => { console.log(res)}
+
+  const onSuccess = (response) => {
+    const user = jwtDecode(response.credential);
+    console.log(user);
+    const email = user.email;
+    const password = user.sub;;
     setShowLoader(true);
 
     axios
@@ -62,14 +67,16 @@ const SignIn = function (props) {
         setMessage(error.response.data.message);
       });
   }
-  const onFailure = (res) => {
-    console.log(res);
+  const onFailure = () => {
     setMessage('Problems with google account');
   }
 
+
+  
+
   return (
     <>
-      {showLoader && <Loader/>}{" "}
+      {showLoader && <Loader />}{" "}
       <h2 className="modal_header">
         Welcome back !!! <br /> to continue please{" "}
         <span className="highlight">Log In</span>
@@ -103,15 +110,16 @@ const SignIn = function (props) {
           <button className="btn" type="submit">
             Sign In
           </button>
-          <GoogleLogin
-            className="btn"
-            clientId={clientID}
-            buttonText="SignIn by Google"
+          <div className="google-btn">
+            <GoogleLogin
+              theme="filled_black"
+              size="large"
+              shape="pill"
+            text="Sign by Google"
             onSuccess={onSuccess}
-            onFailure={onFailure}
-            cookiePolicy={'single_host_origin'}
-            // isSignedIn = {true}
-          ></GoogleLogin>
+            onError={onFailure}
+            />
+            </div>
         </div>
       </form>
       <p className="switchLink">

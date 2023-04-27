@@ -3,23 +3,8 @@ import Home from './pages/Home';
 import UserPage from './pages/UserPage';
 import TechAbout from './components/tech-about/TechAbout';
 import About from "./components/home-page/about/About";
-import { useEffect } from "react";
-import { gapi } from "gapi-script";
 
 function App() {
-const clientId =
-  "76117731491-v6vmn6qs6m1f2ahl4elukmcuhkoojd1p.apps.googleusercontent.com";
-
-  useEffect(() => {
-    function start() {
-      gapi.client.init({
-        clientId: clientId,
-        scope: ""
-      })
-    };
-
-    gapi.load('client:auth2', start)
-  })
 
   
   return (

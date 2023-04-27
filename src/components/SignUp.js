@@ -1,20 +1,19 @@
 import axios from "axios";
 import { UkraineLatinTranslit } from "ukraine-latin";
-import { GoogleLogin } from "react-google-login";
+import { GoogleLogin } from "@react-oauth/google";
 import "../styles/AuthForm.css";
 import { useState } from "react";
 import { useNavigate} from "react-router-dom"; // Import the required hooks
 import Loader from "./Loader";
+import jwtDecode from "jwt-decode";
 
 
 const SignUp = function (props) {
   const translit = new UkraineLatinTranslit();
- const clientID =
-   "76117731491-v6vmn6qs6m1f2ahl4elukmcuhkoojd1p.apps.googleusercontent.com";
- 
-  const [message, setMessage] = useState('');
+
+  const [message, setMessage] = useState("");
   const [showLoader, setShowLoader] = useState(false);
-  
+
   const navigate = useNavigate();
   const onSubmitHandler = function (e) {
     e.preventDefault();
@@ -28,54 +27,96 @@ const SignUp = function (props) {
 
     axios
       .post(`https://mono-lite-backend.azurewebsites.net/auth/signUp`, {
-        first_name:translit.toLatin(firstName),
+        first_name: translit.toLatin(firstName),
         second_name: translit.toLatin(secondName),
         email: email,
         password: password,
       })
       .then(function (response) {
-         navigate("/account");
-          setShowLoader(false)
-          console.log(response);
-        })
-        .catch(function (error) {
-        setShowLoader(false)
+        navigate("/account");
+        setShowLoader(false);
+        console.log(response);
+      })
+      .catch(function (error) {
+        setShowLoader(false);
         setMessage(error.response.data.message);
       });
   };
 
- const onSuccess = (res) => {
-   const firstName = res.profileObj.givenName
-   const secondName = res.profileObj.familyName;
-   const email = res.profileObj.email;
-   const password = res.profileObj.googleId;
-   const imageUrl = res.profileObj.imageUrl;
+  /*aud
+: 
+"76117731491-v6vmn6qs6m1f2ahl4elukmcuhkoojd1p.apps.googleusercontent.com"
+azp
+: 
+"76117731491-v6vmn6qs6m1f2ahl4elukmcuhkoojd1p.apps.googleusercontent.com"
+email
+: 
+"vitaliyhavrona@gmail.com"
+email_verified
+: 
+true
+exp
+: 
+1682560315
+family_name
+: 
+"Хаврона"
+given_name
+: 
+"Віталій"
+iat
+: 
+1682556715
+iss
+: 
+"https://accounts.google.com"
+jti
+: 
+"81efa5f320bc26f2df60eb0a9584c04e3b1600dd"
+name
+: 
+"Віталій Хаврона"
+nbf
+: 
+1682556415
+picture
+: 
+"https://lh3.googleusercontent.com/a/AGNmyxan92ak8DOQMLePm_p8tBwZWHOugvNHnFgv8Yi3Bg=s96-c"
+sub
+: 
+"10742215234287296 */
 
-   setShowLoader(true);
+   const onSuccess = (response) => {
+  const user = jwtDecode(response.credential);
+     const firstName = user.givenName
+     const secondName = user.familyName;
+     const email = user.email;
+     const password = user.sub;
+     const imageUrl = user.picture;
 
-   axios
-     .post(`https://mono-lite-backend.azurewebsites.net/auth/signUp`, {
-       first_name: translit.toLatin(firstName),
-       second_name: translit.toLatin(secondName),
-       email: email,
-       password: password,
-       imageUrl: imageUrl
-     })
-     .then(function (response) {
-       navigate("/account");
-       setShowLoader(false);
-       console.log(response);
-     })
-     .catch(function (error) {
-       setShowLoader(false);
-       setMessage(error.response.data.message);
-     });
- };
- const onFailure = (res) => {
-   console.log(res);
-   setMessage("Problems with google account");
- };
+     setShowLoader(true);
 
+     axios
+       .post(`https://mono-lite-backend.azurewebsites.net/auth/signUp`, {
+         first_name: translit.toLatin(firstName),
+         second_name: translit.toLatin(secondName),
+         email: email,
+         password: password,
+         imageUrl: imageUrl
+       })
+       .then(function (response) {
+         navigate("/account");
+         setShowLoader(false);
+         console.log(response);
+       })
+       .catch(function (error) {
+         setShowLoader(false);
+         setMessage(error.response.data.message);
+       });
+   };
+   const onFailure = () => {
+     setMessage("Problems with google account");
+   };
 
   return (
     <>
@@ -134,15 +175,16 @@ const SignUp = function (props) {
           <button className="btn" type="submit">
             Sign Up
           </button>
-          <GoogleLogin
-            className="btn"
-            clientId={clientID}
-            buttonText="SignUp by Google "
-            onSuccess={onSuccess}
-            onFailure={onFailure}
-            cookiePolicy={"single_host_origin"}
-            // isSignedIn={true}
-          ></GoogleLogin>
+          <div className="google-btn">
+            <GoogleLogin
+              theme="filled_black"
+              size="large"
+              shape="pill"
+              text="Sign by Google"
+              onSuccess={onSuccess}
+              onError={onFailure}
+            />
+          </div>
         </div>
       </form>
       <p className="switchLink">
