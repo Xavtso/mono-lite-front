@@ -6,6 +6,7 @@ const CashBack = function (props) {
   const [balance, setBalance] = useState("");
   const [leftToCollect, setLeftToCollect] = useState("");
   const [inputValue, setInputValue] = useState("");
+  const [message, setMessage] = useState('');
 
   const handleClose = function () {
     props.onClose();
@@ -28,7 +29,7 @@ const CashBack = function (props) {
     const calculated = 100 - balance;
     if (calculated < 0) {
       setLeftToCollect("You can withdraw your money");
-    } else setLeftToCollect(`Remain to withraw ${calculated}`);
+    } else setLeftToCollect(`Remain to withraw ${calculated.toFixed(2)} ₴`);
   };
 
   useEffect(() => {
@@ -38,12 +39,13 @@ const CashBack = function (props) {
   const formHandler = function (event) {
     event.preventDefault();
     axios
-      .post("https://mono-lite-backend.azurewebsites.net/cashback", {
+      .post("https://mono-lite-back.azurewebsites.net/cashback", {
         amount: +inputValue,
       })
-      .then((response) => response ? props.onClose() : '')
+      .then((response) => response && props.onClose())
       .catch((error) => {
         console.log(error);
+        setMessage(error.response.data.message);
       });
   };
   const handleValue = function (e) {
@@ -67,17 +69,18 @@ const CashBack = function (props) {
             min={100.0}
             value={inputValue}
             onChange={handleValue}
-          />
+            />
           <button
             type="submit"
             className={`btn btn--cashback ${
               balance < 100 ? "btn--disabled" : ""
             }`}
             disabled={balance < 100}
-          >
+            >
             Withdraw
           </button>
         </form>
+        <p className="alert cash-alert">{message}</p>
       </div>
     </div>
   );

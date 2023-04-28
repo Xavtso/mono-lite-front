@@ -15,6 +15,7 @@
 }
 .cashBack--form input{
     background-color: #7fa8c6;
+    width: 15rem;
 }
 
 .btn--cashback{
@@ -28,4 +29,14 @@
 .btn--disabled{
     cursor: not-allowed;
     background-color: rgb(50, 50, 50);
+}
+
+.cash-alert{
+    font-size: 16px;
+    /* border: 1px solid; */
+    /* width: 30rem; */
+    left:0;
+    bottom:15rem;
+    margin-left: 0px;
+    /* background-color: rgb(249, 172, 187); */
 }

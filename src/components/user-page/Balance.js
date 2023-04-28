@@ -11,7 +11,7 @@ const Balance = function (props) {
         "https://mono-lite-back.azurewebsites.net/cards",
       ); 
       const data = response.data; 
-      setBalance(data.card_balance); 
+      setBalance(data.card_balance.toFixed(2)); 
     } catch (error) {
       console.error(error); // 
     }
@@ -32,7 +32,7 @@ const Balance = function (props) {
     <div className="balance">
       <div className="self-balance">
         <span className="balance__label">Current balance: </span>
-        <span className="balance__value" >
+        <span className="balance__value">
           {balance} <span id="currency">₴</span>
         </span>
       </div>

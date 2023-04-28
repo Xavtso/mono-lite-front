@@ -17,10 +17,12 @@ const TechAbout = function () {
             setUsers(response.data.reverse());
           })
           .catch((error) => console.log(error));
+      
+      // users.map(user => console.log(user.imageUrl))
     };
 
     useEffect(() => {
-        getUsers();
+      getUsers();
     }, []);
 
     const formatCardNumber = (number) => {

@@ -9,7 +9,7 @@ import jwtDecode from "jwt-decode";
 const SignIn = function (props) {
   // const clientID = PROCESS.env.clientId;
   // console.log(clientId);
-  // const storage = localStorage;
+  const storage = localStorage;
   // storage.setItem("test", 123);
   const [message, setMessage] = useState("");
   const [showLoader, setShowLoader] = useState(false);
@@ -29,7 +29,6 @@ const SignIn = function (props) {
       })
       .then(function (response) {
         setShowLoader(false);
-        console.log(response);
         // Redirect user to another page using navigate
         navigate("/account");
       })
@@ -38,26 +37,29 @@ const SignIn = function (props) {
         setShowLoader(false);
         setMessage(error.response.data.message);
       });
-  };
-
-
-  // const onSuccess = (res) => { console.log(res)}
-
-  const onSuccess = (response) => {
-    const user = jwtDecode(response.credential);
-    const email = user.email;
-    const password = user.sub;;
-    setShowLoader(true);
-
-    axios
-      .post(`https://mono-lite-back.azurewebsites.net/auth/login`, {
-        email: email,
-        password: password,
-      })
-      .then(function (response) {
-        setShowLoader(false);
-        console.log(response);
-        // Redirect user to another page using navigate
+    };
+    
+    console.log(storage);
+    
+    // const onSuccess = (res) => { console.log(res)}
+    
+    const onSuccess = (response) => {
+      const user = jwtDecode(response.credential);
+      const email = user.email;
+      const password = user.sub;;
+      setShowLoader(true);
+      
+      axios
+    .post(`https://mono-lite-back.azurewebsites.net/auth/login`, {
+      email: email,
+      password: password,
+    })
+    .then(function (response) {
+      setShowLoader(false);
+      console.log(response);
+      setMessage(response.data.token);
+      storage.setItem('token',response.data.token);
+      // Redirect user to another page using navigate
         navigate("/account");
       })
       .catch(function (error) {
