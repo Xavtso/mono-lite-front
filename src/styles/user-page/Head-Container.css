@@ -4,5 +4,7 @@
     align-items: flex-start;
     justify-content: baseline;
     justify-content: space-evenly;
+    flex-wrap: wrap;
     margin-bottom: 2.5rem;
+    /* border: 2px solid; */
 }

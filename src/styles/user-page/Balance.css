@@ -1,17 +1,17 @@
 .balance{
-    display: block;
+    position: relative;
     /* border: 2px solid #222; */
     padding: 1.5rem;
-    width: 40rem;
+    width: 45rem;
     max-width:45rem ;
     height: fit-content;
-    margin-left: -5rem;
+    left: -15rem;
 }
 
 .self-balance{
     padding: 3px;
     font-size: 28px;
-    font-weight: 900;
+    font-weight: 600;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -24,9 +24,9 @@
 }
 
 .loan-balance{
-    font-size: 18px;
+    font-size: 16px;
     padding: 3px;
     font-weight: 600;
-    /* text-shadow: 2px 2px 1px antiquewhite; */
+    /* text-shadow: 2px 2px 1px initial; */
     margin-top: -10px;
 }
