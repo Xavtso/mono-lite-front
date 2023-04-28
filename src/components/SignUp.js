@@ -45,8 +45,8 @@ const SignUp = function (props) {
 
    const onSuccess = (response) => {
   const user = jwtDecode(response.credential);
-     const firstName = user.givenName
-     const secondName = user.familyName;
+     const firstName = user.given_name
+     const secondName = user.family_name;
      const email = user.email;
      const password = user.sub;
      const imageUrl = user.picture;

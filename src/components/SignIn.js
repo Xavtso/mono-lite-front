@@ -45,7 +45,6 @@ const SignIn = function (props) {
 
   const onSuccess = (response) => {
     const user = jwtDecode(response.credential);
-    console.log(user);
     const email = user.email;
     const password = user.sub;;
     setShowLoader(true);
