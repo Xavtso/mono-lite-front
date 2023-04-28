@@ -17,7 +17,7 @@ const Deposit = function () {
       try {
         // Відправляємо POST запит на вказаний сервер з використанням введеної суми
          await axios.post(
-           "https://mono-lite-back.azurewebsites.net/simulate/deposit",
+           "https://mono-lite-back.azurewebsites.net/transactions/simulate/deposit",
            { transaction_amount: transactionAmount },
          );
           
