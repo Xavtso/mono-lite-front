@@ -50,7 +50,7 @@ const SignUp = function (props) {
      const email = user.email;
      const password = user.sub;
      const imageUrl = user.picture;
-
+console.log(user);
      setShowLoader(true);
 
      axios
@@ -59,7 +59,7 @@ const SignUp = function (props) {
          second_name: translit.toLatin(secondName),
          email: email,
          password: password,
-         imageUrl: imageUrl,
+         imageURL: imageUrl,
        })
        .then(function (response) {
          navigate("/account");

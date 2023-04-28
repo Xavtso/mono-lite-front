@@ -19,9 +19,10 @@ const CloseAccount = function (props) {
     setInputPassword('')
   };
   const navigateTo = useNavigate();
-
+// http://localhost:5000
+  // https://mono-lite-back.azurewebsites.net
   const deleteUser = function () {
-    axios
+    axios     
       .post("https://mono-lite-back.azurewebsites.net/users/delete", {
         email: inputEmail,
         password: inputPassword,
@@ -68,7 +69,8 @@ const CloseAccount = function (props) {
 
               <button onClick={handleModal} className="control-delete">
                 Delete
-              </button>
+                </button>
+                <button>Delete by Google</button>
             </form>
           </>
         )}
