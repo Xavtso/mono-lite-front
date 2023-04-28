@@ -18,6 +18,7 @@ const UsersList = function (props) {
     setBackground(Math.round(Math.random() * 6) + 1);
   }, []);
 
+  console.log(props.users.map(user => console.log(user)));
   return (
     <>
       {showModal ? (
@@ -27,14 +28,17 @@ const UsersList = function (props) {
         />
       ) : (
         <div className="users">
-          {props.users.map((user, index) => (
+            {props.users.map((user, index) => (
             <div
               key={index}
               className="users__row"
               onClick={() => handleModal(user)}
             >
-              <div className={`user-background v-${background}`}>
+              <div className={user.imageURL ? '' : `user-background v-${background}`}>
+                {user.imageURL ? <img src={user.imageURL} alt='user' className="user-image" />
+                :
                 <FontAwesomeIcon icon={faUser} className="users__icon" />
+                }
               </div>
               <p className="receiver-name">
                 {user.first_name + " " + user.second_name}
