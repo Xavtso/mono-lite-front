@@ -24,7 +24,7 @@ const CashBack = function (props) {
 
   useEffect(() => {
     getBalance();
-  }, []);
+  });
 
   const calcCashbackRemain = function () {
     const calculated = 100 - balance;
@@ -43,7 +43,7 @@ const CashBack = function (props) {
       .post(`https://mono-lite-back.azurewebsites.net/cashback`, {
         user_id:id,
         amount: +inputValue,
-      })
+      }) 
       .then((response) => response && props.onClose())
       .catch((error) => {
         console.log(error);
