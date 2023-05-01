@@ -10,17 +10,21 @@ const Expense = function () {
   const handleExepense = async (event) => {
     event.preventDefault();
 
+    const id = localStorage.getItem("id");
+
     if (+transactionAmount === 0) {
       setMessage("Та нашо тобі той ноль?");
       return;
     }
 
-    console.log(transactionAmount);
+   
     try {
       // Відправляємо POST запит на вказаний сервер з використанням введеної суми
       const response = await axios.post(
         "https://mono-lite-back.azurewebsites.net/transactions/simulate/withdrawal",
-        { transaction_amount: transactionAmount },
+        { user_id:id,
+          transaction_amount: transactionAmount
+        },
       );
 
       setMessage(response.data.message);

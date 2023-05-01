@@ -10,7 +10,7 @@ import jwtDecode from "jwt-decode";
 
 const SignUp = function (props) {
   const translit = new UkraineLatinTranslit();
-
+  const storage = localStorage;
   const [message, setMessage] = useState("");
   const [showLoader, setShowLoader] = useState(false);
 
@@ -33,9 +33,11 @@ const SignUp = function (props) {
         password: password,
       })
       .then(function (response) {
+        storage.setItem("token", response.data.token);
+        const decoded = jwtDecode(response.data.token);
+        storage.setItem("id", decoded.id);
         navigate("/account");
         setShowLoader(false);
-        console.log(response);
       })
       .catch(function (error) {
         setShowLoader(false);
@@ -62,9 +64,11 @@ console.log(user);
          imageURL: imageUrl,
        })
        .then(function (response) {
-         navigate("/account");
+         storage.setItem("token", response.data.token);
+         const decoded = jwtDecode(response.data.token);
+         storage.setItem("id", decoded.id);
          setShowLoader(false);
-         console.log(response);
+         navigate("/account");
        })
        .catch(function (error) {
          setShowLoader(false);

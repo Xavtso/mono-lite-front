@@ -6,9 +6,10 @@ const Balance = function (props) {
   const [balance, setBalance] = useState(props.cardInfo.card_balance);
   
   const fetchBalance = async () => {
+    const id = localStorage.getItem("id");
     try {
       const response = await axios.get(
-        "https://mono-lite-back.azurewebsites.net/cards",
+        `https://mono-lite-back.azurewebsites.net/cards/${id}`,
       ); 
       const data = response.data; 
       setBalance(data.card_balance.toFixed(2)); 

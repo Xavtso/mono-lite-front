@@ -7,13 +7,13 @@ const MainInfo = function () {
   const [cardInfo, setCardInfo] = useState("");
 
   const getCard = async () => {
+    const id = localStorage.getItem('id')
     try {
       const response = await axios.get(
-        "https://mono-lite-back.azurewebsites.net/cards",
+        `https://mono-lite-back.azurewebsites.net/cards/${id}`,
       );
       setCardInfo(response.data);
     } catch (error) {
-      window.location.replace("/");
       console.log(error);
     }
   };

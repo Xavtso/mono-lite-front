@@ -7,14 +7,15 @@ const CashBack = function (props) {
   const [leftToCollect, setLeftToCollect] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [message, setMessage] = useState('');
-
+  
   const handleClose = function () {
     props.onClose();
   };
-
+  const id = localStorage.getItem("id");
+  
   const getBalance = function () {
     axios
-      .get("https://mono-lite-back.azurewebsites.net/cashback/balance")
+      .get(`https://mono-lite-back.azurewebsites.net/cashback/balance${id}`)
       .then((response) => {
         setBalance(response.data.toFixed(2));
       })
@@ -39,7 +40,8 @@ const CashBack = function (props) {
   const formHandler = function (event) {
     event.preventDefault();
     axios
-      .post("https://mono-lite-back.azurewebsites.net/cashback", {
+      .post(`https://mono-lite-back.azurewebsites.net/cashback`, {
+        user_id:id,
         amount: +inputValue,
       })
       .then((response) => response && props.onClose())

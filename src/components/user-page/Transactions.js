@@ -42,8 +42,9 @@ const Transactions = function () {
   };
 
   const uploadTransactions = function () {
+    const id = localStorage.getItem('id');
     axios
-      .get("https://mono-lite-back.azurewebsites.net/transactions")
+      .get(`https://mono-lite-back.azurewebsites.net/transactions/${id}`)
       .then((response) => {
         setTransactions(response.data.reverse());
       })

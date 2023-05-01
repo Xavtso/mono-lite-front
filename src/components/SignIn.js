@@ -7,14 +7,11 @@ import jwtDecode from "jwt-decode";
 
 
 const SignIn = function (props) {
-  // const clientID = PROCESS.env.clientId;
-  // console.log(clientId);
+
   const storage = localStorage;
-  // storage.setItem("test", 123);
   const [message, setMessage] = useState("");
   const [showLoader, setShowLoader] = useState(false);
-  const navigate = useNavigate(); // Replace useHistory with useNavigate
-  // Use useLocation to access the current location object
+  const navigate = useNavigate(); 
 
   const onSubmitHandler = function (e) {
     e.preventDefault();
@@ -29,44 +26,42 @@ const SignIn = function (props) {
       })
       .then(function (response) {
         setShowLoader(false);
-        // Redirect user to another page using navigate
+        storage.setItem("token", response.data.token);
+        const decoded = jwtDecode(response.data.token);
+        storage.setItem("id", decoded.id);
         navigate("/account");
       })
       .catch(function (error) {
-        console.log(error);
         setShowLoader(false);
         setMessage(error.response.data.message);
       });
     };
     
-    console.log(storage);
     
     // const onSuccess = (res) => { console.log(res)}
     
     const onSuccess = (response) => {
       const user = jwtDecode(response.credential);
       const email = user.email;
-      const password = user.sub;;
+      const password = user.sub;
       setShowLoader(true);
       
       axios
-    .post(`https://mono-lite-back.azurewebsites.net/auth/login`, {
-      email: email,
-      password: password,
-    })
-    .then(function (response) {
-      setShowLoader(false);
-      console.log(response);
-      setMessage(response.data.token);
-      storage.setItem('token',response.data.token);
-      // Redirect user to another page using navigate
-        navigate("/account");
-      })
-      .catch(function (error) {
-        console.log(error);
-        setShowLoader(false);
-        setMessage(error.response.data.message);
-      });
+        .post(`https://mono-lite-back.azurewebsites.net/auth/login`, {
+          email: email,
+          password: password,
+        })
+        .then(function (response) {
+          setShowLoader(false);
+          storage.setItem("token", response.data.token);
+          const decoded = jwtDecode(response.data.token);
+          storage.setItem("id", decoded.id);
+          navigate("/account");
+        })
+        .catch(function (error) {
+          setShowLoader(false);
+          setMessage(error.response.data.message);
+        });
   }
   const onFailure = () => {
     setMessage('Problems with google account');

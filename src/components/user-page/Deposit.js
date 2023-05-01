@@ -6,10 +6,11 @@ import React, { useState } from "react";
 
 const Deposit = function () {
   const [transactionAmount, setTransactionAmount] = useState('');
-  const [message,setMessage] = useState('')
+  const [message, setMessage] = useState('')
   const handleDeposit = async (event) => {
     event.preventDefault();
-    
+  
+  const id = localStorage.getItem("id");   
     if (+transactionAmount === 0) {
         setMessage("Та нашо тобі той ноль?");
         return
@@ -18,7 +19,9 @@ const Deposit = function () {
         // Відправляємо POST запит на вказаний сервер з використанням введеної суми
          await axios.post(
            "https://mono-lite-back.azurewebsites.net/transactions/simulate/deposit",
-           { transaction_amount: transactionAmount },
+           {  user_id: id,
+             transaction_amount: transactionAmount
+           },
          );
           
         } catch (error) {

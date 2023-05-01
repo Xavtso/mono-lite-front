@@ -19,8 +19,11 @@ const TransferModal = function (props) {
 
   const makeTransaction = function (e) {
     e.preventDefault();
+    const id = localStorage.getItem("id");
+    
     axios
       .post("https://mono-lite-back.azurewebsites.net/transactions/new", {
+        user_id:id,
         transaction_amount: inputAmountValue,
         transaction_description: inputDescriptionValue,
         receiver_card_number: user.card_number,
