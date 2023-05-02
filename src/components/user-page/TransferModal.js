@@ -17,6 +17,10 @@ const TransferModal = function (props) {
     setInputAmountValue(e.target.value);
   };
 
+  const closeModals = function () {
+    props.modalClose();
+  }
+
   const makeTransaction = function (e) {
     e.preventDefault();
     const id = localStorage.getItem("id");
@@ -28,7 +32,7 @@ const TransferModal = function (props) {
         transaction_description: inputDescriptionValue,
         receiver_card_number: user.card_number,
       })
-      .then((response) => response && console.log("good"))
+      .then((response) => response && closeModals())
       .catch((error) => console.log(error));
   }
 

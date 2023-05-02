@@ -84,7 +84,7 @@ const getUsers = function () {
       </div>
       <div className="screen screen-transfer">
         <span>Or choose account</span>
-        <UsersList users={filteredUsers} />
+        <UsersList users={filteredUsers} modalClose={handleClose} />
       </div>
     </div>
   );

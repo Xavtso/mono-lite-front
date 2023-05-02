@@ -14,17 +14,21 @@ const UsersList = function (props) {
     setShowModal(true);
   };
 
+  const closeModals = function () {
+    props.modalClose()
+  }
+
   useEffect(() => {
     setBackground(Math.round(Math.random() * 6) + 1);
   }, []);
 
-  console.log(props.users.map(user => console.log(user)));
   return (
     <>
       {showModal ? (
         <TransferModal
           onClose={() => setShowModal(false)}
           user={selectedUser}
+          modalClose={closeModals}
         />
       ) : (
         <div className="users">
