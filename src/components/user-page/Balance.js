@@ -32,7 +32,7 @@ const Balance = function (props) {
   return (
     <div className="balance">
       <div className="self-balance">
-        <span className="balance__label">Current balance: </span>
+        <span className="balance__label">Balance: </span>
         <span className="balance__value">
           {balance} <span id="currency">₴</span>
         </span>

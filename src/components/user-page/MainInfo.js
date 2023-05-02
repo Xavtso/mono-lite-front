@@ -23,9 +23,13 @@ const MainInfo = function () {
   }, []); 
     
   return (
-    <div className="head-container">
-      <Balance cardInfo={cardInfo} />
-          <Card cardInfo={cardInfo} />
+    <div className="head-container head-container-scroll">
+      <div className="head-container-item head-container-item-balance">
+        <Balance cardInfo={cardInfo} />
+      </div>
+      <div className="head-container-item head-container-item-card">
+        <Card cardInfo={cardInfo} />
+      </div>
     </div>
   );
 }

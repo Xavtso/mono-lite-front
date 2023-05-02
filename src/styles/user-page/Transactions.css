@@ -1,15 +1,17 @@
 .movements {
+  position: relative;
   grid-row: 2 / span 3;
   background-color: rgb(52, 59, 59);
   border-radius: 1rem;
   overflow:scroll;
   overflow-x: hidden;
-  width: 80rem;
+  width: 100%;
   min-width: 45rem;
   height: 30rem;
   box-shadow: 1px 1px 5px 3px #222 ;
   /* transform: translateX(2.2rem); */
   color: aliceblue;
+  /* left: 2rem; */
 }
 ::-webkit-scrollbar-thumb{
   background-color: transparent

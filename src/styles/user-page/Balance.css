@@ -2,19 +2,21 @@
     position: relative;
     /* border: 2px solid #222; */
     padding: 1.5rem;
-    width: 45rem;
-    max-width:45rem ;
+    width: 100%;
+    /* width: 45rem;
+    max-width:45rem ; */
     height: fit-content;
-    left: -15rem;
+    margin-left: auto;
+    
 }
 
 .self-balance{
     padding: 3px;
     font-size: 28px;
     font-weight: 600;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+}
+.balance__value{
+    margin-left: 2rem;
 }
 
 
@@ -27,6 +29,5 @@
     font-size: 16px;
     padding: 3px;
     font-weight: 600;
-    /* text-shadow: 2px 2px 1px initial; */
     margin-top: -10px;
 }

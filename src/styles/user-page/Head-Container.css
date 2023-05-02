@@ -1,4 +1,4 @@
-.head-container{
+/* .head-container{
     display: flex;
     width: 100%;
     align-items: flex-start;
@@ -7,4 +7,106 @@
     flex-wrap: wrap;
     margin-bottom: 2.5rem;
     /* border: 2px solid; */
+/* }  */
+
+
+/* CSS для елементів .head-container */
+.head-container {
+    display: flex;
+    align-items: flex-start;
+    /* justify-content: space-around; */
+    /* flex-wrap: wrap; */
+    /* gap: 50rem; */
+    /* border: 2px solid; */
+    margin-bottom: 2.5rem;
+}
+
+/* CSS для елементів .head-container, які мають бути прокручуваними вліво та вправо */
+
+/* CSS для елементів .head-container-item */
+.head-container-item {
+    flex: 0 0 auto;
+    max-width: 55rem;
+    width: 100%;
+    scroll-snap-align: center;
+    margin-left: auto;
+    /* border: 2px solid; */
+}
+.head-container-item-balance{
+position: relative;
+left: auto;
+}
+
+.head-container-item-card{
+    /* max-width: 55rem; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media  (max-width:720px){
+    .head-container{
+        /* justify-content: center; */
+        gap: 0rem;
+    }
+    .head-container-scroll {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+    .head-container-item-card{
+        margin-left: auto;
+    }
+    .head-container-item-balance{
+        margin: 1rem;
+    }
+    
+}
+@media  (min-width:721px) and (max-width:949px){
+    .head-container{
+        /* justify-content: center; */
+        gap: 12rem;
+    }
+    .head-container-scroll {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+    .head-container-item-card{
+        margin-left: auto;
+    }
+    .head-container-item-balance{
+        margin: 1.5rem;
+    }
+    
+}
+/* @media (max-width:1049px){
+    .head-container{
+        /* justify-content: center; */
+        /* gap: 0rem; */
+    /* } */
+/*    
+    .head-container-item-card{
+        margin-right: 5em;
+    } */
+    
+/* } */ 
+@media (min-width:950px) and (max-width:1099px){
+    .head-container{
+        gap: 0rem;
+    }
+    .head-container-item-balance{
+        margin: 2rem;
+    }
+    .head-container-item-card{
+        margin-left: -8rem;
+    } 
+}
+
+@media(min-width:1100px){
+    .head-container-item{
+        margin-right: auto;
+    }
 }

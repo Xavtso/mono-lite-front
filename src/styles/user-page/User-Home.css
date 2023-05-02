@@ -15,7 +15,7 @@ main {
   font-family: 'Poppins', sans-serif;
   color: #444;
   height: 101vh;
-  padding: 2rem;
+  /* padding: 2rem; */
   overflow-y: hidden;
   /* background:linear-gradient(to top left, #39b385, #9be15d, #9be15d); */
 background: linear-gradient(210deg,#CDA3AB,#9385BC,#4C60D2);
