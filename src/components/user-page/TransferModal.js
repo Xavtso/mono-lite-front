@@ -42,7 +42,8 @@ const TransferModal = function (props) {
         &times;
       </button>
       <div className="target-user">
-        <p>Receiver :</p>
+        <p className="receiver-t-label">Receiver</p>
+        <img src={user.imageURL} className="user-image transfer-image" /><br/>
         {user.first_name + ' ' +  user.second_name}
       </div>
 

@@ -40,3 +40,9 @@
     margin-left: 0px;
     /* background-color: rgb(249, 172, 187); */
 }
+
+@media(max-width:410px){
+    .cashBack--form input{
+        width:12rem
+    }
+}

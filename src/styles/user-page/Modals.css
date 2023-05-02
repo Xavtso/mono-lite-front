@@ -64,3 +64,15 @@
     letter-spacing: 2px;
     padding-bottom: 8px;
 }
+
+
+@media(max-width:410px){
+    .op-modal{
+        width:95%;
+        height: 90%;
+        margin-top:10rem;
+    }
+    .screen{
+        height: 41rem;
+    }
+}

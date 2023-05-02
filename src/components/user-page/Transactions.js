@@ -67,7 +67,7 @@ const Transactions = function () {
   useEffect(() => {
     const intervalId = setInterval(() => {
       // console.log('hi');
-      setContent(transactions === '' ? 'Here can be your transactions' :
+      setContent(transactions === [] ? 'Here can be your transactions' :
         transactions.map((transaction, index) => (
     <div key={index} className="movements__row">
       <div
@@ -103,7 +103,7 @@ const filterContent = function (e) {
   setFilter(true)
   setFilteredContent(
     content.filter(
-      (mov) => mov.props.children[0].props.children === `${option}`,
+      (mov) =>mov === [] ? `Here can be your ${option}'s` :  mov.props.children[0].props.children === `${option}`,
     ),
   );
 } 

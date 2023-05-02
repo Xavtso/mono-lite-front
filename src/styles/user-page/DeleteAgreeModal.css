@@ -31,3 +31,14 @@
 .btn-agree:hover{
     background-color: var(--color-tertiary-darker);
 }
+
+
+@media(max-width:410px){
+    .warning span{
+        transform: translateY(2rem);
+        -webkit-transform: translateY(2rem);
+        -moz-transform: translateY(2rem);
+        -ms-transform: translateY(2rem);
+        -o-transform: translateY(2rem);
+}
+}

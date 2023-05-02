@@ -6,7 +6,7 @@
   overflow:scroll;
   overflow-x: hidden;
   width: 100%;
-  min-width: 45rem;
+  min-width: 38rem;
   height: 30rem;
   box-shadow: 1px 1px 5px 3px #222 ;
   /* transform: translateX(2.2rem); */
@@ -117,4 +117,26 @@
   background-color: #515151;
   outline: none;
   border: none;
+}
+
+
+@media(max-width:410px){
+.movements__type{
+  font-size: 10px;
+  margin-left: -3rem;
+  margin-right: 1rem;
+}
+.movements__value{
+  font-size: 14px;
+}
+.movements__date{
+  font-size: 10px;
+}
+.receiver-name{
+  font-size:14px;
+}
+
+.movements__head{
+  font-size: 10px;
+}
 }

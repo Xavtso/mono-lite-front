@@ -14,6 +14,8 @@
 
 .target-user {
   position: relative;
+  /* display: flex; */
+  /* flex-direction: column; */
   top: 12rem;
   font-size: 22px;
   font-weight: 600;
@@ -84,5 +86,32 @@
     #e0b115,
     #cfa310,
     #c68308
-  );
+    );
+}
+
+.transfer-image{
+  scale: 1.6;
+}
+
+.receiver-t-label{
+  color: #989898;
+}
+
+
+@media(max-width:410px){
+  .screen-transfer-modal{
+    height: 64.5rem;
+  }
+
+  .target-user{
+    top: 5rem;
+  }
+
+  .transfer-modal-form{
+    top: 4rem;
+  }
+
+  .transfer-image{
+    scale: 1.5;
+  }
 }

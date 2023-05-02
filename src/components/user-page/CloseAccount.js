@@ -70,7 +70,7 @@ const CloseAccount = function (props) {
               <button onClick={handleModal} className="control-delete">
                 Delete
                 </button>
-                <button>Delete by Google</button>
+                {/* <button>Delete by Google</button> */}
             </form>
           </>
         )}

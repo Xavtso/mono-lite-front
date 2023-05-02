@@ -30,6 +30,11 @@
   justify-self: center;
   margin-top: 1rem;
   box-shadow:  1px 1px 4px 1px #222;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
 }
 
 .btn--close-modal {
@@ -45,14 +50,32 @@
 }
 
 .control-delete{
-  position: relative;
-  left: 27rem;
-  color: aliceblue;
-    border-radius:25px;
+    position: relative;
+    left: 27rem;
+    color: aliceblue;
+    border-radius:20px;
     padding: 0.6rem 2rem;
-    background-color:#ad5151;
+    background-color:#e34b4b;
+    -webkit-border-radius:20px;
+    -moz-border-radius:20px;
+    -ms-border-radius:20px;
+    -o-border-radius:20px;
 }
 
 .control-delete:hover{
-  background:var(--color-tertiary) ;
+  background:#fe2e2e ;
+}
+
+
+@media(max-width:410px){
+  .control-delete{
+    position: relative;
+    left: 24rem;
+}
+
+.modal__close-form input {
+  font-size: 1.5rem;
+
+}
+
 }
