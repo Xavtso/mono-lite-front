@@ -87,6 +87,8 @@ const Header = forwardRef((props, ref) => {
             </a>
           </li>
           <li className="nav__item">
+          </li>
+        </ul>
             <a
               className="nav__link nav__link--btn btn--show-modal"
               href="/"
@@ -94,8 +96,6 @@ const Header = forwardRef((props, ref) => {
             >
               Open account
             </a>
-          </li>
-        </ul>
       </nav>
       {content}
       <div className="header__title">

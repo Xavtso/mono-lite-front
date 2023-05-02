@@ -76,3 +76,11 @@
         height: 41rem;
     }
 }
+
+
+@media(max-height:670px){
+ 
+  .screen{
+    height: 37.5rem;
+  }
+}
