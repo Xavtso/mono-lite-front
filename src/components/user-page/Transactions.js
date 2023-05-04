@@ -9,7 +9,7 @@ const Transactions = function () {
   const [content, setContent] = useState([]);
   const [filteredContent, setFilteredContent] = useState(null);
   const [filter, setFilter] = useState(false);
-
+  const id = localStorage.getItem("id");
 
   const formatDate = function (date) {
     const now = new Date();
@@ -42,16 +42,14 @@ const Transactions = function () {
   };
 
   const uploadTransactions = function () {
-    const id = localStorage.getItem('id');
+    const id = localStorage.getItem("id");
     axios
       .get(`https://mono-lite-back.azurewebsites.net/transactions/${id}`)
       .then((response) => {
         setTransactions(response.data.reverse());
       })
       .catch((error) => console.log(error));
-      
   };
-
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -62,61 +60,99 @@ const Transactions = function () {
     return () => {
       clearInterval(intervalId);
     };
-  },[transactions]);
+  }, [transactions]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       // console.log('hi');
-      setContent(transactions === [] ? 'Here can be your transactions' :
-        transactions.map((transaction, index) => (
-    <div key={index} className="movements__row">
-      <div
-        className={`movements__type movements__type--${transaction.transaction_type}`}
-      >
-        {transaction.transaction_type}
-      </div>
-      <div className="receiver-name">{transaction.receiver_full_name}</div>
-      <div className="movements__date">
-        {formatDate(new Date(transaction.createdAt))}
-      </div>
-      {/* <div className="movements__description">
+      setContent(
+        transactions === []
+          ? "Here can be your transactions"
+          : transactions.map((transaction, index) => (
+              <div key={index} className="movements__row">
+                <div
+                  className={`movements__type movements__type--${transaction.transaction_type}`}
+                >
+                  {transaction.transaction_type}
+                </div>
+                <div className="receiver-name">
+                  {transaction.transaction_type === "TRANSFER" &&
+                  transaction.receiver_card_id === +id
+                    ? transaction.sender_full_name
+                    : transaction.receiver_full_name}
+                </div>
+                <div className="movements__date">
+                  {formatDate(new Date(transaction.createdAt))}
+                </div>
+                {/* <div className="movements__description">
               {transaction.transaction_description}
             </div> */}
-      <div className={`movements__value mov--${transaction.transaction_type}`}>
-        {transaction.transaction_type === "EXPENSE" ? "-" : ""}
-        {transaction.transaction_amount} ₴
-      </div>
-    </div>
-)),
-);
-}, 1000);
+                <div
+                  className={`movements__value mov--${transaction.transaction_type}`}
+                >
+                  {transaction.sender_card_id === +id ? "-" : ""}
+                  {transaction.transaction_amount} ₴
+                </div>
+              </div>
+            )),
+      );
+    }, 1000);
 
-// Прибирання інтервалу при розмонтажі компоненту
-return () => {
-  clearInterval(intervalId);
-}
-},[transactions,content])
+    // Прибирання інтервалу при розмонтажі компоненту
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [transactions, content, id]);
 
-
-const filterContent = function (e) {
-  let option = e.target.id;
-  setFilter(true)
-  setFilteredContent(
-    content.filter(
-      (mov) =>mov === [] ? `Here can be your ${option}'s` :  mov.props.children[0].props.children === `${option}`,
-    ),
-  );
-} 
+  const filterContent = function (e) {
+    let option = e.target.id;
+    setFilter(true);
+    setFilteredContent(
+      content.filter((mov) =>
+        mov === []
+          ? `Here can be your ${option}'s`
+          : mov.props.children[0].props.children === `${option}`,
+      ),
+    );
+  };
 
   return (
     <div className="movements">
       <div className="movements__head">
         <b>Filter by :</b>
-        <span id="TRANSFER" style={{ color: "#ffb003" }}   onClick={filterContent} >Transfers</span>
-        <span id="DEPOSIT" style={{ color: "lightgreen"}} onClick={filterContent} >Deposits</span>
-        <span id="EXPENSE" style={{ color: "#e52a5a" }}   onClick={filterContent} >Expenses</span>
-        <span id="CASH-BACK" style={{ color: "#0077cc" }}   onClick={filterContent} >Cashbacks</span>
-        <span id="Reset" style={{ color: "#eee" }}   onClick={() => {setFilter(false)}} ><FontAwesomeIcon icon={faRotate} size="lg"/></span>
+        <span
+          id="TRANSFER"
+          style={{ color: "#ffb003" }}
+          onClick={filterContent}
+        >
+          Transfers
+        </span>
+        <span
+          id="DEPOSIT"
+          style={{ color: "lightgreen" }}
+          onClick={filterContent}
+        >
+          Deposits
+        </span>
+        <span id="EXPENSE" style={{ color: "#e52a5a" }} onClick={filterContent}>
+          Expenses
+        </span>
+        <span
+          id="CASH-BACK"
+          style={{ color: "#0077cc" }}
+          onClick={filterContent}
+        >
+          Cashbacks
+        </span>
+        <span
+          id="Reset"
+          style={{ color: "#eee" }}
+          onClick={() => {
+            setFilter(false);
+          }}
+        >
+          <FontAwesomeIcon icon={faRotate} size="lg" />
+        </span>
       </div>
       {filter ? filteredContent : content}
     </div>
