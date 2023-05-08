@@ -3,23 +3,23 @@
   grid-row: 2 / span 3;
   background-color: rgb(52, 59, 59);
   border-radius: 1rem;
-  overflow:scroll;
+  overflow: scroll;
   overflow-x: hidden;
   width: 100%;
   min-width: 38rem;
   height: 30rem;
-  box-shadow: 1px 1px 5px 3px #222 ;
+  box-shadow: 1px 1px 5px 3px #222;
   /* transform: translateX(2.2rem); */
   color: aliceblue;
   /* left: 2rem; */
 }
-::-webkit-scrollbar-thumb{
-  background-color: transparent
-}
-::-webkit-scrollbar-track{
+::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
-::-webkit-scrollbar{
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar {
   background-color: transparent;
   width: 1px;
 }
@@ -34,6 +34,12 @@
   color: aliceblue;
   border-bottom: 1px solid #6e6e6e;
   background-color: rgb(63, 63, 63);
+  cursor:pointer ;
+}
+
+.movements__row:hover{
+  background-color: rgb(75, 75, 75);
+
 }
 
 .movements__type {
@@ -60,18 +66,25 @@
 .movements__type--EXPENSE {
   background-image: linear-gradient(to top left, #e52a5a, #ff585f);
 }
-.mov--EXPENSE{
-  color: #e52a5a ;
+.mov--EXPENSE {
+  color: #e52a5a;
 }
-.mov--DEPOSIT{
-  color: #9be15d ;
+.mov--DEPOSIT {
+  color: #9be15d;
 }
 
 .movements__type--TRANSFER {
   background-image: linear-gradient(to top left, #ffb003, #ffcb03);
 }
 .movements__type--CASH-BACK {
-  background: linear-gradient(to right bottom, #0077cc, #0066b3, #005499, #004480, #003366)
+  background: linear-gradient(
+    to right bottom,
+    #0077cc,
+    #0066b3,
+    #005499,
+    #004480,
+    #003366
+  );
 }
 
 .movements__value {
@@ -79,13 +92,13 @@
   margin-left: auto;
 }
 
-.receiver-name{
+.receiver-name {
   font-size: 14px;
   margin-right: 2rem;
   font-weight: 600;
 }
 
-.movements__head{
+.movements__head {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #eee;
@@ -95,48 +108,120 @@
   font-weight: 600;
 }
 
-.movements__head span:hover{
+.movements__head span:hover {
   cursor: pointer;
   border-bottom: 1px solid;
 }
 
-
-.sort{
+.sort {
   position: relative;
   height: fit-content;
   padding: 0.4rem 1.5rem;
- 
 }
 
-#Reset{
+#Reset {
   border-radius: 50%;
   padding: 1px 5px;
 }
-#Reset:hover{
-
+#Reset:hover {
   background-color: #515151;
   outline: none;
   border: none;
 }
 
+@media (max-width: 410px) {
+  .movements__type {
+    font-size: 10px;
+    margin-left: -3rem;
+    margin-right: 1rem;
+  }
+  .movements__value {
+    font-size: 14px;
+  }
+  .movements__date {
+    font-size: 10px;
+  }
+  .receiver-name {
+    font-size: 14px;
+  }
 
-@media(max-width:410px){
-.movements__type{
-  font-size: 10px;
-  margin-left: -3rem;
-  margin-right: 1rem;
+  .movements__head {
+    font-size: 10px;
+  }
 }
-.movements__value{
+
+/* Modal interface */
+
+.interface {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #515151;
+  padding: 2rem 1rem;
+  overflow-y: hidden;
+}
+
+.user-background {
+  font-size: 1.7rem;
+  width: 5.1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #fff;
+  padding: 0.9rem 1.8rem;
+  border-radius: 50%;
+  background-color: #949494;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  scale: 1;
+
+  background: linear-gradient(to left, #9400d3, #00d9f5);
+}
+.person {
+  width: 90%;
+  margin: 1rem auto;
+  /* border: 2px solid; */
+  padding: 0.5rem 1rem;
+}
+
+.receiver {
+  /* border: 2px red solid; */
+  display: flex;
+  justify-content: center;
+  /* margin-inline: auto; */
+}
+
+.receiver-card {
+  color: rgb(208, 216, 223);
+  margin: 1rem -1rem;
   font-size: 14px;
-}
-.movements__date{
-  font-size: 10px;
-}
-.receiver-name{
-  font-size:14px;
+  /* border: #003366 solid; */
+  width: calc(100% + 2rem);
+  text-align: center;
 }
 
-.movements__head{
-  font-size: 10px;
+.description {
+  font-size: 15px;
+  /*border:;
+  2pxsolid*/width: 80%;
+  margin: 1rem auto;
+  padding: 0.5rem 0.7rem;
+  background-color: #5f5e5e;
+  border-radius:1rem ;
+  height: auto;
+  min-height: 3rem;
+  -webkit-border-radius:1rem ;
+  -moz-border-radius:1rem ;
+  -ms-border-radius:1rem ;
+  -o-border-radius:1rem ;
+  box-shadow: 0px 0px 5px 2px #424141;
+  display: flex;
+  flex-wrap: wrap;
 }
+
+.description-label {
+  font-size: 18px;
+  text-align: center;
 }
