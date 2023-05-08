@@ -94,6 +94,11 @@ height: 7rem;
     -moz-border-radius: 1.5rem;
     -ms-border-radius: 1.5rem;
     -o-border-radius: 1.5rem;
+    cursor: pointer;
+}
+
+.vault__row:hover{
+  background-color: rgb(80, 80, 80);
 }
 
 
@@ -273,4 +278,96 @@ height: 7rem;
     -moz-border-radius:3rem ;
     -ms-border-radius:3rem ;
     -o-border-radius:3rem ;
+}
+
+.banka-container{
+  background: linear-gradient(to right bottom, #fc8ec5, #ff6699, #ff3377, #ff0066f1, #da2d75);
+  width: 22rem;
+  height: 22rem;
+  border-radius: 2.2rem;
+  -webkit-border-radius: 2.2rem;
+  -moz-border-radius: 2.2rem;
+  -ms-border-radius: 2.2rem;
+  -o-border-radius: 2.2rem;
+  margin:4rem auto;
+  rotate: -15deg;
+  box-shadow: 0px 0px 15px 2px #222;
+}
+.big-banka{
+  rotate: 15deg;
+  margin: -2rem auto;
+  
+}
+.create-title{
+  text-align: center;
+  margin:1rem auto;
+  text-shadow: 0px 2px 5px #222;
+  text-transform: uppercase;
+}
+
+
+.windows-container{
+  padding: 0.3rem;
+  display: flex;
+  /* border: 2px solid; */
+  height: 25rem;
+}
+
+.window{
+  background-color: #625d5d;
+  width: 22rem;
+  height: 99%;
+  margin: auto;
+  border-radius: 2rem;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
+  box-shadow: 0px 0px 4px 1px #393939;
+  padding: 1rem;
+}
+
+.btn-create{
+  margin:4% 35%;
+  background: linear-gradient(to right bottom, #fc8ec5, #ff6699,  #da2d75);
+  box-shadow: 0px 0px 6px 1px #222;
+}
+
+.window-title{
+  color: aliceblue;
+  font-size: 18px;
+  margin: 1rem auto;
+  text-align: center;
+  font-weight: 600;
+  /* border: 2px solid; */
+}
+
+.entered{
+  text-align: center;
+  color: aliceblue;
+  font-weight: 600;
+  font-size: 17px;
+  margin: 2rem auto;
+}
+
+.option-input{
+  text-align: center;
+  border: none;
+  border-radius: 2px;
+  margin:2rem 0.8rem ;
+  border-bottom:1px solid aliceblue ;
+  background-color: transparent;
+  box-shadow: 0px 0px 0px 0px #eee inset;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  font-size: 18px;
+  width: 90%;
+  caret-color: aliceblue;
+  color: aliceblue;
+}
+
+.entered-title{
+  text-transform: capitalize;
 }

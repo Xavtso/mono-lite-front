@@ -5,6 +5,7 @@ import { faChartSimple } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import CreatePigyyModal from "./CreatePigyyModal";
+import Vault from "./Vault";
 
 const Piggybank = function (props) {
   const id = localStorage.getItem("id");
@@ -61,10 +62,10 @@ const Piggybank = function (props) {
      switch (activeModal) {
        case "Create":
          return <CreatePigyyModal onClose={closeModal} />;
-      //  case "Statistic":
+      //  case "History":
       //    return <DepositBank onClose={closeModal} />;
-      //  case "User":
-      //    return <Transfer onClose={closeModal} />;
+       case "Vault":
+         return <Vault onClose={closeModal} />;
        default:
          return null;
      }
@@ -100,7 +101,7 @@ const Piggybank = function (props) {
         <div className={loader}></div>
         <div className="vaults">
           {vaults.map((vault, index) => (
-            <div key={index} className="vault__row">
+            <div key={index} className="vault__row" onClick={() => openModal('Vault')}>
               <div>
                 <div className="banka-icon">
                   <img src={banka} alt="banka" className="img-small-banka" />
