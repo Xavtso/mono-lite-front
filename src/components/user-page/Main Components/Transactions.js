@@ -3,12 +3,15 @@ import "../../../styles/user-page/Transactions.css";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRotate } from "@fortawesome/free-solid-svg-icons";
+import TransactionInterface from "../Modals/TransactionInterface";
 
 const Transactions = function () {
   const [transactions, setTransactions] = useState([]);
   const [content, setContent] = useState([]);
   const [filteredContent, setFilteredContent] = useState(null);
   const [filter, setFilter] = useState(false);
+  const [transactionInterface, setTransactionInterface] = useState(null);
+
   const id = localStorage.getItem("id");
 
   const formatDate = function (date) {
@@ -62,14 +65,17 @@ const Transactions = function () {
     };
   }, [transactions]);
 
+  const setModal = function (transaction) {
+    setTransactionInterface(transaction);
+}
+
   useEffect(() => {
     const intervalId = setInterval(() => {
-      // console.log('hi');
       setContent(
-        transactions === []
+        transactions === ['']
           ? "Here can be your transactions"
           : transactions.map((transaction, index) => (
-              <div key={index} className="movements__row">
+              <div key={index} className="movements__row" onClick={() => setModal(transaction)}>
                 <div
                   className={`movements__type movements__type--${transaction.transaction_type}`}
                 >
@@ -116,6 +122,16 @@ const Transactions = function () {
     );
   };
 
+  const closeModal = () => {
+    setTransactionInterface(null)
+  }
+
+  const expandInterface = function () {
+    if (transactionInterface !== null) {
+      return <TransactionInterface onClose={closeModal} transaction = {transactionInterface} />
+  }
+}
+
   return (
     <div className="movements">
       <div className="movements__head">
@@ -155,6 +171,7 @@ const Transactions = function () {
         </span>
       </div>
       {filter ? filteredContent : content}
+          {expandInterface()}
     </div>
   );
 };
