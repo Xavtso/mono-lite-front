@@ -4,8 +4,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState, useEffect } from "react";
-import axios from "axios";
+
 const TransactionInterface = function (props) {
   const handleClose = function () {
     props.onClose();

@@ -12,8 +12,8 @@ const Piggybank = function (props) {
   const [vaults, setVaults] = useState([]);
   const [loader, setLoader] = useState("custom-loader-pig");
   const [activeModal, setActiveModal] = useState(null);
-
-
+  const [vault, setVault] = useState(null);
+  const [accumulated, setAccumulated] = useState(0);
   const updateVaults = function () {
     axios
       .get(`https://mono-lite-back.azurewebsites.net/piggybank/${id}`)
@@ -30,6 +30,7 @@ const Piggybank = function (props) {
           return 0;
         });
         setVaults(sorted);
+
       })
       .catch((error) => console.log(error));
   };
@@ -38,6 +39,7 @@ const Piggybank = function (props) {
     const intervalId = setInterval(() => {
       updateVaults();
       setLoader("hidden");
+      calculateTotalVaultBalance();
     }, 2000);
 
     return () => {
@@ -45,35 +47,44 @@ const Piggybank = function (props) {
     };
   });
 
+  const calculateTotalVaultBalance=function() {
+    const totalBalance = vaults.reduce(
+      (acc, val) => acc + val.vault_balance,
+      0,
+    );
+    setAccumulated(totalBalance);
+  }
+
   const handleClose = function () {
     props.onClose();
   };
 
-
   const closeModal = () => {
     setActiveModal(null);
-  }
+  };
 
   const openModal = (modal) => {
     setActiveModal(modal);
-  }
-  
-   const renderModal = () => {
-     switch (activeModal) {
-       case "Create":
-         return <CreatePigyyModal onClose={closeModal} />;
+  };
+
+  const renderModal = () => {
+    switch (activeModal) {
+      case "Create":
+        return <CreatePigyyModal onClose={closeModal} />;
       //  case "History":
       //    return <DepositBank onClose={closeModal} />;
-       case "Vault":
-         return <Vault onClose={closeModal} />;
-       default:
-         return null;
-     }
-   };
-  
+      default:
+        return null;
+    }
+  };
 
+  const closeVault = () => {
+    setVault(null);
+  };
 
-
+  const expandVault = function() {
+    return vault !== null ? <Vault onClose={closeVault} vault={vault} /> : null;
+  };
 
   return (
     <div className="op-modal modal-piggybank">
@@ -83,11 +94,11 @@ const Piggybank = function (props) {
       <div className="amount piggybank-amount">
         <span className="pig-title">Accumulated</span>
         <br />
-        102 ₴
+        {accumulated} ₴
       </div>
       <div className="screen screen-piggybank">
         <div className="pig-controls">
-          <button onClick={() => openModal('Create')} className="btn pig-btn">
+          <button onClick={() => openModal("Create")} className="btn pig-btn">
             <p className="btn-icon">+</p> Create
           </button>
           <button className="btn pig-btn">
@@ -101,7 +112,11 @@ const Piggybank = function (props) {
         <div className={loader}></div>
         <div className="vaults">
           {vaults.map((vault, index) => (
-            <div key={index} className="vault__row" onClick={() => openModal('Vault')}>
+            <div
+              key={index}
+              className="vault__row"
+              onClick={() => setVault(vault)}
+            >
               <div>
                 <div className="banka-icon">
                   <img src={banka} alt="banka" className="img-small-banka" />
@@ -129,6 +144,7 @@ const Piggybank = function (props) {
         </div>
       </div>
       {renderModal()}
+      {expandVault()}
     </div>
   );
 };

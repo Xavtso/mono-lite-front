@@ -220,6 +220,7 @@ height: 7rem;
     background-color: #5b3eb3;
     height: 1rem;
     left: 3rem;
+    max-width: 85%;
     border-radius: 15rem;
     /*width: calc(100% - 15%);
     */-webkit-border-radius:15rem;

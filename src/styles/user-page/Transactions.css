@@ -86,6 +86,10 @@
     #003366
   );
 }
+.movements__type--PIG-BANK {
+    background: linear-gradient(to right bottom, #ff99cc, #ff6699, #ff3377, #ff0066, #cc0055);
+  
+}
 
 .movements__value {
   font-size: 1.7rem;

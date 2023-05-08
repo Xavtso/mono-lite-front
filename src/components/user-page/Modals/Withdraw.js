@@ -1,0 +1,63 @@
+import { useState, useEffect } from "react";
+import "../../../styles/user-page/PigFunctions.css";
+import axios from "axios";
+
+const Withdraw = function (props) {
+  const handleClose = () => {
+    props.onClose();
+    props.onReturn();
+  };
+
+  const [vault, setVault] = useState([]);
+  const [amount, setAmount] = useState("");
+
+  const updateInfo = () => {
+    setVault(props.vault);
+  };
+
+  useEffect(() => {
+    updateInfo();
+  });
+
+  const handleAmount = (e) => {
+    setAmount(e.target.value);
+  };
+
+  const makeDeposit = function () {
+    axios
+      .post("https://mono-lite-back.azurewebsites.net/piggybank/withdraw", {
+        vault_id: vault.vault_id,
+        user_id: vault.user_id,
+        amount: +amount,
+      })
+      .then((response) => response && handleClose())
+      .catch((error) => console.log(error));
+  };
+
+  return (
+    <div className="func_modal">
+      <button className="btn--close-modal" onClick={handleClose}>
+        &times;
+      </button>
+      <div className="func_container">
+        <h2 className="dep_label">Amount</h2>
+        <div className="dep_amount_container">
+          <input
+            className="dep_amount"
+            type="number"
+            min={0}
+            value={amount}
+            placeholder="0"
+            onChange={handleAmount}
+          />
+        </div>
+        <div className="btn-container">
+          <button className="btn btn-pig-deposit" onClick={makeDeposit}>
+            Withdraw
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+export default Withdraw;
