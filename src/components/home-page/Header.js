@@ -4,7 +4,7 @@ import hero from "../../images/hero.png";
 import "../../styles/home-page/Header.css";
 import "../../styles/home-page/Navbar.css";
 import "../../styles/home-page/Button.css";
-import AuthForm from "../AuthForm";
+import AuthForm from "../AuthForm/AuthForm";
 import { useNavigate } from "react-router-dom";
 
 const Header = forwardRef((props, ref) => {

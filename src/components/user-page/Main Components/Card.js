@@ -1,6 +1,6 @@
-import "../../styles/user-page/Card.css";
-import logo from "../../images/icon.png";
-import mastercard from '../../images/Mastercard-Logo.wine.png'
+import "../../../styles/user-page/Card.css";
+import logo from "../../../images/icon.png";
+import mastercard from '../../../images/Mastercard-Logo.wine.png'
 
 
 export default function Card(props) {

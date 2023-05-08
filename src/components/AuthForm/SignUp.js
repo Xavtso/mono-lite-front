@@ -1,12 +1,11 @@
 import axios from "axios";
 import { UkraineLatinTranslit } from "ukraine-latin";
 import { GoogleLogin } from "@react-oauth/google";
-import "../styles/AuthForm.css";
+import "../../styles/AuthForm.css";
 import { useState } from "react";
-import { useNavigate} from "react-router-dom"; // Import the required hooks
+import { useNavigate } from "react-router-dom"; // Import the required hooks
 import Loader from "./Loader";
 import jwtDecode from "jwt-decode";
-
 
 const SignUp = function (props) {
   const translit = new UkraineLatinTranslit();
@@ -45,39 +44,39 @@ const SignUp = function (props) {
       });
   };
 
-   const onSuccess = (response) => {
-  const user = jwtDecode(response.credential);
-     const firstName = user.given_name
-     const secondName = user.family_name;
-     const email = user.email;
-     const password = user.sub;
-     const imageUrl = user.picture;
-console.log(user);
-     setShowLoader(true);
+  const onSuccess = (response) => {
+    const user = jwtDecode(response.credential);
+    const firstName = user.given_name;
+    const secondName = user.family_name;
+    const email = user.email;
+    const password = user.sub;
+    const imageUrl = user.picture;
+    console.log(user);
+    setShowLoader(true);
 
-     axios
-       .post(`https://mono-lite-back.azurewebsites.net/auth/signUp`, {
-         first_name: translit.toLatin(firstName),
-         second_name: translit.toLatin(secondName),
-         email: email,
-         password: password,
-         imageURL: imageUrl,
-       })
-       .then(function (response) {
-         storage.setItem("token", response.data.token);
-         const decoded = jwtDecode(response.data.token);
-         storage.setItem("id", decoded.id);
-         setShowLoader(false);
-         navigate("/account");
-       })
-       .catch(function (error) {
-         setShowLoader(false);
-         setMessage(error.response.data.message);
-       });
-   };
-   const onFailure = () => {
-     setMessage("Problems with google account");
-   };
+    axios
+      .post(`https://mono-lite-back.azurewebsites.net/auth/signUp`, {
+        first_name: translit.toLatin(firstName),
+        second_name: translit.toLatin(secondName),
+        email: email,
+        password: password,
+        imageURL: imageUrl,
+      })
+      .then(function (response) {
+        storage.setItem("token", response.data.token);
+        const decoded = jwtDecode(response.data.token);
+        storage.setItem("id", decoded.id);
+        setShowLoader(false);
+        navigate("/account");
+      })
+      .catch(function (error) {
+        setShowLoader(false);
+        setMessage(error.response.data.message);
+      });
+  };
+  const onFailure = () => {
+    setMessage("Problems with google account");
+  };
 
   return (
     <>

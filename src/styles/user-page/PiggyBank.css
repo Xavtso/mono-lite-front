@@ -1,0 +1,276 @@
+.pig-title{
+    font-size: 20px;
+}
+.piggybank-amount{
+    margin-top: -7rem;
+}
+.pig-controls{
+    position: relative;
+    top: -2rem;
+/* border: 2px solid; */
+display: flex;
+justify-content: space-evenly;
+height: 7rem;
+}
+
+.pig-btn{
+    background-color: #343434;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    box-shadow: 0px 1px 3px 1px #222;
+    color: aliceblue;
+}
+
+.pig-btn:hover{
+    background-color: #343434;
+    box-shadow: 0px 1px 3px 1px #625d5d inset;
+    transition: all 2s;
+    -webkit-transition: all 2s;
+    -moz-transition: all 2s;
+    -ms-transition: all 2s;
+    -o-transition: all 2s;
+}
+
+.btn-icon{
+    margin-right: 2rem;
+    /* color: #eee; */
+    color: #4c4545;
+    border-radius: 50%;
+    /* border: 2px solid; */
+    padding:0.2rem 0.8rem;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    background-color: #ff99cc;
+    /* background: linear-gradient(210deg,#CDA3AB,#9385BC,#4C60D2);
+     */
+     
+    }
+    .banka-title{
+        margin-top: auto;
+        text-align: center;
+        text-shadow: 0px 1.5px 5px  #222;
+    }
+    
+    .vaults{
+        position: relative;
+        grid-row: 2 / span 3;
+        /*background-color: rgb(52, 59, 59);
+        */border-radius: 1rem;
+        overflow:scroll;
+        overflow-x: hidden;
+        width: 100%;
+        min-width: 38rem;
+        height: 34.5rem;
+        /* box-shadow: 1px 1px 5px 3px #222 ; */
+        color: aliceblue;
+  border-radius:1px 1px 30px 28px ;
+  
+}
+
+.vault__row{
+    padding: 2.25rem 4rem;
+    display: flex;
+    align-items: center;
+    color: aliceblue;
+    width: 99%;
+    height: 8rem;
+    margin-top: 2rem;
+    gap: 1rem;
+    /* border: 2px solid; */
+    box-shadow: 0px 0px 5px 2px #222;
+    border-radius: 1.5rem;
+    /* border-bottom: 1px solid #6e6e6e; */
+    margin-inline: auto;
+    background-color: rgb(72, 72, 72);
+    
+    -webkit-border-radius: 1.5rem;
+    -moz-border-radius: 1.5rem;
+    -ms-border-radius: 1.5rem;
+    -o-border-radius: 1.5rem;
+}
+
+
+.banka-icon{
+    /* border: 2px solid; */
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    padding: 0.4rem 0.8rem;
+    background: linear-gradient(to right bottom, #ff99cc, #ff6699, #ff3377, #ff0066, #cc0055);
+    margin-left: -2rem;
+}
+
+.img-small-banka{
+    scale: 1.1;
+}
+.banka-name {
+    position: absolute;
+    top: 0;
+  color: aliceblue;
+  font-size: 16px;
+  font-weight: 700;
+  text-shadow: 0px 1.5px 5px #222;
+  margin-left: 1rem;
+  margin-right: auto;
+    width: fit-content;
+    height: fit-content;
+    max-width: 17rem;
+}
+
+.target_value {
+  position: absolute;
+    /* margin-bottom:5px; */
+  top: 0.5rem;
+  right: 1rem;
+  color: aliceblue;
+  font-size: 16px;
+  font-weight: 400;
+  width: fit-content;
+  max-width: 17rem;
+  text-shadow: 0px 1.5px 5px #222;
+}
+
+.banka-info {
+  margin-right: -2rem;
+  
+  width: 100%;
+  height: 7.5rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.accum_value {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 1rem;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgb(171, 175, 179);
+}
+
+.banka-input {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .banka-info input[type="range"]::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 90%;
+  background-color: #5b3eb3;
+  border-radius: 15rem;
+  box-shadow: 0px 0px 0.5px 0.5px inset #4c4545;
+  -webkit-border-radius: 15rem;
+  -moz-border-radius: 15rem;
+  -ms-border-radius: 15rem;
+  -o-border-radius: 15rem;
+} */
+
+.banka-info input[type="range"] {
+  position: relative;
+  width: 85%;
+  height: 1rem;
+  font-size: xx-small;
+  appearance: none;
+  background-color: #9385bc;
+  outline: none;
+  padding: 0;
+  margin-bottom: auto;
+}
+
+.banka-info input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 0px;
+  height: 0px;
+  background-color: aliceblue;
+  border-radius: 15rem;
+  cursor: pointer;
+  -webkit-border-radius: 15rem;
+  -moz-border-radius: 15rem;
+  -ms-border-radius: 15rem;
+  -o-border-radius: 15rem;
+  position: relative;
+  z-index: 1;
+}
+
+
+
+
+.progress{
+    position: absolute;
+    background-color: #5b3eb3;
+    height: 1rem;
+    left: 3rem;
+    border-radius: 15rem;
+    /*width: calc(100% - 15%);
+    */-webkit-border-radius:15rem;
+    -moz-border-radius:15rem;
+    -ms-border-radius:15rem;
+    -o-border-radius:15rem;
+    box-shadow: 0px 0px 0.5px 0.5px inset #222;
+}
+
+.custom-loader-pig {
+  width: 80px;
+  height: 80px;
+  color: #ff6699; 
+  margin: 10rem auto;
+  background:
+    linear-gradient(currentColor 0 0) 100%  0,
+    linear-gradient(currentColor 0 0) 0  100%;
+  background-size: 50.1% 50.1%;
+  background-repeat: no-repeat;
+  animation:  f7-0 1s infinite linear;
+}
+.custom-loader-pig::before,
+.custom-loader-pig::after {
+  content:"";
+  position: absolute;
+  inset:0 50% 50% 0;
+  background:currentColor;
+  transform:scale(var(--s,1)) perspective(150px) rotateY(0deg);
+  transform-origin: bottom right; 
+  animation: f7-1 .5s infinite linear alternate;
+}
+.custom-loader-pig::after {
+  --s:-1,-1;
+}
+
+@keyframes f7-0 {
+  0%,49.99% {transform: scaleX(1)  rotate(0deg)}
+  50%,100%  {transform: scaleX(-1) rotate(-90deg)}
+}
+
+
+@keyframes f7-1 {
+  49.99% {transform:scale(var(--s,1)) perspective(150px) rotateX(-90deg) ;filter:grayscale(0)}
+  50%    {transform:scale(var(--s,1)) perspective(150px) rotateX(-90deg) ;filter:grayscale(0.8)}
+  100%   {transform:scale(var(--s,1)) perspective(150px) rotateX(-180deg);filter:grayscale(0.8)}
+}
+
+.create_pigModal{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #505050;
+    border-radius:3rem ;
+    -webkit-border-radius:3rem ;
+    -moz-border-radius:3rem ;
+    -ms-border-radius:3rem ;
+    -o-border-radius:3rem ;
+}

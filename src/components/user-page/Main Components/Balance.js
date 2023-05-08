@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import '../../styles/user-page/Balance.css'
+import '../../../styles/user-page/Balance.css'
 import axios from "axios";
 
 const Balance = function (props) {

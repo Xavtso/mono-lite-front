@@ -5,13 +5,11 @@ import Loader from "./Loader";
 import { GoogleLogin } from "@react-oauth/google";
 import jwtDecode from "jwt-decode";
 
-
 const SignIn = function (props) {
-
   const storage = localStorage;
   const [message, setMessage] = useState("");
   const [showLoader, setShowLoader] = useState(false);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const onSubmitHandler = function (e) {
     e.preventDefault();
@@ -35,40 +33,36 @@ const SignIn = function (props) {
         setShowLoader(false);
         setMessage(error.response.data.message);
       });
-    };
-    
-    
-    // const onSuccess = (res) => { console.log(res)}
-    
-    const onSuccess = (response) => {
-      const user = jwtDecode(response.credential);
-      const email = user.email;
-      const password = user.sub;
-      setShowLoader(true);
-      
-      axios
-        .post(`https://mono-lite-back.azurewebsites.net/auth/login`, {
-          email: email,
-          password: password,
-        })
-        .then(function (response) {
-          setShowLoader(false);
-          storage.setItem("token", response.data.token);
-          const decoded = jwtDecode(response.data.token);
-          storage.setItem("id", decoded.id);
-          navigate("/account");
-        })
-        .catch(function (error) {
-          setShowLoader(false);
-          setMessage(error.response.data.message);
-        });
-  }
+  };
+
+  // const onSuccess = (res) => { console.log(res)}
+
+  const onSuccess = (response) => {
+    const user = jwtDecode(response.credential);
+    const email = user.email;
+    const password = user.sub;
+    setShowLoader(true);
+
+    axios
+      .post(`https://mono-lite-back.azurewebsites.net/auth/login`, {
+        email: email,
+        password: password,
+      })
+      .then(function (response) {
+        setShowLoader(false);
+        storage.setItem("token", response.data.token);
+        const decoded = jwtDecode(response.data.token);
+        storage.setItem("id", decoded.id);
+        navigate("/account");
+      })
+      .catch(function (error) {
+        setShowLoader(false);
+        setMessage(error.response.data.message);
+      });
+  };
   const onFailure = () => {
-    setMessage('Problems with google account');
-  }
-
-
-  
+    setMessage("Problems with google account");
+  };
 
   return (
     <>
@@ -111,11 +105,11 @@ const SignIn = function (props) {
               theme="filled_black"
               size="large"
               shape="pill"
-            text="Sign by Google"
-            onSuccess={onSuccess}
-            onError={onFailure}
+              text="Sign by Google"
+              onSuccess={onSuccess}
+              onError={onFailure}
             />
-            </div>
+          </div>
         </div>
       </form>
       <p className="switchLink">

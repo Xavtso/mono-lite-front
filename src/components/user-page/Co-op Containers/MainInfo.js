@@ -1,13 +1,13 @@
-import Balance from "./Balance";
-import Card from "./Card";
-import '../../styles/user-page/Head-Container.css'
-import { useState,useEffect } from "react";
-import axios from 'axios'
+import Balance from "../Main Components/Balance";
+import Card from "../Main Components/Card";
+import "../../../styles/user-page/Head-Container.css";
+import { useState, useEffect } from "react";
+import axios from "axios";
 const MainInfo = function () {
   const [cardInfo, setCardInfo] = useState("");
 
   const getCard = async () => {
-    const id = localStorage.getItem('id')
+    const id = localStorage.getItem("id");
     try {
       const response = await axios.get(
         `https://mono-lite-back.azurewebsites.net/cards/${id}`,
@@ -19,9 +19,9 @@ const MainInfo = function () {
   };
 
   useEffect(() => {
-      getCard();
-  }, []); 
-    
+    getCard();
+  }, []);
+
   return (
     <div className="head-container head-container-scroll">
       <div className="head-container-item head-container-item-balance">
@@ -32,6 +32,6 @@ const MainInfo = function () {
       </div>
     </div>
   );
-}
+};
 
 export default MainInfo;

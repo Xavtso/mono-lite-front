@@ -1,5 +1,5 @@
 import axios from "axios";
-import "../../styles/user-page/Transactions.css";
+import "../../../styles/user-page/Transactions.css";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRotate } from "@fortawesome/free-solid-svg-icons";

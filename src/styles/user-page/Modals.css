@@ -4,11 +4,15 @@
     height: 70rem;
     color: aliceblue;
     padding: 0;
-    margin-top: 2rem;
+    bottom: 1rem;
     border-radius: 35px;
     border: 3px solid rgb(65,65,65);
     box-shadow: 2px 2px 5px 2px gray;
     z-index: 1000;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    -ms-border-radius: 35px;
+    -o-border-radius: 35px;
 }
 
 .screen{
@@ -51,7 +55,7 @@
     font-size: 36px;
     font-weight: 900;
     transform: translateY(100px);
-    text-shadow: 0px 10px 15px  #eee;
+    text-shadow: 0px 1.5px 5px  #222;
 }
 
 .modal-name{

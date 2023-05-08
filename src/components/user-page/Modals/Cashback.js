@@ -1,4 +1,4 @@
-import "../../styles/user-page/CashBack.css";
+import "../../../styles/user-page/CashBack.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 

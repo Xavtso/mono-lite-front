@@ -1,4 +1,4 @@
-import '../../styles/user-page/DeleteAgreeModal.css'
+import '../../../styles/user-page/DeleteAgreeModal.css'
 
 const DeleteAgreeModal = function (props) {
 

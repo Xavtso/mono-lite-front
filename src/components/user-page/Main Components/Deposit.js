@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "../../styles/user-page/Deposit.css";
+import "../../../styles/user-page/Deposit.css";
 import { faDownload, faMoneyBills } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import React, { useState } from "react";
@@ -37,7 +37,7 @@ const Deposit = function () {
   };
 
   return (
-    <div class="operation operation--deposit">
+    <div className="operation operation--deposit">
       <span className="title">
         <FontAwesomeIcon icon={faMoneyBills} style={{ color: "lightgreen" }} />
         {"  "}

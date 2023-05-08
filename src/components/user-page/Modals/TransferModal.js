@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../../styles/user-page/TransferModal.css";
+import "../../../styles/user-page/TransferModal.css";
 import axios from "axios";
 
 const TransferModal = function (props) {

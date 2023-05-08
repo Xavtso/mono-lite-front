@@ -1,5 +1,5 @@
 import axios from "axios";
-import "../../styles/user-page/CloseAccount.css";
+import "../../../styles/user-page/CloseAccount.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DeleteAgreeModal from "./DeleteAgreeModal";
@@ -15,14 +15,14 @@ const CloseAccount = function (props) {
 
   const handleClose = function () {
     props.onClose();
-    setInputEmail('')
-    setInputPassword('')
+    setInputEmail("");
+    setInputPassword("");
   };
   const navigateTo = useNavigate();
-// http://localhost:5000
+  // http://localhost:5000
   // https://mono-lite-back.azurewebsites.net
   const deleteUser = function () {
-    axios     
+    axios
       .post("https://mono-lite-back.azurewebsites.net/users/delete", {
         email: inputEmail,
         password: inputPassword,
@@ -69,8 +69,8 @@ const CloseAccount = function (props) {
 
               <button onClick={handleModal} className="control-delete">
                 Delete
-                </button>
-                {/* <button>Delete by Google</button> */}
+              </button>
+              {/* <button>Delete by Google</button> */}
             </form>
           </>
         )}

@@ -41,7 +41,7 @@ const Expense = function () {
     setTransactionAmount(event.target.value);
   };
   return (
-    <div class="operation operation--expense">
+    <div className="operation operation--expense">
       <span className="title">
         {" "}
         <FontAwesomeIcon

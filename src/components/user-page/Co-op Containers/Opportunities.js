@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../styles/user-page/Opportunities.css";
+import "../../../styles/user-page/Opportunities.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMoneyBillTrendUp,
@@ -10,13 +10,13 @@ import {
   faMoneyBillTransfer,
 } from "@fortawesome/free-solid-svg-icons";
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
-import Transfer from "./Transfer";
-import Loan from "./Loan";
-import CashBack from "./Cashback";
-import DepositBank from "./Deposit-bank";
-import CloseAccount from "./CloseAccount";
-import Piggybank from "./Piggybank";
-import "../../styles/user-page/Modals.css";
+import Transfer from "../Modals/Transfer";
+import Loan from "../Modals/Loan";
+import CashBack from "../Modals/Cashback";
+import DepositBank from "../Modals/Deposit-bank";
+import CloseAccount from "../Modals/CloseAccount";
+import Piggybank from "../Modals/Piggybank";
+import "../../../styles/user-page/Modals.css";
 import { useNavigate } from "react-router-dom";
 
 const Opportunities = function () {
@@ -25,14 +25,13 @@ const Opportunities = function () {
 
   const handleSlotClick = (modalName) => {
     setActiveModal(modalName);
-    setOverlay('overlay');
+    setOverlay("overlay");
   };
 
   const closeModal = function () {
-    setActiveModal(null)
-    setOverlay('')
-  }
-
+    setActiveModal(null);
+    setOverlay("");
+  };
 
   const renderModal = () => {
     switch (activeModal) {

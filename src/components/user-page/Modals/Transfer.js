@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "../../styles/user-page/Transfer.css";
+import "../../../styles/user-page/Transfer.css";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import UsersList from "./UsersList";
@@ -18,31 +18,31 @@ const Transfer = function (props) {
     setActiveClass("hidden");
   };
 
-const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([]);
 
-const getUsers = function () {
-  axios
-    .get("https://mono-lite-back.azurewebsites.net/users")
-    .then((response) => {
-      const sorted = response.data.sort((a, b) => {
-        let nameA = a.first_name.toUpperCase();
-        let nameB = b.first_name.toUpperCase();
-        if (nameA < nameB) {
-          return -1;
-        }
-        if (nameA > nameB) {
-          return 1;
-        }
-        return 0;
-      });
-      setUsers(sorted);
-    })
-    .catch((error) => console.log(error));
-};
+  const getUsers = function () {
+    axios
+      .get("https://mono-lite-back.azurewebsites.net/users")
+      .then((response) => {
+        const sorted = response.data.sort((a, b) => {
+          let nameA = a.first_name.toUpperCase();
+          let nameB = b.first_name.toUpperCase();
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+          return 0;
+        });
+        setUsers(sorted);
+      })
+      .catch((error) => console.log(error));
+  };
   useEffect(() => {
     getUsers();
-},[])
-  
+  }, []);
+
   useEffect(() => {
     // Фільтруємо користувачів за умовою пошукового запиту
     const filtered = users.filter((user) => {
