@@ -1,10 +1,6 @@
 import {
-<<<<<<< HEAD
     faComment,
-=======
->>>>>>> 74f0ce52be3fe86c56214ac405e1e0b5dff536cd
   faCreditCard,
-  faIdCard,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -54,11 +50,7 @@ const TransactionInterface = function (props) {
             : formatCardNumber(props.transaction.receiver_card_number)}
               </div>
           </div>
-<<<<<<< HEAD
-          <h4 className="description-label"> Description</h4>
-=======
-          <h4 className="description-label">Description</h4>
->>>>>>> 74f0ce52be3fe86c56214ac405e1e0b5dff536cd
+          <h4 className="description-label"><FontAwesomeIcon icon={faComment}/> Description</h4>
               <div className="description">{props.transaction.transaction_description}</div>
     </div>
   );
