@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import "../../../styles/user-page/PigFunctions.css";
 import axios from "axios";
+import withdrawJar from '../../../images/withdrawJar.png'
 
 const Withdraw = function (props) {
   const handleClose = () => {
-    props.onClose();
     props.onReturn();
+    props.onClose();
   };
 
   const [vault, setVault] = useState([]);
@@ -23,7 +24,7 @@ const Withdraw = function (props) {
     setAmount(e.target.value);
   };
 
-  const makeDeposit = function () {
+  const makeWithdraw = function () {
     axios
       .post("https://mono-lite-back.azurewebsites.net/piggybank/withdraw", {
         vault_id: vault.vault_id,
@@ -40,8 +41,12 @@ const Withdraw = function (props) {
         &times;
       </button>
       <div className="func_container">
-        <h2 className="dep_label">Amount</h2>
-        <div className="dep_amount_container">
+        <div className="jar_container"><img className="jar-img" src={withdrawJar} alt='withdrawJar'/></div>
+        <h2 className="dep_label with">Amount</h2>
+        <div className="dep_amount_container with_amount">
+          <div className="allowed_sum">
+            You can withdraw : {vault.vault_balance} ₴
+          </div>
           <input
             className="dep_amount"
             type="number"
@@ -52,7 +57,7 @@ const Withdraw = function (props) {
           />
         </div>
         <div className="btn-container">
-          <button className="btn btn-pig-deposit" onClick={makeDeposit}>
+          <button className="btn btn-pig-deposit" onClick={makeWithdraw}>
             Withdraw
           </button>
         </div>

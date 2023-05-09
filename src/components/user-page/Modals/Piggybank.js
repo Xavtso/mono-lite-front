@@ -16,7 +16,7 @@ const Piggybank = function (props) {
   const [accumulated, setAccumulated] = useState(0);
   const updateVaults = function () {
     axios
-      .get(`https://mono-lite-back.azurewebsites.net/piggybank/${id}`)
+      .get(`http://localhost:5000/piggybank/${id}`)
       .then((response) => {
         const sorted = response.data.sort((a, b) => {
           let nameA = a.vault_title.toUpperCase();

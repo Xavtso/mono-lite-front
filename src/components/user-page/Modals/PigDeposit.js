@@ -1,6 +1,8 @@
 import { useState,useEffect } from "react";
 import "../../../styles/user-page/PigFunctions.css";
 import axios from "axios";
+import depositJar from '../../../images/depositJar.png'
+
 
 const PigDeposit = function (props) {
   const handleClose = () => {
@@ -40,6 +42,7 @@ const PigDeposit = function (props) {
         &times;
           </button>
           <div className="func_container">
+              <div className="jar_container"><img className="dep-jar" src={depositJar} alt="depositJar"/></div>
               <h2 className="dep_label">Amount</h2>
               <div className="dep_amount_container">
               <input className="dep_amount" type="number" min={0} value={amount} placeholder="0" onChange={handleAmount} />

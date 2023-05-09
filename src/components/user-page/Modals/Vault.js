@@ -33,13 +33,19 @@ const Vault = function (props) {
       case "deposit":
         return <PigDeposit onClose={modalClose} vault={vault} onReturn={updateInfo} />;
       case "withdraw":
-        return <Withdraw onClose={modalClose} vault={vault} />;
+        return (
+          <Withdraw onClose={modalClose} vault={vault} onReturn={updateInfo} />
+        );
       case "break":
-        return <Break onClose={modalClose} vault={vault} />;
-      case "add":
-        return <Add onClose={modalClose} vault={vault} />;
+        return (
+          <Break onClose={modalClose} vault={vault} onReturn={updateInfo} onDeepClose={handleClose } />
+        );
+      // case "add":
+      //   return <Add onClose={modalClose} vault={vault} onReturn={updateInfo} />;
       case "settings":
-        return <Settings onClose={modalClose} vault={vault} />;
+        return (
+          <Settings onClose={modalClose} vault={vault} onReturn={updateInfo} />
+        );
 
       default:
         return null;
@@ -56,7 +62,7 @@ const Vault = function (props) {
       <p className="vault_balance">{vault.vault_balance} ₴</p>
       <div className="banka-container inVault">
         <img src={banka} alt="banka" className="big-banka" />
-        <span className="target">{vault.target_sum} $ __</span>
+        <span className="target">{vault.target_sum} ₴ __</span>
       </div>
       <div className="functions">
         <div className="function" onClick={() => setActiveModal("deposit")}>
@@ -77,12 +83,12 @@ const Vault = function (props) {
           </i>
           Break
         </div>
-        <div className="function" onClick={() => setActiveModal("add")}>
+        {/* <div className="function" onClick={() => setActiveModal("add")}>
           <i className="func_icon">
             <FontAwesomeIcon icon={faUserPlus} size="xl" />
           </i>
           Add
-        </div>
+        </div> */}
         <div className="function" onClick={() => setActiveModal("settings")}>
           <i className="func_icon">
             <FontAwesomeIcon icon={faGear} size="xl" />
