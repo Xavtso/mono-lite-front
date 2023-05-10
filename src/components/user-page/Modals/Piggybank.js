@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import CreatePigyyModal from "./CreatePigyyModal";
 import Vault from "./Vault";
+import History from "./History";
 
 const Piggybank = function (props) {
   const id = localStorage.getItem("id");
@@ -70,8 +71,8 @@ const Piggybank = function (props) {
     switch (activeModal) {
       case "Create":
         return <CreatePigyyModal onClose={closeModal} />;
-      //  case "History":
-      //    return <DepositBank onClose={closeModal} />;
+       case "History":
+         return <History onClose={closeModal} />;
       default:
         return null;
     }
@@ -100,7 +101,7 @@ const Piggybank = function (props) {
           <button onClick={() => openModal("Create")} className="btn pig-btn">
             <p className="btn-icon">+</p> Create
           </button>
-          <button className="btn pig-btn">
+          <button className="btn pig-btn" onClick={() => openModal('History')}>
             <p className="btn-icon">
               <FontAwesomeIcon icon={faChartSimple} />
             </p>{" "}
