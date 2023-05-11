@@ -9,23 +9,26 @@ const Settings = function (props) {
 
   const handleClose = () => {
     props.onClose();
+    props.onReturn();
   };
   const changeTargetSum = function () {
     axios
+      .post("https://mono-lite-back.azurewebsites.net/piggybank/sum", {
+        vault_id: props.vault.vault_id,
+        target_sum: +targetSum,
+        user_id: props.vault.user_id,
+      })
+      .then((response) => response && props.onDeepClose())
+      .catch((error) => console.log(error));
+    };
+    const changeTitle = function () {
+      axios
       .post("https://mono-lite-back.azurewebsites.net/piggybank/title", {
         vault_id: props.vault.vault_id,
         vault_title: title,
+        user_id: props.vault.user_id
       })
-      .then((response) => response && handleClose())
-      .catch((error) => console.log(error));
-  };
-  const changeTitle = function () {
-    axios
-      .post("https://mono-lite-back.azurewebsites.net/piggybank/target", {
-        vault_id: props.vault.vault_id,
-        target_sum: targetSum,
-      })
-      .then((response) => response && handleClose())
+      .then((response) => response && props.onDeepClose())
       .catch((error) => console.log(error));
   };
 
@@ -58,7 +61,7 @@ const Settings = function (props) {
           <input
             type="number"
             min={50}
-            placeholder={props.vault.target_sum}
+            placeholder={props.vault.target_sum + "₴"}
             value={targetSum}
             className="change-input"
             onChange={(e) => setTargetSum(e.target.value)}

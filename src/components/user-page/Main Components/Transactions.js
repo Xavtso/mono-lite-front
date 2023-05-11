@@ -49,7 +49,7 @@ const Transactions = function () {
     axios
       .get(`https://mono-lite-back.azurewebsites.net/transactions/${id}`)
       .then((response) => {
-        setTransactions(response.data.filter(transaction => transaction.transaction_type !== 'PIG-BANK' ));
+        setTransactions(response.data.filter(transaction => transaction.transaction_type !== 'PIG-BANK' ).reverse());
       })
       .catch((error) => console.log(error));
   };

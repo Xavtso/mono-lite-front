@@ -1,0 +1,133 @@
+.Deposit-Vault-Container {
+  background-image: linear-gradient(to top left, #39b385, #9be15d);
+  width: 20rem;
+  height: 20rem;
+  border-radius: 2.2rem;
+  -webkit-border-radius: 2.2rem;
+  -moz-border-radius: 2.2rem;
+  -ms-border-radius: 2.2rem;
+  -o-border-radius: 2.2rem;
+  margin: 4rem auto;
+  rotate: -15deg;
+  box-shadow: 0px 0px 15px 2px #222;
+}
+
+.dep-vault-image {
+  rotate: 18deg;
+  transform: translate(1rem, 1rem);
+  -webkit-transform: translate(1rem, 1rem);
+  -moz-transform: translate(1rem, 1rem);
+  -ms-transform: translate(1rem, 1rem);
+  -o-transform: translate(1rem, 1rem);
+    scale: 0.9;
+}
+
+.btn-container {
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.btn-deposit-create {
+  /* text-align: center; */
+  box-shadow: 0px 0px 8px 2px #222;
+}
+
+.options-container {
+    /* border: 2px solid; */
+    display: flex;
+    justify-content: space-evenly;
+    height: fit-content;
+}
+
+.percentage-title {
+    text-align: center;
+    margin-top: 1rem;
+    text-shadow: 0px 1.5px 5px #222;
+}
+.dep-amount,
+.dep-term {
+    /* border: 2px solid; */
+    width: 100%;
+    text-align: center;
+    height: 15rem;
+}
+
+.term-title,
+.amount-title {
+    color: aliceblue;
+    font-size: 18px;
+    font-weight: 600;
+    text-shadow: 0px 1.5px 5px #222;
+    margin-bottom: 3rem;
+}
+
+.term-input {
+    display: flex;
+    /* border: 2px solid; */
+    justify-content: center;
+    color: aliceblue;
+    gap: 1rem;
+}
+.term-label {
+    color: aliceblue;
+    font-weight: 600;
+    font-size: 18px;
+    text-shadow: 0px 1.5px 5px #222;
+}
+.term-amount {
+    color: aliceblue;
+    font-size: 28px;
+    font-weight: 600;
+    text-shadow: 0px 1.5px 5px #222;
+}
+.term-btn{
+    padding: 0.4rem 1rem;
+    height: 60%;
+    margin: auto;
+    font-size: 18px;
+    background-image: linear-gradient(to top left, #39b384cf, #9be15d);   
+    box-shadow: 0px 0px 4px 0.5px #222;
+    border: none;
+    
+}
+.term-btn:hover{
+    box-shadow: 0px 0px 1px 1px #222 inset;
+    /* box-shadow: none; */
+    
+}
+
+.amount-input{
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    box-shadow: none;
+    font-size: 2.2rem;
+    width: 70%;
+    border-radius: 0.8rem;
+    border-bottom: 2px solid aliceblue;
+    -webkit-border-radius: 0.8rem;
+    -moz-border-radius: 0.8rem;
+    -ms-border-radius: 0.8rem;
+    -o-border-radius: 0.8rem;
+    caret-color: aliceblue;
+    color: aliceblue;
+    
+}
+
+
+.disabled{
+    background-color:darkgrey ;
+    cursor: not-allowed;
+    padding: 0.4rem 1rem;
+    height: 10%;
+    margin: auto;
+    font-size: 18px;
+    border: none;
+}
+
+.future-receive{
+    color: aliceblue;
+    text-align: center;
+    font-size: 14px;
+    text-shadow: 0px 1.5px 5px #222;
+}

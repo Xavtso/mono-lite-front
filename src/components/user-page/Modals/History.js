@@ -59,7 +59,6 @@ const History = function (props) {
   useEffect(() => {
     const intervalId = setInterval(() => {
       uploadTransactions();
-      console.log(transactions);
     }, 1000);
 
     // Прибирання інтервалу при розмонтажі компоненту

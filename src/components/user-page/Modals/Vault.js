@@ -2,11 +2,16 @@ import { useState, useEffect } from "react";
 import "../../../styles/user-page/Vault.css";
 import banka from "../../../images/Дизайн без назви (10).png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGear, faHammer, faMoneyBills, faPiggyBank, faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faGear,
+  faHammer,
+  faMoneyBills,
+  faPiggyBank,
+} from "@fortawesome/free-solid-svg-icons";
 import PigDeposit from "./PigDeposit";
 import Withdraw from "./Withdraw";
 import Break from "./Break";
-import Add from "./Add";
+// import Add from "./Add";
 import Settings from "./Settings";
 
 const Vault = function (props) {
@@ -31,20 +36,36 @@ const Vault = function (props) {
   const renderModal = () => {
     switch (activeModal) {
       case "deposit":
-        return <PigDeposit onClose={modalClose} vault={vault} onReturn={updateInfo} />;
+        return (
+          <PigDeposit
+            onClose={modalClose}
+            vault={vault}
+            onReturn={updateInfo}
+          />
+        );
       case "withdraw":
         return (
           <Withdraw onClose={modalClose} vault={vault} onReturn={updateInfo} />
         );
       case "break":
         return (
-          <Break onClose={modalClose} vault={vault} onReturn={updateInfo} onDeepClose={handleClose } />
+          <Break
+            onClose={modalClose}
+            vault={vault}
+            onReturn={updateInfo}
+            onDeepClose={handleClose}
+          />
         );
       // case "add":
       //   return <Add onClose={modalClose} vault={vault} onReturn={updateInfo} />;
       case "settings":
         return (
-          <Settings onClose={modalClose} vault={vault} onReturn={updateInfo} />
+          <Settings
+            onClose={modalClose}
+            vault={vault}
+            onReturn={updateInfo}
+            onDeepClose={handleClose}
+          />
         );
 
       default:
