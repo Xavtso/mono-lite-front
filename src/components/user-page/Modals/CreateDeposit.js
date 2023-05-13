@@ -23,8 +23,10 @@ const CreateDeposit = function (props) {
       let increased = month + 1;
       setMonth(increased);
     }
+  
+    
   };
-
+  
   const handleInterest = function () {
     if (month <= 6 && month >= 4) {
       setInterest(12);
@@ -35,6 +37,7 @@ const CreateDeposit = function (props) {
     } else if (month > 9 && month < 12) {
       setInterest(14);
     } else setInterest(15);
+
   };
 
   const calculateResult = function () {
@@ -43,6 +46,18 @@ const CreateDeposit = function (props) {
   };
 
   useEffect(() => {
+    if (month === 3) {
+      document.getElementById("reduce").classList.add("disabled");
+    } else {
+      document.getElementById("reduce").classList.remove("disabled");
+    }
+
+    if (month === 36) {
+      document.getElementById("increase").classList.add("disabled");
+    } else {
+      document.getElementById("increase").classList.remove("disabled");
+    }
+
     calculateResult();
     handleInterest();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -97,7 +112,7 @@ const CreateDeposit = function (props) {
             </button>
             <p className="term-label">
               {" "}
-              <span className="term-amount">{month} </span> month
+              <span className="term-amount">{month} </span> mth
             </p>
             <button className="term-btn" id="increase" onClick={handleMonth}>
               +

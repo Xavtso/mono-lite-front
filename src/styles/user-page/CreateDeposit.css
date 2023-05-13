@@ -2,23 +2,18 @@
   background-image: linear-gradient(to top left, #39b385, #9be15d);
   width: 20rem;
   height: 20rem;
-  border-radius: 2.2rem;
-  -webkit-border-radius: 2.2rem;
-  -moz-border-radius: 2.2rem;
-  -ms-border-radius: 2.2rem;
-  -o-border-radius: 2.2rem;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
   margin: 4rem auto;
-  rotate: -15deg;
-  box-shadow: 0px 0px 15px 2px #222;
+  /*rotate: -15deg;
+  */box-shadow: 0px 0px 15px 2px #222;
 }
 
 .dep-vault-image {
-  rotate: 18deg;
-  transform: translate(1rem, 1rem);
-  -webkit-transform: translate(1rem, 1rem);
-  -moz-transform: translate(1rem, 1rem);
-  -ms-transform: translate(1rem, 1rem);
-  -o-transform: translate(1rem, 1rem);
+  /* rotate: 18deg; */
     scale: 0.9;
 }
 
@@ -116,7 +111,7 @@
 
 
 .disabled{
-    background-color:darkgrey ;
+    background-image: linear-gradient(to top left, #444f4bcf, #606a58);
     cursor: not-allowed;
     padding: 0.4rem 1rem;
     height: 10%;

@@ -25,7 +25,7 @@ const DepositBank = function (props) {
 
   const calculateTotalDepositBalance = function () {
     const totalBalance = deposits.reduce((acc, val) => acc + val.amount, 0);
-    setAccumulated(totalBalance);
+    setAccumulated(totalBalance.toFixed(2));
   };
 
   useEffect(() => {
@@ -74,7 +74,7 @@ const DepositBank = function (props) {
       <div className="amount piggybank-amount">
         <span className="pig-title">In Vaults</span>
         <br />
-        {accumulated.toFixed(2)} ₴
+        {accumulated} ₴
       </div>
       <div className="screen screen-deposit-bank">
         <div className="pig-controls">

@@ -90,6 +90,10 @@
     background: linear-gradient(to right bottom, #ff99cc, #ff6699, #ff3377, #ff0066, #cc0055);
   
 }
+.movements__type--deposit {
+    background: linear-gradient(to right bottom, #3d8b3d, #367836, #2f6e2f, #296229, #235823);
+  
+}
 
 .movements__value {
   font-size: 1.7rem;

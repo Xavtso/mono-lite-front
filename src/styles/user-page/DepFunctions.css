@@ -1,0 +1,73 @@
+.replenishImg {
+  scale: 0.8;
+  margin-left: 2rem;
+}
+
+.replenish-title {
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.input-label {
+  font-size: 18px;
+  margin-right: auto;
+}
+
+.input-box {
+  text-align: center;
+  display: flex;
+  width: 60%;
+  margin-inline: auto;
+  margin-top: 5rem;
+  align-items: center;
+}
+
+.dep-btn {
+  border-radius: 1.5rem;
+  -webkit-border-radius: 1.5rem;
+  -moz-border-radius: 1.5rem;
+  -ms-border-radius: 1.5rem;
+  -o-border-radius: 1.5rem;
+  box-shadow: 0px 0px 10px 1px #222;
+}
+
+.dep-btn-container {
+  transform:translateY(5rem) ;
+  -webkit-transform:translateY(5rem) ;
+  -moz-transform:translateY(5rem) ;
+  -ms-transform:translateY(5rem) ;
+  -o-transform:translateY(5rem) ;
+}
+
+.dep-input {
+  border: none;
+  color: aliceblue;
+  caret-color: aliceblue;
+  box-shadow: none;
+  background-color: transparent;
+  font-size: 2.2rem;
+  border-radius: 0.5rem;
+  border-bottom: 2px solid;
+  text-align: center;
+  width: fit-content;
+  max-width: 17rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
+.expected-amount {
+  margin: 1rem auto;
+  text-align: center;
+  font-size: 14px;
+  color: #b9bcbd;
+}
+
+.takeout-question{
+    color: aliceblue;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    width: 85%;
+    margin-inline:auto ;
+}
