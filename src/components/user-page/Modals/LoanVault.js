@@ -3,8 +3,6 @@ import vaultImg from "../../../images/vaultOpened(loan).png";
 import "../../../styles/user-page/LoanFunc.css";
 import { faCoins, faMoneyBill1Wave } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
-import DepReplenish from "./DepReplenish";
-import DepTakeout from "./DepTakeout";
 import LoanPayPart from "./LoanPayPart";
 import LoanPayFull from "./LoanPayFull";
 

@@ -5,9 +5,7 @@ import axios from "axios";
 
 const CreateLoan = function (props) {
   const [month, setMonth] = useState(12);
-  const [interest, setInterest] = useState(15);
   const [amount, setAmount] = useState(10000);
-  const [result, setResult] = useState(0);
   const id = localStorage.getItem("id");
   const handleClose = () => {
     props.onClose();
@@ -25,8 +23,6 @@ const CreateLoan = function (props) {
     }
   };
 
-
-
   useEffect(() => {
     if (month === 6) {
       document.getElementById("reduce").classList.add("disabled");
@@ -39,7 +35,6 @@ const CreateLoan = function (props) {
     } else {
       document.getElementById("increase").classList.remove("disabled");
     }
-
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [month]);

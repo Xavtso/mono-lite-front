@@ -5,9 +5,8 @@ import axios from "axios";
 
 const LoanPayPart = function (props) {
   const [amount, setAmount] = useState(props.vault.monthly_payment);
-  const [expected, setExpected] = useState("");
-    const [vault, setVault] = useState([]);
-    const [message,setMessage] = useState('')
+  const [vault, setVault] = useState([]);
+  const [message, setMessage] = useState("");
 
   const handleClose = () => {
     props.onClose();
@@ -21,14 +20,7 @@ const LoanPayPart = function (props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [vault]);
 
-  useEffect(() => {
-    const newAmount = vault.amount + +amount;
-    const newExpected =
-      newAmount + ((+newAmount * vault.interest_rate) / 12) * vault.term;
-    setExpected(newExpected.toFixed(2));
-  }, [amount, vault]);
-
-    const payloan = function () {
+  const payloan = function () {
     axios
       .post("https://mono-lite-back.azurewebsites.net/loans/pay/part", {
         id: vault.id,
@@ -60,8 +52,10 @@ const LoanPayPart = function (props) {
           className="dep-input"
         />
       </div>
-          <h3 className="expected-amount">Need to pay : {vault.monthly_payment} ₴</h3>
-          <p className="alert">{message}</p>
+      <h3 className="expected-amount">
+        Need to pay : {vault.monthly_payment} ₴
+      </h3>
+      <p className="alert">{message}</p>
       <div className="btn-container dep-btn-container">
         <button className="btn loan_func" onClick={payloan}>
           Pay
