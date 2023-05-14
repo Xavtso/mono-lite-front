@@ -40,6 +40,8 @@ const DepositBank = function (props) {
     };
   });
 
+
+
   const closeModal = () => {
     setActiveModal(null);
   };

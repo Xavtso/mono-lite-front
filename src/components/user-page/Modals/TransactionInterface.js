@@ -1,25 +1,24 @@
 import {
-    faComment,
+  faComment,
   faCreditCard,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from "react";
 
 const TransactionInterface = function (props) {
   const handleClose = function () {
     props.onClose();
   };
 
+  const [transaction, setTansaction] = useState([]);
+
   const id = localStorage.getItem("id");
 
-  const formatCardNumber = (number) => {
-    if (number) {
-      const cleanedNumber = number.replace(/\D/g, "");
-      const formattedNumber = cleanedNumber.match(/.{1,4}/g).join(" ");
-      return formattedNumber;
-    }
-    return "";
-  };
+  useEffect(() => {
+    setTansaction(props.transaction);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="interface">
@@ -32,10 +31,10 @@ const TransactionInterface = function (props) {
             <FontAwesomeIcon icon={faUser} className="users__icon" />
           </div>
           <h4>
-            {props.transaction.transaction_type === "TRANSFER" &&
-            props.transaction.receiver_card_id === +id
-              ? props.transaction.sender_full_name
-              : props.transaction.receiver_full_name}
+            {transaction.transaction_type === "TRANSFER" &&
+            transaction.receiver_card_id === +id
+              ? transaction.sender_full_name
+              : transaction.receiver_full_name}
           </h4>
         </div>
         <div className="receiver-card">
@@ -43,14 +42,16 @@ const TransactionInterface = function (props) {
             icon={faCreditCard}
             style={{ color: "#00d9f5", marginRight: "1rem" }}
           />{" "}
-          {props.transaction.transaction_type === "TRANSFER" &&
-          props.transaction.receiver_card_id === +id
-            ? props.transaction.sender_full_name
-            : formatCardNumber(props.transaction.receiver_card_number)}
-              </div>
-          </div>
-          <h4 className="description-label"><FontAwesomeIcon icon={faComment}/> Description</h4>
-              <div className="description">{props.transaction.transaction_description}</div>
+          {transaction.transaction_type === "TRANSFER" &&
+          transaction.receiver_card_id === +id
+            ? transaction.sender_full_name
+            : transaction.receiver_card_number}
+        </div>
+      </div>
+      <h4 className="description-label">
+        <FontAwesomeIcon icon={faComment} /> Description
+      </h4>
+      <div className="description">{transaction.transaction_description}</div>
     </div>
   );
 };

@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
-import repImg from "../../../images/depReplenish.png";
-import "../../../styles/user-page/DepFunctions.css";
+import loanImg from "../../../images/loan.png";
+import "../../../styles/user-page/LoanFunc.css";
 import axios from "axios";
-const DepReplenish = function (props) {
-  const [amount, setAmount] = useState(500);
+
+const LoanPayPart = function (props) {
+  const [amount, setAmount] = useState(props.vault.monthly_payment);
   const [expected, setExpected] = useState("");
-  const [vault, setVault] = useState([]);
+    const [vault, setVault] = useState([]);
+    const [message,setMessage] = useState('')
 
   const handleClose = () => {
     props.onClose();
@@ -26,15 +28,15 @@ const DepReplenish = function (props) {
     setExpected(newExpected.toFixed(2));
   }, [amount, vault]);
 
-  const makeDeposit = function () {
+    const payloan = function () {
     axios
-      .post("https://mono-lite-back.azurewebsites.net/deposits/update", {
+      .post("https://mono-lite-back.azurewebsites.net/loans/pay/part", {
         id: vault.id,
         amount: +amount,
-        user_id: vault.user_id,
+        borrower_id: vault.borrower_id,
       })
       .then((response) => console.log(response))
-      .catch((error) => console.log(error));
+      .catch((error) => setMessage(error.response.data.message));
   };
 
   return (
@@ -42,10 +44,10 @@ const DepReplenish = function (props) {
       <button className="btn--close-modal" onClick={handleClose}>
         &times;
       </button>
-      <div className="vault-container">
-        <img src={repImg} alt="vaultOpened" className="replenishImg" />
+      <div className="loanMen-container">
+        <img src={loanImg} alt="vaultOpened" className="loanImg" />
       </div>
-      <h2 className="replenish-title">Replenish</h2>
+      <h2 className="replenish-title">Pay Part</h2>
       <div className="input-box">
         <h3 className="input-label">Amount :</h3>
         <input
@@ -58,13 +60,14 @@ const DepReplenish = function (props) {
           className="dep-input"
         />
       </div>
-      <h3 className="expected-amount">Expected amount : {expected} ₴</h3>
+          <h3 className="expected-amount">Need to pay : {vault.monthly_payment} ₴</h3>
+          <p className="alert">{message}</p>
       <div className="btn-container dep-btn-container">
-        <button className="btn dep-btn" onClick={makeDeposit}>
-          Deposit
+        <button className="btn loan_func" onClick={payloan}>
+          Pay
         </button>
       </div>
     </div>
   );
 };
-export default DepReplenish;
+export default LoanPayPart;

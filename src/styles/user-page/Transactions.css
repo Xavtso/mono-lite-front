@@ -94,6 +94,11 @@
     background: linear-gradient(to right bottom, #3d8b3d, #367836, #2f6e2f, #296229, #235823);
   
 }
+.movements__type--LOAN {
+
+    background: linear-gradient(to left, #0095ff,#8080de);
+  
+}
 
 .movements__value {
   font-size: 1.7rem;

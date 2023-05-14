@@ -1,0 +1,44 @@
+.loan-icon{
+    background: linear-gradient(to left, aqua,rgba(0, 0, 255, 0.5));
+    
+}
+
+.img-small-loan{
+    scale: 1.5;
+    margin-left: -2rem auto;
+}
+.loan-vault-icon{
+        text-align: center;
+        background: none;
+        padding: 0.3rem 0.7rem;
+        /*background: linear-gradient(to right bottom, #58c558, #098509);
+        */
+        margin-left: -2rem;
+ } 
+
+
+ .custom-loader-loan {
+  width: 120px;
+  height: 120px;
+  border:30px solid #E4E4ED;
+  border-radius: 50%;
+  position: relative;
+  transform:rotate(45deg);
+  margin: 4rem auto;
+}
+.custom-loader-loan::before {
+  content: "";
+  position: absolute;
+  inset:-30px;
+  border-radius: 50%;
+  border:30px solid #53BEF4;
+  animation: p8 2s infinite linear;
+}
+
+@keyframes p8 {
+    0%   {clip-path:polygon(50% 50%,0 0,0    0,0    0   ,0    0   ,0    0   )}
+    25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0   ,100% 0   ,100% 0   )}
+    50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+    75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0    100%,0    100%)}
+    100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0    100%,0    0   )}
+}

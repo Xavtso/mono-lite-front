@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const Timer = () => {
-  const [timeLeft, setTimeLeft] = useState(300);
+  const [timeLeft, setTimeLeft] = useState(180);
 
   useEffect(() => {
     if (timeLeft === 0) {

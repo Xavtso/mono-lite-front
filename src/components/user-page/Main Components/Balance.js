@@ -37,12 +37,6 @@ const Balance = function (props) {
           {balance} <span id="currency">₴</span>
         </span>
       </div>
-      <div className="loan-balance">
-        <span className="loan-balance__label">Loan balance: </span>
-        <span className="loan-balance__value">
-          0 <span id="currency">₴</span>
-        </span>
-      </div>
     </div>
   );
 };
