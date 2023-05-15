@@ -11,6 +11,8 @@ const Withdraw = function (props) {
 
   const [vault, setVault] = useState([]);
   const [amount, setAmount] = useState("");
+  const [message, setMessage] = useState("");
+
 
   const updateInfo = () => {
     setVault(props.vault);
@@ -32,7 +34,7 @@ const Withdraw = function (props) {
         amount: +amount,
       })
       .then((response) => response && handleClose())
-      .catch((error) => console.log(error));
+      .catch((error) => setMessage(error.response.data.message));
   };
 
   return (
@@ -56,6 +58,7 @@ const Withdraw = function (props) {
             onChange={handleAmount}
           />
         </div>
+        <p className="alert">{ message}</p>
         <div className="btn-container">
           <button className="btn btn-pig-deposit" onClick={makeWithdraw}>
             Withdraw

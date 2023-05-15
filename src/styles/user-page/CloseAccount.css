@@ -51,7 +51,8 @@
 
 .control-delete{
     position: relative;
-    left: 27rem;
+    left: 1rem;
+    width: 12rem;
     color: aliceblue;
     border-radius:20px;
     padding: 0.6rem 2rem;

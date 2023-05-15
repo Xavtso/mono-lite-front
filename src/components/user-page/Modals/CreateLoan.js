@@ -6,6 +6,7 @@ import axios from "axios";
 const CreateLoan = function (props) {
   const [month, setMonth] = useState(12);
   const [amount, setAmount] = useState(10000);
+  const [message, setMessage] = useState("");
   const id = localStorage.getItem("id");
   const handleClose = () => {
     props.onClose();
@@ -48,7 +49,7 @@ const CreateLoan = function (props) {
         term: month,
       })
       .then((response) => response && handleClose())
-      .catch((error) => console.log(error));
+      .catch((error) => setMessage(error.response.data.message));
   };
 
   return (
@@ -96,6 +97,7 @@ const CreateLoan = function (props) {
           </div>
         </div>
       </div>
+      <p className="alert">{message}</p>
       <div className="btn-container">
         <button className="btn btn-take-loan" onClick={createDeposit}>
           Take Loan

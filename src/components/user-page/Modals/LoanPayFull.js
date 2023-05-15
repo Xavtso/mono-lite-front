@@ -6,6 +6,7 @@ import axios from "axios";
 const LoanPayFull = function (props) {
   //   const [amount, setAmount] = useState(500);
   const [vault, setVault] = useState([]);
+  const [message, setMessage] = useState("");
 
   const handleClose = () => {
     props.onClose();
@@ -31,7 +32,7 @@ const LoanPayFull = function (props) {
         amount: +vault.amount_to_pay,
       })
       .then((response) => response && handleWithdrawClose())
-      .catch((error) => console.log(error));
+      .catch((error) => setMessage(error.response.data.message));
   };
 
   return (
@@ -49,6 +50,7 @@ const LoanPayFull = function (props) {
       <h3 className="expected-amount">
         Amount to pay : {vault.amount_to_pay} ₴
       </h3>
+      <p className="alert"> {message}</p>
       <div className="btn-container dep-btn-container">
         <button className="btn loan_func" onClick={takeMoney}>
           Pay Off

@@ -25,7 +25,7 @@ const Loan = function (props) {
   };
 
   const calculateTotalDepositBalance = function () {
-    const totalBalance = loans.reduce((acc, val) => acc + val.amount, 0);
+    const totalBalance = loans.reduce((acc, val) => acc + val.amount_to_pay, 0);
     setAccumulated(totalBalance.toFixed(2));
   };
 
@@ -73,7 +73,7 @@ const Loan = function (props) {
         &times;
       </button>
       <div className="amount piggybank-amount">
-        <span className="pig-title">Loan Balance</span>
+        <span className="pig-title">Need to Pay</span>
         <br />
         {accumulated} ₴
       </div>

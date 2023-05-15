@@ -5,7 +5,8 @@ import axios from "axios";
 const TransferModal = function (props) {
   const [inputAmountValue, setInputAmountValue] = useState("");
   const [inputDescriptionValue, setInputDescriptionValue] = useState("");
-
+  const [message, setMessage] = useState("");
+  
   const closeModal = function () {
     props.onClose();
   };
@@ -33,7 +34,7 @@ const TransferModal = function (props) {
         receiver_card_number: user.card_number,
       })
       .then((response) => response && closeModals())
-      .catch((error) => console.log(error));
+      .catch((error) => setMessage(error.response.data.message));
   }
 
   return (
@@ -65,6 +66,7 @@ const TransferModal = function (props) {
           onChange={handleDescription}
           placeholder="You can leave comment here"
         />
+        <p className="alert">{message}</p>
         <button className="btn transfer-btn" onClick={makeTransaction}>Send</button>
       </form>
     </div>
