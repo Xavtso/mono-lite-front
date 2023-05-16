@@ -52,8 +52,8 @@ const Balance = function (props) {
       .post("https://mono-lite-back.azurewebsites.net/currency", {
         currency_id: currencyEUR.currencyCodeA,
         date: currencyEUR.date,
-        rateSell: currencyUSD.rateSell,
-        rateBuy: currencyUSD.rateBuy,
+        rateSell: currencyEUR.rateSell,
+        rateBuy: currencyEUR.rateBuy,
       })
       .then((response) => response && "")
       .catch((error) => console.log(error));
