@@ -9,8 +9,9 @@ import { useNavigate } from "react-router-dom";
 const UserPage = function () {
 const navigate = useNavigate()
   useEffect(() => {
-  navigate('/account')
-})
+    navigate("/account");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
   return (
     <main>
