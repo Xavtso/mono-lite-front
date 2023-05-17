@@ -116,7 +116,7 @@ const Transactions = function () {
     setFilteredContent(
       content.filter((mov) =>
         mov === []
-          ? `Here can be your ${option}'s`
+          ? <p>Here can be your {option}'s</p>
           : mov.props.children[0].props.children === `${option}`,
       ),
     );
