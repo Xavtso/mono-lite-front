@@ -1,5 +1,0 @@
-{
-  "appService.zipIgnorePattern": ["node_modules{,/**}", ".vscode{,/**}"],
-  "appService.defaultWebAppToDeploy": "/subscriptions/4c6e3ec7-dff8-4788-9283-cec2c4229741/resourceGroups/mono_lite/providers/Microsoft.Web/sites/Mono-Lite",
-  "appService.deploySubpath": "."
-}
