@@ -1,11 +1,19 @@
 import { useEffect, useState } from "react";
 import "../../../styles/user-page/Balance.css";
 import axios from "axios";
+import Currency from "./Currency";
 
 const Balance = function (props) {
   const [balance, setBalance] = useState(props.cardInfo.card_balance);
   const [currencyUSD, setCurrencyUSD] = useState([]);
   const [currencyEUR, setCurrencyEUR] = useState([]);
+  const [modal, setModal] = useState(false);
+
+
+  const toggleModal = () => {
+    setModal(!modal);
+  }
+
 
   const fetchBalance = async () => {
     const id = localStorage.getItem("id");
@@ -91,8 +99,9 @@ const Balance = function (props) {
         <span className="balance__value">
           {balance} <span id="currency">₴</span>
         </span>
-        <button onClick={""}>click</button>
       </div>
+      <button className="btn btn-openCurrency" onClick={toggleModal}>Currency</button>
+      {modal ? <Currency onClose={toggleModal} /> : null}
     </div>
   );
 };

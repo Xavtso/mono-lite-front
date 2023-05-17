@@ -1,0 +1,20 @@
+.btn-openCurrency{
+    background-color: transparent;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(210deg,#cda3ab96,#9385BC);
+    box-shadow: 0px 0px 5px 1px #524f4f;
+}
+
+.btn-openCurrency:hover{
+
+    /* background: linear-gradient(210deg,#cda3ab96,#9385BC); */
+    background-color: transparent;
+}
+
+.currency-modal{
+    background-color: #524f4f;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
