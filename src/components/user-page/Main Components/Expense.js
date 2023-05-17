@@ -38,6 +38,7 @@ const Expense = function () {
   };
 
   const handleTransactionAmountChange = (event) => {
+    setMessage('')
     setTransactionAmount(event.target.value);
   };
   return (
