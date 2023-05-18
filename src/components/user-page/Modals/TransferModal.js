@@ -11,7 +11,6 @@ const TransferModal = function (props) {
     props.onClose();
   };
   const user = props.user;
-  console.log(user);
   const handleDescription = function (e) {
     setInputDescriptionValue(e.target.value);
   };

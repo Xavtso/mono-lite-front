@@ -86,7 +86,7 @@ const Transfer = function (props) {
       </div>
       <div className="screen screen-transfer">
         <span>Or choose account</span>
-        <UsersList users={filteredUsers} modalClose={handleClose} />
+        <UsersList users={users} modalClose={handleClose} />
       </div>
     </div>
   );
