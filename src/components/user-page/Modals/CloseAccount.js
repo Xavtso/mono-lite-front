@@ -53,13 +53,8 @@ const CloseAccount = function (props) {
         email: email,
         password: password,
       })
-      .then(function (response) {
-        storage.setItem("token", response.data.token);
-        const decoded = jwtDecode(response.data.token);
-        storage.setItem("id", decoded.id);
-        navigateTo("/");
-      })
-      .catch(function (error) {
+      .then((response) => response && navigateTo("/"))
+      .catch((error) => {
         setMessage(error.response.data.message);
       });
   };
