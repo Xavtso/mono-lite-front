@@ -36,6 +36,7 @@ const Currency = function (props) {
 
   useEffect(() => {
     updateCurrencyInfo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getUserBalance = function () {
@@ -47,6 +48,7 @@ const Currency = function (props) {
 
   useEffect(() => {
     getUserBalance();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSelectedCurrency = function (e) {
