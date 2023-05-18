@@ -48,8 +48,10 @@ const Transfer = function (props) {
     const filtered = users.filter((user) => {
       const name = `${user.first_name} ${user.second_name}`;
       return (
-        name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        user.card_number.toLowerCase().includes(searchQuery.toLowerCase())
+        name &&
+        (name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          (user.card_number &&
+            user.card_number.toLowerCase().includes(searchQuery.toLowerCase())))
       );
     });
     setFilteredUsers(filtered);
