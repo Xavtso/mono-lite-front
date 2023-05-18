@@ -23,6 +23,7 @@ const Currency = function (props) {
   const [showModal, setShowModal] = useState(false);
   const [amount, setAmount] = useState("");
   const [btnClass, setBtnClass] = useState("spacer");
+  const [message, setMessage] = useState(null);
 
   const updateCurrencyInfo = function () {
     axios
@@ -56,6 +57,7 @@ const Currency = function (props) {
   };
 
   const expandModal = function (e) {
+    setMessage(null)
     setShowModal(true);
     setSelectedOperation(e.target.value);
     setBtnClass("");
@@ -64,7 +66,7 @@ const Currency = function (props) {
   const reduceModal = () => {
     setShowModal(false);
     setBtnClass("spacer");
-    setAmount('')
+    setAmount("");
   };
 
   const buyOrSellCurrency = function () {
@@ -79,8 +81,8 @@ const Currency = function (props) {
         amount: +amount,
         currencyCode: selectedCurrency,
       })
-      .then((response) => response &&  getUserBalance(),reduceModal() )
-      .catch((error) => console.log(error));
+      .then((response) => response && getUserBalance(), reduceModal())
+      .catch((error) => setMessage(error.response.data.message));
   };
 
   return (
@@ -147,6 +149,7 @@ const Currency = function (props) {
             </button>
           </div>
         )}
+        <p className="currency-alert">{message }</p>
         <div className={`currency-controls ${btnClass}`}>
           <button
             className="btn pig-btn curr-btn"

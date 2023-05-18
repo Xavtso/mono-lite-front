@@ -218,5 +218,17 @@
 }
 
 .spacer{
-    margin-top: 8rem;
+    margin-top: 7rem;
+}
+
+.currency-alert{
+  color: red;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  transform: translateY(4rem);
+  -webkit-transform: translateY(4rem);
+  -moz-transform: translateY(4rem);
+  -ms-transform: translateY(4rem);
+  -o-transform: translateY(4rem);
 }
