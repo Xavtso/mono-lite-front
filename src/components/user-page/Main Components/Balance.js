@@ -1,19 +1,11 @@
 import { useEffect, useState } from "react";
 import "../../../styles/user-page/Balance.css";
 import axios from "axios";
-import Currency from "./Currency";
 
 const Balance = function (props) {
   const [balance, setBalance] = useState(props.cardInfo.card_balance);
   const [currencyUSD, setCurrencyUSD] = useState([]);
   const [currencyEUR, setCurrencyEUR] = useState([]);
-  const [modal, setModal] = useState(false);
-
-
-  const toggleModal = () => {
-    setModal(!modal);
-  }
-
 
   const fetchBalance = async () => {
     const id = localStorage.getItem("id");
@@ -39,9 +31,7 @@ const Balance = function (props) {
       .catch((error) => console.log(error));
   };
 
-  useEffect(() => {
-    //  testApi();
-  }, []);
+
 
   const updateCurrenciesInfo = function () {
     // update USD info
@@ -71,7 +61,7 @@ const Balance = function (props) {
     const intervalId = setInterval(() => {
       getCurrencyInfo();
       updateCurrenciesInfo();
-    }, 300000 * 60); // Виконувати кожні 5 хвилин
+    }, 600000 * 60); // Виконувати кожні 5 хвилин
     // ...
     return () => {
       clearInterval(intervalId);
@@ -81,7 +71,7 @@ const Balance = function (props) {
   }, []);
 
   useEffect(() => {
-    //КОСТИЛЬ ?
+    //КОСТИЛЬ ? (Of course)
     // Виконання періодичного запиту на сервер кожні 5 секунд
     const intervalId = setInterval(() => {
       fetchBalance();
@@ -100,8 +90,6 @@ const Balance = function (props) {
           {balance} <span id="currency">₴</span>
         </span>
       </div>
-      <button className="btn btn-openCurrency" onClick={toggleModal}>Currency</button>
-      {modal ? <Currency onClose={toggleModal} /> : null}
     </div>
   );
 };

@@ -47,6 +47,10 @@
    background: linear-gradient(to right bottom, #ff6565, hsl(0, 71%, 60%), #f12c2c, #ff3333, #f90606);
 
 }
+.modal-currency{
+    background: linear-gradient(to right bottom, #8a2be2, #a741e3, #c557e4, #dd6ce6, #cc52c4);
+
+}
 
 .amount{
     color: #eee;

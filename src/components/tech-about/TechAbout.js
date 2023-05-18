@@ -1,100 +1,35 @@
-import { useState,useEffect } from 'react';
-import '../../styles/TechAbout.css'
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarDays, faCreditCard, faUser } from '@fortawesome/free-solid-svg-icons';
+import "../../styles/TechAbout.css";
+import { useNavigate } from "react-router-dom";
 
 const TechAbout = function () {
-    const [users, setUsers] = useState([])
-    const [btnClassList, setBtnClassList] = useState('btn--show')
-    const [userClassList, setUserClassList] = useState('hidden')
-    
-    const getUsers = function () {
-        axios
-          .get("https://mono-lite-back.azurewebsites.net/users")
-          .then((response) => {
-            setUsers(response.data.reverse());
-          })
-          .catch((error) => console.log(error));
-      
-      // users.map(user => console.log(user.imageUrl))
-    };
-
-    useEffect(() => {
-      getUsers();
-    }, []);
-
-    const formatCardNumber = (number) => {
-      if (number) {
-        const cleanedNumber = number.replace(/\D/g, "");
-        const formattedNumber = cleanedNumber.match(/.{1,4}/g).join(" ");
-        return formattedNumber;
-      }
-      return "";
-    };
-
-    const formatDate = function (date) {
-      const now = new Date();
-      const diff = now - date;
-
-      if (diff < 60000) {
-        // менше 1 хвилини
-        return "щойно";
-      } else if (diff < 1800000) {
-        // менше 30 хвилин
-        const minutesAgo = Math.floor(diff / 60000);
-        return `${minutesAgo} хв. тому`;
-      } else if (diff < 3600000) {
-        // менше 1 години
-        const minutesAgo = Math.floor(diff / 60000);
-        return `${minutesAgo} хв. тому`;
-      } else if (now.toDateString() === date.toDateString()) {
-        // в той же день
-        return "сьогодні";
-      } else if (diff < 86400000) {
-        // менше 1 доби
-        return "учора";
-      } else {
-        // більше 1 доби
-        const day = String(date.getDate()).padStart(2, "0");
-        const month = String(date.getMonth() + 1).padStart(2, "0");
-        const year = date.getFullYear();
-        return `${day}.${month}.${year}`;
-      }
-    };
-
-    const showUsers = function () {
-        setBtnClassList('hidden')
-        setUserClassList('users')
-    }
-
-    const navigate = useNavigate();
-    const navigateTo = function () {
-        navigate('/account')
-    }
+  const navigate = useNavigate();
+  const navigateTo = function () {
+    navigate("/account");
+  };
 
   return (
-      <div className="main">
-          <button className='back' onClick={navigateTo}>Go Back</button>
+    <div className="main">
+      <button className="back" onClick={navigateTo}>
+        Go Back
+      </button>
       <h1 className="tech-title">Main info you should to know</h1>
       <div className="rules">
         <div className="rule loans-rule">
           <h2>Loans</h2>
           <ol className="list">
-            <li className="list-item">progress</li>
-            <li className="list-item">progress</li>
-            <li className="list-item">progress</li>
-            <li className="list-item">progress</li>
+            <li className="list-item">Every month amount to pay will increase</li>
+            <li className="list-item">You can't pay less than fixed payment</li>
+            <li className="list-item">You can pay all amount by one time</li>
+            <li className="list-item">You can have any amount of credits</li>
           </ol>
         </div>
         <div className="rule deposits-rule">
           <h2>Deposits</h2>
           <ol className="list">
-            <li className="list-item">progress</li>
-            <li className="list-item">progress</li>
-            <li className="list-item">progress</li>
-            <li className="list-item">progress</li>
+            <li className="list-item">You must to have enough money</li>
+            <li className="list-item">You can get money back in any time</li>
+            <li className="list-item">You can deposit more in any time</li>
+            <li className="list-item">You can have any amount of deposits</li>
           </ol>
         </div>
         <div className="rule transfers-rule">
@@ -130,17 +65,17 @@ const TechAbout = function () {
             </li>
           </ol>
         </div>
-              <div className="rule piggybank-rule">
-                  <h2>PiggyBank</h2>
+        <div className="rule piggybank-rule">
+          <h2>PiggyBank</h2>
           <ol className="list">
-            <li className="list-item">progress</li>
-            <li className="list-item">progress</li>
-            <li className="list-item">progress</li>
-            <li className="list-item">progress</li>
+            <li className="list-item">You can have any amount of Jars</li>
+            <li className="list-item">You can't withdraw more than you have</li>
+            <li className="list-item">After break you will receive all jar balance</li>
+            <li className="list-item">You can accumulate more that target</li>
           </ol>
         </div>
-              <div className="rule closeaccount-rule">
-                  <h2>CloseAccount</h2>
+        <div className="rule closeaccount-rule">
+          <h2>CloseAccount</h2>
           <ol className="list">
             <li className="list-item">
               Ok it's very simple - you just need to enter your email and
@@ -151,42 +86,28 @@ const TechAbout = function () {
             </li>
           </ol>
         </div>
-              <div className="rule simulate-deposit-rule">
-                <h2>Simulate Deposit</h2>
+        <div className="rule simulate-deposit-rule">
+          <h2>Simulate Deposit</h2>
           <ol className="list">
             <li className="list-item">
               Amount must to be less 50k at one time
             </li>
-            <li className="list-item">
-              Balance must to be less than 250k
-            </li>
-            <li className="list-item">
-              Else your card can be blocked
-            </li>
+            <li className="list-item">Balance must to be less than 250k</li>
+            <li className="list-item">Else your card can be blocked</li>
             <li className="list-item">
               Only one rule - balance must to be more than amount
             </li>
           </ol>
         </div>
-              <div className="rule simulate-expense-rule">
-                 <h2>Simulate Expense</h2> 
+        <div className="rule simulate-expense-rule">
+          <h2>Simulate Expense</h2>
           <ol className="list">
             <li className="list-item">
               Only one rule - balance must to be more than amount
             </li>
           </ol>
         </div>
-          </div>
-              <button className={btnClassList} onClick={showUsers}>Show Users</button>
-          <div className={userClassList}>
-              {users ? users.map(user => (
-                  <div key={user.createdAt} className="user">
-                <p className="username"><FontAwesomeIcon icon={faUser}/>  {user.first_name + ' ' + user.second_name}</p>
-                <p className="cardnumber"><FontAwesomeIcon icon={faCreditCard}/>  {formatCardNumber(user.card_number)}</p>
-                <span className="registerAt"><FontAwesomeIcon icon={faCalendarDays}/>  Register at {formatDate(new Date(user.createdAt))}</span>
-              </div>
-        )) : null}
-          </div>
+      </div>
     </div>
   );
 };

@@ -4,10 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMoneyBillTrendUp,
   faSackDollar,
-  faCircleInfo,
   faWallet,
   faPiggyBank,
   faMoneyBillTransfer,
+  faDollar,
 } from "@fortawesome/free-solid-svg-icons";
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import Transfer from "../Modals/Transfer";
@@ -17,7 +17,7 @@ import DepositBank from "../Modals/Deposit-bank";
 import CloseAccount from "../Modals/CloseAccount";
 import Piggybank from "../Modals/Piggybank";
 import "../../../styles/user-page/Modals.css";
-import { useNavigate } from "react-router-dom";
+import Currency from '../Modals/Currency'
 
 const Opportunities = function () {
   const [activeModal, setActiveModal] = useState(null);
@@ -47,14 +47,13 @@ const Opportunities = function () {
         return <Piggybank onClose={closeModal} />;
       case "CloseAccount":
         return <CloseAccount onClose={closeModal} />;
+      case "Currency":
+        return <Currency onClose={closeModal} />;
       default:
         return null;
     }
   };
-  const navigate = useNavigate();
-  const navigateTo = function () {
-    navigate("/tech-about");
-  };
+
 
   return (
     <div className="container">
@@ -106,9 +105,9 @@ const Opportunities = function () {
         <FontAwesomeIcon icon={faTrashCan} style={{ color: "#ff0000" }} /> Close
         Account
       </div>
-      <div className="slot info" onClick={navigateTo}>
-        <FontAwesomeIcon icon={faCircleInfo} style={{ color: "#eee" }} />
-        Info
+      <div className="slot info" onClick={() => handleSlotClick('Currency')}>
+        <FontAwesomeIcon icon={faDollar} style={{ color: "green" }} />
+        Currency
       </div>
       {renderModal()}
       <div onClick={closeModal} className={`${overlay}`}></div>
