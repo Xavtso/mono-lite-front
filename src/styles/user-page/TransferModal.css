@@ -86,32 +86,58 @@
     #e0b115,
     #cfa310,
     #c68308
-    );
+  );
 }
 
-.transfer-image{
+.transfer-image {
   scale: 1.6;
 }
 
-.receiver-t-label{
+.receiver-t-label {
   color: #989898;
 }
 
+.transfer-alert {
+  color: red;
+  font-size: 1.2rem;
+  font-weight: 600;
+  translate: 0rem 2rem;
+  padding: 0.3rem 2rem;
+  border-radius: 1.5rem;
+  background-color: rgb(250, 181, 181);
+  -webkit-border-radius: 1.5rem;
+  -moz-border-radius: 1.5rem;
+  -ms-border-radius: 1.5rem;
+  -o-border-radius: 1.5rem;
+}
 
-@media(max-width:410px){
-  .screen-transfer-modal{
-    height: 64.5rem;
+@media (max-width: 410px) {
+  .screen-transfer-modal {
+    height: 53.5rem;
+    margin-top: 6.8rem;
   }
 
-  .target-user{
-    top: 5rem;
+  .target-user {
+    top: 2rem;
   }
 
-  .transfer-modal-form{
-    top: 4rem;
+  .transfer-modal-form {
+    top: 1rem;
   }
 
-  .transfer-image{
-    scale: 1.5;
+  .transfer-image {
+    scale: 1.2;
+  }
+
+  .transfer-label {
+    margin-top: -6rem;
+  }
+  .transfer-input {
+    font-size: 2rem;
+    translate: -0.6rem 0rem;
+  }
+  .transfer-input-description {
+    width: 80%;
+    font-size: 1.5rem;
   }
 }

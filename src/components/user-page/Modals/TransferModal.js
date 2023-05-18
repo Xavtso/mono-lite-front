@@ -66,7 +66,7 @@ const TransferModal = function (props) {
           onChange={handleDescription}
           placeholder="You can leave comment here"
         />
-        <p className="alert">{message}</p>
+        {message && <p className="transfer-alert">{message}</p>}
         <button className="btn transfer-btn" onClick={makeTransaction}>Send</button>
       </form>
     </div>

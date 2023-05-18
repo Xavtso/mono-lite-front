@@ -138,4 +138,10 @@
   .users{
     height: 80%;
   }
+  .users__row{
+    height: 7rem;
+  }
+  .user-image{
+    scale: 0.8;
+  }
 }

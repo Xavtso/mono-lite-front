@@ -263,3 +263,16 @@
   color: rgb(248, 75, 75);
 }
 /* .pig-movements {} */
+
+@media (max-width:410px){
+  .jar_container {
+    width: 18rem;
+    height: 18rem;
+  }
+  
+
+  .pig-movements{
+    height: 20rem;
+    max-height: 20rem;
+  }
+}

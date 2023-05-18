@@ -62,3 +62,37 @@
     top: 1.5rem;
 }
 
+
+@media(max-width: 410px){
+    .activeLabel{
+        transform: translate(-2.8rem, 2rem);
+        -webkit-transform: translate(-2.8rem, 2rem);
+        -moz-transform: translate(-2.8rem, 2rem);
+        -ms-transform: translate(-2.8rem, 2rem);
+        -o-transform: translate(-2.8rem, 2rem);
+        left: 0;
+        font-size: 1.4rem;
+}
+
+
+.transfer-form{
+    translate: 0rem -7rem;
+    font-size: 1.2rem;
+}
+.transfer-form input{
+    /* translate: 0rem -7rem; */
+    font-size: 1.6rem;
+}
+
+.screen-transfer{
+    margin-top: -33rem;
+}
+
+.icon{
+    position: absolute;
+    top:1rem;
+    left: -1.2rem;
+}
+
+
+}

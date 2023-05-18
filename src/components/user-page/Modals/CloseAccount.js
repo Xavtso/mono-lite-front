@@ -11,7 +11,7 @@ const CloseAccount = function (props) {
   const [inputEmail, setInputEmail] = useState("");
   const [inputPassword, setInputPassword] = useState("");
   const [message, setMessage] = useState("");
-  const storage = localStorage;
+  
   const handleModal = () => {
     setShowModal(!showModal);
   };

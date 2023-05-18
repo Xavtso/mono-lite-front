@@ -93,8 +93,8 @@ const Piggybank = function (props) {
       </button>
       <div className="amount piggybank-amount">
         <span className="pig-title">Accumulated</span>
-        <br />
-        {accumulated} ₴
+        {/* <br /> */}
+        <p className="accum_all">{accumulated} ₴</p>
       </div>
       <div className="screen screen-piggybank">
         <div className="pig-controls">
