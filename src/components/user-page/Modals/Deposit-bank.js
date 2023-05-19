@@ -73,9 +73,9 @@ const DepositBank = function (props) {
       <button className="btn--close-modal" onClick={handleClose}>
         &times;
       </button>
-      <div className="amount piggybank-amount">
-        <span className="pig-title">In Vaults</span>
-        <br />
+      <div className="amount deposit-amount">
+        <span className="dep-title">In Vaults</span>
+        
         {accumulated} ₴
       </div>
       <div className="screen screen-deposit-bank">

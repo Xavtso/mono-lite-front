@@ -6,7 +6,7 @@ const CashBack = function (props) {
   const [balance, setBalance] = useState("");
   const [leftToCollect, setLeftToCollect] = useState("");
   const [inputValue, setInputValue] = useState("");
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState('ihjhkioej');
   
   const handleClose = function () {
     props.onClose();

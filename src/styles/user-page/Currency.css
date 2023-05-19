@@ -232,3 +232,54 @@
   -ms-transform: translateY(4rem);
   -o-transform: translateY(4rem);
 }
+
+@media(max-width:410px){
+  .currency-info-container{
+    height: 4rem;
+    width: 90%;
+    translate: 0rem -1.5rem;
+  }
+  .currency-slot{
+    font-size: 1.4rem;
+  }
+  .screen-currency{
+    margin-top: -16rem;
+  }
+  .spacer{
+    margin-top: 2rem;
+  }
+
+  .currency-controls{
+    height: 4rem;
+  }
+  
+  .curr-btn{
+    text-align: center;
+    height: 5rem;
+    padding: 0rem 2.5rem;
+  }
+  
+
+  .USD-container,.EUR-container{
+    height: 14rem;
+    margin-top:-8rem ;
+  }
+
+  .currency-operation{
+    margin-top: -5rem;
+    width: 95%;
+  }
+  .currency-alert{
+    margin-top: -3rem;
+    translate: 0rem -4rem;
+  }
+  .currency-input{
+    width: 12rem;
+  }
+  .operation-label{
+    font-size: 1.4rem;
+  }
+  .currency-select{
+    font-size: 1.4rem;
+  }
+}

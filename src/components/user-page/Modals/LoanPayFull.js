@@ -41,7 +41,7 @@ const LoanPayFull = function (props) {
         &times;
       </button>
       <div className="loanMen-container">
-        <img src={loanFull} alt="vaultOpened" className="" />
+        <img src={loanFull} alt="vaultOpened" className="receiptImg" />
       </div>
       <h2 className="replenish-title">Take Out</h2>
       <p className="takeout-question">

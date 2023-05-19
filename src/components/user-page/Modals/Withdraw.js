@@ -43,7 +43,7 @@ const Withdraw = function (props) {
         &times;
       </button>
       <div className="func_container">
-        <div className="jar_container"><img className="jar-img" src={withdrawJar} alt='withdrawJar'/></div>
+        <div className="jar_container wd-container"><img className="jar-img" src={withdrawJar} alt='withdrawJar'/></div>
         <h2 className="dep_label with">Amount</h2>
         <div className="dep_amount_container with_amount">
           <div className="allowed_sum">
@@ -60,7 +60,7 @@ const Withdraw = function (props) {
         </div>
         <p className="alert">{ message}</p>
         <div className="btn-container">
-          <button className="btn btn-pig-deposit" onClick={makeWithdraw}>
+          <button className="btn btn-pig-deposit wd-btn" onClick={makeWithdraw}>
             Withdraw
           </button>
         </div>

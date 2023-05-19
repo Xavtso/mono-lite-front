@@ -71,3 +71,24 @@
     width: 85%;
     margin-inline:auto ;
 }
+
+
+@media(max-width:410px){
+  .replenishImg{
+    scale: 0.7;
+  }
+  
+  .dep-input{
+width: 11rem;
+font-size: 1.8rem;
+  }
+  .input-label{
+    font-size:1.6rem;
+  }
+  .expected-amount{
+    font-size: 1.2rem;
+  }
+  .depMoneyBag{
+    scale: 0.75;
+  }
+}

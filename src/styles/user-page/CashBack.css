@@ -33,16 +33,39 @@
 
 .cash-alert{
     font-size: 16px;
-    /* border: 1px solid; */
-    /* width: 30rem; */
-    left:0;
+    border: 1px solid;
+    /*width: 30rem;
+    */left:0;
     bottom:15rem;
-    margin-left: 0px;
-    /* background-color: rgb(249, 172, 187); */
+    margin-left:13rem;
+    background-color: rgb(255, 182, 197);
+    width: 25rem;
+    border-radius:1rem ;
+    -webkit-border-radius:1rem ;
+    -moz-border-radius:1rem ;
+    -ms-border-radius:1rem ;
+    -o-border-radius:1rem ;
 }
 
 @media(max-width:410px){
     .cashBack--form input{
-        width:12rem
+        width:12rem;
+        translate:4rem;
+        
+    }
+    .screen-cashback{
+        margin-top: -5rem;
+    }
+    .cashBack--form{
+        margin: 4rem auto;
+        gap: 1rem;
+        text-align: center;
+    }
+    .cash-alert{
+        margin-left:4.5rem;
+        
+    }
+    .amount-cashback{
+        margin-top: -2rem;
     }
 }

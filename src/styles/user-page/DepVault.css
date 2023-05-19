@@ -95,3 +95,26 @@
 /* #coin{
     color: rgb(255, 201, 64);
 } */
+
+@media(max-width:410px){
+  .vault-container{
+    width: 15rem;
+    height: 15rem;
+  }
+  .vault-img{
+    scale: 0.95;
+    translate: -0.5rem;
+  }
+
+  .info-row{
+    height: 4rem;
+  }
+  .info-row-title,.info-row-value{
+    font-size: 1.4rem;
+  }
+  .vault_func{
+    height: 4rem;
+    font-size: 1.4rem;
+    width: 12rem;
+  }
+}

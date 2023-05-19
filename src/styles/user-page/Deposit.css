@@ -82,5 +82,33 @@ button{
 }
 
 @media (max-width:410px){
-    
+    .operation {
+  border-radius: 1rem;
+  padding: 1rem 3rem;
+  color: aliceblue;
+  background-color: rgb(65, 65, 65);
+  -webkit-border-radius:1.5rem;
+  -moz-border-radius:1rem;
+  -ms-border-radius:1rem;
+  -o-border-radius:1rem;
+  width: 31rem;
+  margin-left:-2rem;
+}
+.form{
+    width: 28rem;
+    margin-right:5rem ;
+}
+.form input{
+    width: 10rem;
+    margin-left:-2rem ;
+}
+
+.form label{
+    margin-left:-2rem ;
+}
+.form button {
+    translate:-2.5rem ;
+
+}
+
 }

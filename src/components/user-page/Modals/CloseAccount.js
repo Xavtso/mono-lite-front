@@ -67,7 +67,7 @@ const CloseAccount = function (props) {
       <button className="btn--close-modal" onClick={handleClose}>
         &times;
       </button>
-      <div className="amount">Are You Sure?</div>
+      <div className="amount close-title">Are You Sure?</div>
       <div className="screen screen-closeaccount">
         {showModal ? (
           <DeleteAgreeModal closeModal={handleModal} handleForm={deleteUser} />
@@ -89,21 +89,25 @@ const CloseAccount = function (props) {
                 onChange={handlePasswordChange}
               />
 
-              <p className="alert">{message}</p>
+            </form>
+              <p className="close-alert">{message}</p>
+
+              <div className="close-controls">
+
               <div className="google-btn">
                 <GoogleLogin
                   theme="filled_black"
-                  size="large"
+                  size="medium"
                   shape="pill"
                   text="Delete By "
                   onSuccess={onSuccess}
                   onError={onFailure}
-                />
+                  />
               </div>
-              <button onClick={handleModal} className="control-delete">
+              <button onClick={handleModal} className="btn control-delete">
                 Delete
               </button>
-            </form>
+                  </div>
           </>
         )}
       </div>

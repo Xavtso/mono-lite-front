@@ -149,7 +149,7 @@ const Currency = function (props) {
             </button>
           </div>
         )}
-        <p className="currency-alert">{message }</p>
+        {message && <p className="currency-alert">{message}</p>}
         <div className={`currency-controls ${btnClass}`}>
           <button
             className="btn pig-btn curr-btn"

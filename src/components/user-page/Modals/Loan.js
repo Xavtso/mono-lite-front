@@ -72,9 +72,8 @@ const Loan = function (props) {
       <button className="btn--close-modal" onClick={handleClose}>
         &times;
       </button>
-      <div className="amount piggybank-amount">
+      <div className="amount loan-amount">
         <span className="pig-title">Need to Pay</span>
-        <br />
         {accumulated} ₴
       </div>
       <div className="screen screen-loan">

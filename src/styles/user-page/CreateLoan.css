@@ -27,3 +27,17 @@
   */
   box-shadow: 0px 0px 15px 2px #222;
 }
+
+@media(max-width:410px){
+  .loanMen-container{
+    width: 15rem;
+    height: 15rem;
+  }
+  .loan-vault-image{
+    scale: 0.8;
+    translate: -4rem -2.5rem;
+  }
+  .btn-take-loan{
+    margin-top: -1rem;
+  }
+}

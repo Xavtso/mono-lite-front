@@ -44,7 +44,7 @@ const DepTakeout = function (props) {
         &times;
       </button>
       <div className="vault-container">
-        <img src={moneyBag} alt="vaultOpened" className="" />
+        <img src={moneyBag} alt="vaultOpened" className="depMoneyBag" />
       </div>
       <h2 className="replenish-title">Take Out</h2>
       <p className="takeout-question">

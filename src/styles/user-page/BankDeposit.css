@@ -1,3 +1,15 @@
+.deposit-amount{
+  
+  display: flex;
+  flex-direction: column;
+  margin-top: -2.5rem;
+}
+.screen-deposit-bank{
+  margin-top: -2rem;
+}
+.dep-title{
+  font-size: 2.4rem;
+}
 
 
 .dep-icon{
@@ -55,5 +67,15 @@
 
 
 @media(max-width:410px){
-  
+  .screen-deposit-bank{
+    margin-top: -5rem;
+  }
+  .deposit-amount{
+    height: 10rem;
+    margin-top: -5rem;
+  }
+  .dep-title{
+    font-size: 1.8rem;
+  }
+
 }

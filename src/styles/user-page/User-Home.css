@@ -25,6 +25,7 @@ background: linear-gradient(210deg,#CDA3AB,#9385BC,#4C60D2);
 @media (max-width:1200px){
   main{
     overflow-y: scroll;
+    overflow-x: hidden;
   }
 }
 
