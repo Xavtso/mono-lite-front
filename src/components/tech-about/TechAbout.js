@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const TechAbout = function () {
   const navigate = useNavigate();
   const navigateTo = function () {
-    navigate("/account");
+    navigate("/about");
   };
 
   return (
