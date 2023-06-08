@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "../../../styles/user-page/Balance.css";
 import axios from "axios";
+import { io } from "socket.io-client";
 
 const Balance = function (props) {
   const [balance, setBalance] = useState(props.cardInfo.card_balance);
@@ -17,6 +18,25 @@ const Balance = function (props) {
       console.error(error);
     }
   };
+
+   const socket = io("http://localhost:3000");
+   socket.on("connect", function () {
+     console.log("Connected");
+
+     socket.emit("events", { test: "test" });
+     socket.emit("identity", 0, (response) =>
+       console.log("Identity:", response),
+     );
+   });
+   socket.on("events", function (data) {
+     console.log("event", data);
+   });
+   socket.on("exception", function (data) {
+     console.log("event", data);
+   });
+   socket.on("disconnect", function () {
+     console.log("Disconnected");
+   });
 
   useEffect(() => {
     //КОСТИЛЬ ? (Of course)

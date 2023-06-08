@@ -5,34 +5,37 @@ import axios from "axios";
 import React, { useState } from "react";
 
 const Deposit = function () {
-  const [transactionAmount, setTransactionAmount] = useState('');
-  const [message, setMessage] = useState('')
+  const [transactionAmount, setTransactionAmount] = useState("");
+  const [message, setMessage] = useState("");
   const handleDeposit = async (event) => {
     event.preventDefault();
-  
-  const id = localStorage.getItem("id");   
+
+    const id = localStorage.getItem("id");
     if (+transactionAmount === 0) {
-        setMessage("Та нашо тобі той ноль?");
-        return
-      }
-      try {
-        // Відправляємо POST запит на вказаний сервер з використанням введеної суми
-         await axios.post(
-           "https://mono-lite-back.azurewebsites.net/transactions/simulate/deposit",
-           { user_id: id, transaction_amount: transactionAmount },
-         );
-          
-        } catch (error) {
-          setMessage(error.response.data.message);
-        }
-      
-    setTransactionAmount('')
+      setMessage("Та нашо тобі той ноль?");
+      return;
+    }
+    try {
+      // Відправляємо POST запит на вказаний сервер з використанням введеної суми
+      await axios.post(
+        "https://mono-lite-back.azurewebsites.net/transactions/new",
+        {
+          user_id: id,
+          transaction_amount: transactionAmount,
+          operation: "deposit",
+        },
+      );
+    } catch (error) {
+      setMessage(error.response.data.message);
+    }
+
+    setTransactionAmount("");
   };
 
   const handleTransactionAmountChange = (event) => {
-    setMessage('')
-    const amount = event.target.value
-      setTransactionAmount(amount);
+    setMessage("");
+    const amount = event.target.value;
+    setTransactionAmount(amount);
   };
 
   return (
@@ -46,7 +49,7 @@ const Deposit = function () {
         <label>Amount</label>
         <input
           type="number"
-          min={0.00}
+          min={0.0}
           value={transactionAmount}
           onChange={handleTransactionAmountChange}
         />

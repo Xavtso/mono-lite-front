@@ -32,6 +32,7 @@ const TransferModal = function (props) {
         transaction_amount: inputAmountValue,
         transaction_description: inputDescriptionValue,
         receiver_card_number: user.card_number,
+        operation:'transfer'
       })
       .then((response) => response && closeModals())
       .catch((error) => setMessage(error.response.data.message));

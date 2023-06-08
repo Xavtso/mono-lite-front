@@ -21,9 +21,10 @@ const Expense = function () {
     try {
       // Відправляємо POST запит на вказаний сервер з використанням введеної суми
       const response = await axios.post(
-        "https://mono-lite-back.azurewebsites.net/transactions/simulate/withdrawal",
+        "https://mono-lite-back.azurewebsites.net/transactions/new",
         { user_id:id,
-          transaction_amount: transactionAmount
+          transaction_amount: transactionAmount,
+          operation: 'expense'
         },
       );
 
