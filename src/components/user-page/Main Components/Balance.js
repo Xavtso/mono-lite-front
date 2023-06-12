@@ -43,7 +43,7 @@ const Balance = function (props) {
     // Виконання періодичного запиту на сервер кожні 5 секунд
     const intervalId = setInterval(() => {
       fetchBalance();
-    }, 2500);
+    }, 3000);
 
     // Прибирання інтервалу при розмонтажі компоненту
     return () => {

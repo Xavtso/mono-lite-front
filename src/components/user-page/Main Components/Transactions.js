@@ -59,7 +59,7 @@ const Transactions = function () {
   useEffect(() => {
     const intervalId = setInterval(() => {
       uploadTransactions();
-    }, 1000);
+    }, 2500);
 
     // Прибирання інтервалу при розмонтажі компоненту
     return () => {
