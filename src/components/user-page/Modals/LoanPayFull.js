@@ -33,6 +33,7 @@ const LoanPayFull = function (props) {
       })
       .then((response) => response && handleWithdrawClose())
       .catch((error) => setMessage(error.response.data.message));
+    handleWithdrawClose();
   };
 
   return (
