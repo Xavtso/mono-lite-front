@@ -4,7 +4,7 @@ import hero from "../../images/hero.png";
 import "../../styles/home-page/Header.css";
 import "../../styles/home-page/Navbar.css";
 import "../../styles/home-page/Button.css";
-import AuthForm from "../AuthForm/AuthForm";
+import AuthForm from "../../modules/AuthForm/AuthForm";
 import { useNavigate } from "react-router-dom";
 
 const Header = forwardRef((props, ref) => {
@@ -22,37 +22,31 @@ const Header = forwardRef((props, ref) => {
   };
 
   const navigateTo = useNavigate();
-  const navToAbout = function(){
-    navigateTo('/about')
-  }
-    
-  
+  const navToAbout = function () {
+    navigateTo("/about");
+  };
+
   const [modal, setModal] = useState(false);
-  const [content, setContent] = useState('');
-  const [overlay, setOverlay] = useState('');
+  const [content, setContent] = useState("");
+  const [overlay, setOverlay] = useState("");
 
-
-  const closeModal = function () { 
+  const closeModal = function () {
     setModal(false);
-    setContent('');
-    setOverlay('');
-  }
+    setContent("");
+    setOverlay("");
+  };
 
   const showModal = function (e) {
     e.preventDefault();
     setModal(true);
-    setOverlay('overlay')
+    setOverlay("overlay");
     setContent(() => {
-      return (
-        <AuthForm onHide={closeModal } />
-      )
-    })
-    
-  }
-
+      return <AuthForm onHide={closeModal} />;
+    });
+  };
 
   return (
-    <header ref={ref} className='header'>
+    <header ref={ref} className="header">
       <nav className="nav">
         <img src={logo} alt="Bankist logo" className="nav__logo" id="logo" />
         <ul className="nav__links">
@@ -86,16 +80,15 @@ const Header = forwardRef((props, ref) => {
               Testimonials
             </a>
           </li>
-          <li className="nav__item">
-          </li>
+          <li className="nav__item"></li>
         </ul>
-            <a
-              className="nav__link nav__link--btn btn--show-modal"
-              href="/"
-              onClick={showModal}
-            >
-              Open account
-            </a>
+        <a
+          className="nav__link nav__link--btn btn--show-modal"
+          href="/"
+          onClick={showModal}
+        >
+          Open account
+        </a>
       </nav>
       {content}
       <div className="header__title">
@@ -106,10 +99,12 @@ const Header = forwardRef((props, ref) => {
           <span className="highlight">minimalist</span>
         </h1>
         <h4>A simpler banking experience for a simpler life.</h4>
-        <button className="btn--text btn--scroll-to" onClick={navToAbout}>Learn more . . .</button>
+        <button className="btn--text btn--scroll-to" onClick={navToAbout}>
+          Learn more . . .
+        </button>
         <img src={hero} className="header__img" alt="Minimalist bank items" />
       </div>
-<div skip={modal} onClick={closeModal}className={`${overlay}`}></div>
+      <div skip={modal} onClick={closeModal} className={`${overlay}`}></div>
     </header>
   );
 });
