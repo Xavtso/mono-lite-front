@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getCurrencyInfo, getUserBalance } from "../../services/currency";
 
-const currenSlice = createSlice({
+const currencySlice = createSlice({
   name: "currency",
   initialState: {
     eur: {
@@ -19,7 +19,8 @@ const currenSlice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getCurrencyInfo.fulfilled, (state, action) => {
+      builder.addCase(getCurrencyInfo.fulfilled, (state, action) => {
+        console.log(action.payload);
       [state.eur, state.usd] = action.payload;
     });
     builder.addCase(getUserBalance.fulfilled, (state, action) => {
@@ -27,3 +28,7 @@ const currenSlice = createSlice({
     });
   },
 });
+
+export const currencySliceActions = currencySlice.actions;
+
+export default currencySlice

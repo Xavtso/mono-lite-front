@@ -12,6 +12,7 @@ import {
   buyCurrency,
   getCurrencyInfo,
   getUserBalance,
+  sellCurrency,
 } from "../../services/currency";
 
 const Currency = function (props) {
@@ -59,7 +60,7 @@ const Currency = function (props) {
     response && reduceModal();
   };
   const handleSellCurrency = () => {
-    const response = buyCurrency({
+    const response = sellCurrency({
       user_id: id,
       amount: +amount,
       currencyCode: selectedCurrency,
@@ -68,6 +69,7 @@ const Currency = function (props) {
   };
 
   const handleOperation = () => {
+
     if (selectedOperation === "Buy") {
       handleBuyCurrency();
     } else {
@@ -85,14 +87,14 @@ const Currency = function (props) {
         <div className="currency-info">
           <img src={Usd} alt="usa flag" className="usd" />
           <p className="currency-slot">
-            {Math.floor(usd.rateBuy * 100) / 100} /{" "}
-            {Math.floor(usd.rateSell * 100) / 100}
+            {Math.floor(usd?.rateBuy * 100) / 100} /{" "}
+            {Math.floor(usd?.rateSell * 100) / 100}
           </p>
           <div className="vertical-rule"></div>
           <img src={Eur} alt="europe flag" className="eur" />
           <p className="currency-slot">
-            {Math.floor(eur.rateBuy * 100) / 100} /{" "}
-            {Math.floor(eur.rateSell * 100) / 100}
+            {Math.floor(eur?.rateBuy * 100) / 100} /{" "}
+            {Math.floor(eur?.rateSell * 100) / 100}
           </p>
         </div>
       </div>
@@ -104,14 +106,14 @@ const Currency = function (props) {
               <img src={Usd} alt="usa flag" className="usd" />
               USD
             </h3>
-            <p className="currency-balance">{userBalance.usd_balance} $</p>
+            <p className="currency-balance">{userBalance?.usd_balance} $</p>
           </div>
           <div className="EUR-container">
             <h3 className="title-eur">
               <img src={Eur} alt="eur flag" className="eur" />
               EUR
             </h3>
-            <p className="currency-balance">{userBalance.eur_balance} €</p>
+            <p className="currency-balance">{userBalance?.eur_balance} €</p>
           </div>
         </div>
         {showModal && (

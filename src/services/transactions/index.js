@@ -37,6 +37,7 @@ export const makeTransaction = async (body) => {
 export const getAllUsers = createAsyncThunk("users/getAll", async () => {
   try {
     const { data } = await client.get(API_ENDPOINTS.allUsers);
+    console.log(data);
     const sorted = alphabeticalSort(data);
     return sorted;
   } catch (error) {

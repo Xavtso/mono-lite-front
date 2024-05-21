@@ -26,7 +26,7 @@ const DepositBank = function ({ onClose }) {
 
   return (
     <div className="op-modal modal-deposit-bank">
-      <button className="btn--close-modal" onClick={onClose()}>
+      <button className="btn--close-modal" onClick={() => onClose()}>
         &times;
       </button>
       <div className="amount deposit-amount">

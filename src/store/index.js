@@ -6,6 +6,7 @@ import loansSlice from "./slices/loan.slice";
 import depositsSlice from "./slices/deposit.slice";
 import userSlice from "./slices/users.slice";
 import cashbackSlice from "./slices/cashback.slice";
+import currencySlice from "./slices/currency.slice";
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     deposit: depositsSlice.reducer,
     users: userSlice.reducer,
     cashback: cashbackSlice.reducer,
+    currency: currencySlice.reducer,
   },
 });
 

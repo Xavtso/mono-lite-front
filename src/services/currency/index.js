@@ -8,7 +8,7 @@ export const getCurrencyInfo = createAsyncThunk(
   "get/currencyInfo",
   async () => {
     const { data } = await client.get(API_ENDPOINTS.getCurrencyInfo);
-    return data;
+    return data.reverse();
   },
 );
 export const getUserBalance = createAsyncThunk("get/userBalance", async () => {

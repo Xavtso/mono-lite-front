@@ -4,8 +4,8 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import UsersList from "./modals/UserList/UsersList";
 import { useDispatch } from "react-redux";
-import { getAllUsers } from "../../services/transactions";
 import { userSliceActions } from "../../store/slices/users.slice";
+
 const Transfer = function (props) {
   const [activeClass, setActiveClass] = useState("hidden");
   const [searchQuery, setSearchQuery] = useState("");
@@ -19,10 +19,6 @@ const Transfer = function (props) {
     e.target.placeholder = "Enter receiver name or card number";
     setActiveClass("hidden");
   };
-
-  useEffect(() => {
-    dispatch(getAllUsers());
-  }, [dispatch]);
 
   useEffect(() => {
     dispatch(userSliceActions.setSearchParam(searchQuery));
