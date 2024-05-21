@@ -3,22 +3,12 @@ import { useForm } from "react-hook-form";
 import { makeTransaction } from "../../../../services/transactions";
 import { rules } from "../../../../constants/formFieldRules";
 
-const TransferModal = function ({ props }) {
-
+const TransferModal = function ({ user, modalClose, onClose }) {
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
-
-  const closeModal = function () {
-    props.onClose();
-  };
-  const user = props.user;
-
-  const closeModals = function () {
-    props.modalClose();
-  };
 
   const onSubmit = (data) => {
     makeTransaction({
@@ -27,12 +17,12 @@ const TransferModal = function ({ props }) {
       receiver_card_number: user.card_number,
       operation: "transfer",
     });
-    closeModals();
+    modalClose();
   };
 
   return (
     <div className="screen-transfer-modal">
-      <button className="btn--close-modal" onClick={closeModal}>
+      <button className="btn--close-modal" onClick={() => onClose()}>
         &times;
       </button>
       <div className="target-user">
@@ -59,11 +49,13 @@ const TransferModal = function ({ props }) {
           className="transfer-input-description"
           type="text"
           maxLength={64}
-          {...register("amount")}
+          {...register("description")}
           placeholder="You can leave comment here"
         />
-        {errors && <p className="transfer-alert">{errors.root.message}</p>}
-        {/* {message && <p className="transfer-alert">{message}</p>} */}
+        {errors.amount && (
+          <p className="transfer-alert">{errors.amount.message}</p>
+        )}
+
         <button className="btn transfer-btn">Send</button>
       </form>
     </div>

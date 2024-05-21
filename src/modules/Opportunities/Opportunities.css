@@ -1,3 +1,8 @@
+.modal-content {
+  display: grid;
+  place-items: center;
+}
+
 .container {
   width: 100%;
   margin-bottom: 2rem;
@@ -11,7 +16,7 @@
   display: flex;
   margin: auto;
   justify-content: space-evenly;
-  width: 17rem ;
+  width: 17rem;
   padding: 1.5rem 1rem auto;
   height: 4.5rem;
   align-items: center;
@@ -33,32 +38,32 @@
   transition: all 1s;
 }
 
-@media (max-width:1200px){
-  .slot{
+@media (max-width: 1200px) {
+  .slot {
     font-size: 0;
     text-align: center;
     width: 10rem;
-  padding: .5rem 0.5rem;
-  height: 4.5rem;
-  align-items: center;
-  text-align: center;
+    padding: 0.5rem 0.5rem;
+    height: 4.5rem;
+    align-items: center;
+    text-align: center;
   }
   .slot > * {
     font-size: 16px; /* розмір шрифту для іконки */
     margin-right: -4rem;
   }
 }
-@media (max-width:750px){
-  .slot{
+@media (max-width: 750px) {
+  .slot {
     width: 6rem;
-  height: 4.5rem;
-  text-align:start;
-  padding-right:3rem ;
+    height: 4.5rem;
+    text-align: start;
+    padding-right: 3rem;
   }
 }
 
-@media(max-width:410px){
-  .slot{
+@media (max-width: 410px) {
+  .slot {
     scale: 0.85;
   }
 }
