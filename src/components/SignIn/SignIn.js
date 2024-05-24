@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../UI/Loader/Loader";
 import { GoogleLogin } from "@react-oauth/google";
-import { googleDecode, signin } from "../../services/auth/index";
+import { googleAuth, googleDecode, signin } from "../../services/auth/index";
 import { useForm } from "react-hook-form";
 import { rules } from "../../constants/formFieldRules";
 
@@ -16,16 +16,26 @@ const SignIn = function (props) {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    setShowLoader(true);
-    const response = signin(data);
-    response && navigate("/account");
-  };
+const onSubmit = async (data) => {
+  setShowLoader(true);
+
+  try {
+    const response = await signin(data);
+    if (response === true) {
+      navigate("/account");
+    }
+  } catch (error) {
+    console.error("Error during sign in:", error);
+  } finally {
+    setShowLoader(false);
+  }
+};
+
 
   const onSuccess = (response) => {
-    const { email, password } = googleDecode(response.credentials);
-    setShowLoader(true);
-    signin({ email, password });
+    const data = googleDecode(response.credentials);
+    const res = googleAuth(data);
+    res && navigate("/account");
   };
   const onFailure = () => {
     alert("Problems with google account");

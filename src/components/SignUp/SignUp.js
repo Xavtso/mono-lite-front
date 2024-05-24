@@ -1,9 +1,9 @@
 import { GoogleLogin } from "@react-oauth/google";
-import "../../modules/AuthForm/AuthForm.css"
+import "../../modules/AuthForm/AuthForm.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../UI/Loader/Loader";
-import { googleDecode, signup } from "../../services/auth";
+import { googleAuth, googleDecode, signup } from "../../services/auth";
 import { useForm } from "react-hook-form";
 import { rules } from "../../constants/formFieldRules";
 
@@ -17,22 +17,27 @@ const SignUp = function (props) {
   const [showLoader, setShowLoader] = useState(false);
 
   const navigate = useNavigate();
-  const onSubmit = (data) => {
-    setShowLoader(true);
+ const onSubmit = async (data) => {
+   setShowLoader(true);
 
-    const response = signup(data);
-    setShowLoader(!showLoader);
-    response && navigate("/account");
-  };
+   try {
+     const response = await signup(data);
+     if (response === true) {
+       navigate("/account");
+     }
+   } catch (error) {
+     console.error("Error during sign in:", error);
+   } finally {
+     setShowLoader(false);
+   }
+ };
 
-  const onSuccess = (response) => {
-    const userData = googleDecode(response.credential);
-    setShowLoader(!showLoader);
 
-    signup(userData);
-    navigate("/account");
-    setShowLoader(!showLoader);
-  };
+ const onSuccess = (response) => {
+   const data = googleDecode(response.credentials);
+   const res = googleAuth(data);
+   res && navigate("/account");
+ };
   const onFailure = () => {
     alert("Problems with google account");
   };

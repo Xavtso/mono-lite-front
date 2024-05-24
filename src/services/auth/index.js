@@ -5,9 +5,7 @@ import { client } from "../client";
 export const signin = async (body) => {
   try {
     const { data } = await client.post(AUTH_API_URL.login, { ...body });
-    localStorage.setItem("token", data.token);
-    const decoded = jwtDecode(data.token);
-    localStorage.setItem("id", decoded.id);
+    await tokenDecoder(data);
     return true;
   } catch (error) {
     console.log(error);
@@ -18,21 +16,38 @@ export const signin = async (body) => {
 export const signup = async (body) => {
   try {
     const { data } = await client.post(AUTH_API_URL.signUp, { ...body });
-    return data;
+    await tokenDecoder(data);
+    return true;
   } catch (error) {
     console.log(error);
-    return error;
+    return false;
   }
 };
 
-export const googleDecode = async (credentials) => {
+export const googleDecode = (credentials) => {
   const decoded = jwtDecode(credentials);
   const userData = {
     email: decoded.email,
     password: decoded.sub,
-    firstName: decoded.given_name,
-    secondName: decoded.family_name,
+    first_name: decoded.given_name,
+    second_name: decoded.family_name,
     imageUrl: decoded.picture,
   };
   return userData;
+};
+
+export const googleAuth = async (body) => {
+  try {
+    const { data } = await client.post(AUTH_API_URL.authGoogle, { ...body });
+    return data;
+  } catch (error) {
+    console.error("GoogleAuth Failed", error);
+  }
+};
+
+export const tokenDecoder = async (data) => {
+  localStorage.setItem("token", data.token);
+  const decoded = jwtDecode(data.token);
+  localStorage.setItem("id", decoded.id);
+  return;
 };

@@ -1,9 +1,8 @@
 import axios from "axios";
-
-
+import { createPortal } from "react-dom";
+import Notification from "../../components/Notification";
 
 const init = () => {
-  
   const client = axios.create({
     baseURL: "http://localhost:5000",
   });
@@ -15,8 +14,8 @@ const init = () => {
       return response;
     },
     (error) => {
-      alert( error.response.data.message);
-     return Promise.reject(error);
+      alert(error.response.data.message);
+      return Promise.reject(error);
     },
   );
 
